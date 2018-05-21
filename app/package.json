@@ -4,11 +4,9 @@
   "private": true,
   "main": "Server/index.js",
   "dependencies": {
-<<<<<<< HEAD
     "antd": "^3.5.3",
-=======
+    "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
->>>>>>> 3e0d21f76a0c04f12ce472129cdbd17b8697261b
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",

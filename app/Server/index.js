@@ -7,12 +7,12 @@ const session = require('express-session')
 const massive = require('massive')
 const bcrypt = require('bcrypt')
 const saltRounds = 12
-const cors = require('cors')
+// const cors = require('cors')
 
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors())
+// app.use(cors())
 app.use(session({
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
