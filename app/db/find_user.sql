@@ -1,0 +1,1 @@
+select * from users_bc where username = $1;
