@@ -1,4 +1,54 @@
 .link{
-    color: inherit;
     text-decoration: none;
 }
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.nav-container{
+    background: #F433AB;
+    height: 10em;
+    padding-top: 15px;
+}
+
+.logo{
+    float: left;
+    height:125px;
+    width:125px;
+    margin-left: 25px;
+}
+ul{
+    cursor: pointer;
+    font-size: 1.5em;
+}
+nav{
+    padding-right: 10em;
+}
+ul li{
+    float: right;
+    width: 200px;
+    height: 40px;
+    color: white;
+    opacity: .8;
+    line-height: 40px;
+    text-align: center;
+    
+}
+.sub-menu{
+    display: block;
+    font-size: .4em;
+}
+.sub-menu:hover{
+background:#191716;
+}
+.sub-wrapper{
+    display:none;
+}
+ul li:hover .sub-wrapper{
+    display: block;
+}
+
+
+ 
+
