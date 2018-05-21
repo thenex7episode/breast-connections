@@ -1,0 +1,25 @@
+.metaContainer {
+    text-align: right;
+}
+
+.titleContainer {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid grey;
+}
+
+.contentContainer {
+    padding: 1em;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+}
+
+.metaContainer {
+    display: flex;
+}
+
+.trackerBadge {
+    padding: 0 0.5em;
+}

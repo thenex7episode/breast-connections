@@ -21,11 +21,11 @@ export default class Dashboard extends Component {
 
 
     render() {
-        const postList = this.state.posts.map((el,i) => <li><Post key={i} title={el.title} body={el.body} user_id={el.user_id} date={el.date} tracker={el.tracker}/></li>)
+        const postList = this.state.posts.map((el,i) => <Post  key={i} post_id={el.post_id} title={el.title} body={el.body} user_id={el.user_id} date={el.date} tracker={el.tracker}/>)
         return (
-            <ul>
+            <div>
                 {postList}
-            </ul>
+            </div>
         );
     }
 }
