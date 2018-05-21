@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const ctrl = require('./controller.js');
 const PORT = 4000;
+const c = require('./controller');
 const session = require('express-session')
 const massive = require('massive')
 const bcrypt = require('bcrypt')
@@ -25,6 +26,15 @@ massive(process.env.CONNECTION_STRING).then(database => {
     app.set('db', database)
 });
 
+
+// Endpoints for creating, updating and deleting a Post
+app.post('/api/addpost/', c.addPost)
+app.put('/api/editpost/', c.editPost)
+app.delete('/api/deletepost/:id', c.deletePost)
+app.get('/api/getposts/:id', c.getPosts)
+
+// get the UserInformation for a specific user ID
+app.get('/api/user/:id', c.userInfo)
 
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//

@@ -1,0 +1,1 @@
+SELECT * FROM posts_bc WHERE category = $1;
