@@ -13,7 +13,7 @@ const cors = require('cors')
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors())
+// app.use(cors())
 app.use(session({
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
@@ -26,10 +26,15 @@ massive(process.env.CONNECTION_STRING).then(database => {
     app.set('db', database)
 });
 
-app.post('/addpost/', c.addPost)
-app.put('/editpost/', c.editPost)
-app.delete('/deletepost/:id', c.deletePost)
 
+// Endpoints for creating, updating and deleting a Post
+app.post('/api/addpost/', c.addPost)
+app.put('/api/editpost/', c.editPost)
+app.delete('/api/deletepost/:id', c.deletePost)
+app.get('/api/getposts/:id', c.getPosts)
+
+// get the UserInformation for a specific user ID
+app.get('/api/user/:id', c.userInfo)
 
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//
