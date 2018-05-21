@@ -32,10 +32,11 @@ app.post('/register', (req,res) => {
     const {username, email, first, last, password} = req.body
     bcrypt.hash(password, saltRounds).then(hashedPassword => {
         app.get('db').create_user([username, email, first , last, hashedPassword]).then(newUser => {
-            req.session.user = newUser[0].username 
-            const username = req.session.user
+            req.session.user = {username: newUser[0].username, user_id: newUser[0].user_id }
+            const user = req.session.user
             res.status(200).json({ username })
         })
+        //still Registers a user_id if duplicate but won't let you login with duplicate. Might fix later//
         .catch(error => {
             if (error.message.match(/duplicate key/)) {
                 res.status(409).json({message: 'That user already exists'})
@@ -53,9 +54,9 @@ app.post('/login', (req, res) => {
         if (data.length) {
             bcrypt.compare(password, data[0].password).then(passwordsMatch => {
                 if(passwordsMatch) {
+                    req.session.user = { username,user_id:  data[0].user_id}
                     console.log('-----req.session.user',req.session.user)
-                    req.session.user = {username}
-                    res.json({ username })
+                    res.json({ user: req.session.user })
                 }else {
                     res.status(403).json({message: 'Invalid password'})
                 }
