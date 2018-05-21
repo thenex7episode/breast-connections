@@ -1,0 +1,9 @@
+.d-side-bar{
+    width: 15%;
+    height:25em;
+    background: #FF88DC;
+    float:left;
+}
+aside{
+    padding:20px;
+}

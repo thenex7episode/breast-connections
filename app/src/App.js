@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './reset.css'
-import './App.css';
 import routes from './routes'
+import React, { Component } from "react";
+import "./reset.css";
+import "./App.css";
+import Navbar from "./Components/Navbar";
+import Sidebar from "./Components/Sidebar";
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="App">
+        <Navbar />
+        <div className="d-main-wrapper">
+          <Sidebar />
+          <div className="d-routes">
+          
         { routes }
+          </div>
+        </div>
       </div>
     );
   }
