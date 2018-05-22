@@ -7,7 +7,8 @@ export default class Dashboard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            posts: []
+            posts: [],
+            loggedUser: ''
         }
         this.deletePost = this.deletePost.bind(this)
     }
@@ -17,6 +18,10 @@ export default class Dashboard extends Component {
         axios.get(`/api/getposts/${category}`).then(data => {
             console.log(data.data.data)
             this.setState({posts: data.data.data})
+        })
+        axios.get(`/api/check-session/`).then( data => {
+            console.log('session res', data)
+            this.setState({loggedUser: data.data.username})
         })
     }
 

@@ -9,10 +9,12 @@ export default class Post extends Component {
     constructor(props){
         super(props);
         this.state = {
+            loggedUser: '',
             username: '',
             userImage: '',
             tracker: this.props.tracker,
-            edit: false
+            edit: false,
+            userPost: true
         }
     }
 
@@ -50,7 +52,7 @@ export default class Post extends Component {
                         <div style={{fontSize: '0.8em'}}>posted on {date}, by {username}</div>
                     </div>
                     <div>
-                        <Icon onClick={() => this.setState({edit: !this.state.edit})} style={{display: 'block', paddingBottom: '1em'}}type="ellipsis" />
+                        <Icon onClick={() => this.setState({edit: !this.state.edit})} style={{display: 'block', opacity: this.state.userPost ? '1' : '0', paddingBottom: '1em'}}type="ellipsis" />
                             <ul style={{display: this.state.edit ? 'block' : 'none'}} className='editContainer'>
                                 <li onClick={() => this.deletePostFn()}><Icon type="delete" /> Delete</li>
                                 <li><Icon type="edit" /> Edit</li>
