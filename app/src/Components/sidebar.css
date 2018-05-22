@@ -1,5 +1,5 @@
 .d-side-bar{
-    width: 15%;
+    width: 150px;
     height:25em;
     background: #FF88DC;
     float:left;
@@ -41,3 +41,16 @@ aside{
     background-color: #F433AB;
     transition: background-color .5s ease-in;
 }
+
+@media only screen and (max-width: 768px) {
+    .d-side-bar {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
