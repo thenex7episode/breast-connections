@@ -1,9 +1,5 @@
-.metaContainer {
-    text-align: right;
-}
-
 .titleContainer {
-    padding: 1em;
+    padding: 0.5em;
     display: flex;
     justify-content: space-between;
     border: 1px solid grey;
@@ -11,15 +7,28 @@
 
 .contentContainer {
     padding: 1em;
-    border: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
     display: flex;
     justify-content: space-between;
 }
 
-.metaContainer {
-    display: flex;
-}
-
 .trackerBadge {
     padding: 0 0.5em;
+}
+
+.editContainer {
+    position: fixed;
+    right: 1.5em;
+    background: white;
+    z-index: 1;
+    border: 1px solid #eee;
+}
+
+.editContainer > li {
+    float: none;
+    color: grey;
+    font-size: 10pt;
+    width: 150px;
 }

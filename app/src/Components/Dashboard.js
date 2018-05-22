@@ -9,6 +9,7 @@ export default class Dashboard extends Component {
         this.state = {
             posts: []
         }
+        this.deletePost = this.deletePost.bind(this)
     }
 
     componentDidMount(){
@@ -19,9 +20,16 @@ export default class Dashboard extends Component {
         })
     }
 
+    deletePost(id){
+        axios.delete(`/api/deletepost/${id}`).then(data => {
+            console.log(data.data)
+            this.setState({posts: data.data.data})
+        })
+    }
+
 
     render() {
-        const postList = this.state.posts.map((el,i) => <Post  key={i} post_id={el.post_id} title={el.title} body={el.body} user_id={el.user_id} date={el.date} tracker={el.tracker}/>)
+        const postList = this.state.posts.map((el,i) => <Post  key={i} post_id={el.post_id} title={el.title} body={el.body} user_id={el.user_id} date={el.date} tracker={el.tracker} deletePostFn={this.deletePost}/>)
         return (
             <div>
                 {postList}

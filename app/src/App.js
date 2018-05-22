@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./reset.css";
+import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
 import "./App.css";
+import "./reset.css";
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
 import routes from './routes'

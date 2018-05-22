@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Post.css';
-import { Badge, Button } from 'antd';
+import { Avatar, Icon, Badge, Button } from 'antd';
+import { Menu, Dropdown } from 'antd';
+import { relative } from 'path';
 
 export default class Post extends Component {
     constructor(props){
@@ -9,7 +11,8 @@ export default class Post extends Component {
         this.state = {
             username: '',
             userImage: '',
-            tracker: this.props.tracker
+            tracker: this.props.tracker,
+            edit: false
         }
     }
 
@@ -30,22 +33,34 @@ export default class Post extends Component {
         })
     }
 
+    deletePostFn(){
+        this.props.deletePostFn(this.props.post_id)
+        this.setState({edit: false})
+    }
+
+
     render() {
-        const { title, body, date, tracker, user_id } = this.props;
+        const { title, body, date, tracker, user_id, deletePostFn } = this.props;
         const { username, userImage } = this.state;
         return (
             <div className='postContainer'>
                 <div className='titleContainer'>
-                    <h1>{title}</h1>
-                    <div className='metaContainer'>
-                        <h3>{username}</h3>
-                        <img src={userImage} alt='userImage'/>
+                    <div style={{padding: '1em'}}>
+                        <div style={{fontSize: '1.5em'}}>{title}</div>
+                        <div style={{fontSize: '0.8em'}}>posted on {date}, by {username}</div>
+                    </div>
+                    <div>
+                        <Icon onClick={() => this.setState({edit: !this.state.edit})} style={{display: 'block', paddingBottom: '1em'}}type="ellipsis" />
+                            <ul style={{display: this.state.edit ? 'block' : 'none'}} className='editContainer'>
+                                <li onClick={() => this.deletePostFn()}><Icon type="delete" /> Delete</li>
+                                <li><Icon type="edit" /> Edit</li>
+                            </ul>
+                        <Avatar src={userImage} />
                     </div>
                 </div>
                 <div className='contentContainer'>
                     <p>{body}</p>
-                    <div>
-                        <h3>{date}</h3>
+                    <div style={{}}>
                         <Badge className='trackerBadge' count={this.state.tracker} style={{ backgroundColor: 'green' }} />
                         <Button onClick={() => this.increaseTracker()} shape="circle" icon="up" />
                     </div>
