@@ -5,7 +5,6 @@ import "./App.css";
 import "./reset.css";
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
-import routes from './routes'
 
 class App extends Component {
   render() {
