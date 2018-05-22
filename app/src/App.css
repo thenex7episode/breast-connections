@@ -9,15 +9,9 @@
 .d-routes{
   flex:1;
   background: #FFFFFA;
-  /* width:75%; */
+  width:75%;
   padding: 2em;
-  /* padding-top: 5em; */
-}
-
-/* antD Improvements */
-.ant-btn:hover, .ant-btn:focus {
-  color: #444;
-  border-color: #444;
+  padding-top: 5em;
 }
 
 
