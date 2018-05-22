@@ -15,3 +15,5 @@
 
 
 
+/*import Ant Design CSS for global Usage*/
+@import '~antd/dist/antd.css';
