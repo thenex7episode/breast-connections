@@ -35,4 +35,9 @@ module.exports = {
             res.status(200).send(data)
         })
     }
+    // getUserPosts: (req,res) => {
+    //     req.app.get('db').join(req.params.user_id).then(posts => {
+    //         res.json({posts: posts})
+    //     }).catch(err => {console.log('WEEEWOOOWEEEWOOO', err)})
+    // }
 }
