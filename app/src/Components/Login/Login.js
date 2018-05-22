@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
+
 export default class Login extends Component {
-    constructor() {
+    constructor(props) {
         super()
 
         this.state = {
             user: null,
-            message: null
+            message: null,
         }
         this.login = this.login.bind(this)
     }
 
 
+
+    
     login= (e) => {
         console.log(e.key)
         this.setState({message: null})
@@ -25,11 +28,11 @@ export default class Login extends Component {
         }).then(response => {
             console.log('---------R.DATA',response.data)
             this.setState({ user: response.data})
-            this.props.history.push('/profile')
+            this.props.history.push(`/profile/${username}`)
             this.props.isLoggedIn()
            
         }).catch(error => {
-            this.setState({ message: 'Something went wrong'})
+            this.setState({ message: 'Ruh Roh'})
         })
     }
     loginOnEnter(e) {
@@ -44,10 +47,10 @@ export default class Login extends Component {
             }).then(response => {
                 console.log('-----r.data',response.data)
                 this.setState({user: response.data})
-                this.props.history.push('/profile')
+                this.props.history.push(`/profile/${username}`)
                 this.props.isLoggedIn()
             }).catch(error => {
-                this.setState({message: 'Something went wrong'})
+                this.setState({message: error})
             })
         }
     }

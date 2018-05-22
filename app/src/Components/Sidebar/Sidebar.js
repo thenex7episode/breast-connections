@@ -37,7 +37,7 @@ componentWillReceiveProps() {
             </h3>
             <div className='d-thumbnail'>
                 <img src={thumbnail} className='d-img'/>
-                <Link to='/profile'><button className='d-profile-button'>Profile</button></Link>
+                <Link to='/profile/:username'><button className='d-profile-button'>Profile</button></Link>
             </div>
         </div>
       </aside>
