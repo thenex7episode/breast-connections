@@ -7,3 +7,37 @@
 aside{
     padding:20px;
 }
+.d-welcome{
+    text-align: center;
+    padding: 10px;
+}
+.d-thumbnail{
+    width: 100px;
+    height: 100px;
+    background-color: #F433AB;
+    margin: 0 auto;
+}
+.d-img{
+    width: auto;
+    height:auto;
+    max-width: 100px; 
+    max-height: 150px;
+    padding: 5px;
+}
+.d-profile-button{
+    margin: 0 auto;
+    padding: 5px;
+    border: none;
+    border-radius: .3em;
+    width: 100px;
+    margin-top: 10px;
+    background-color: #191716;
+    color: #FFFFFA;
+    opacity: .9;
+    cursor: pointer;
+
+}
+.d-profile-button:hover{
+    background-color: #F433AB;
+    transition: background-color .5s ease-in;
+}

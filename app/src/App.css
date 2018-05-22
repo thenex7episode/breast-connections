@@ -1,3 +1,6 @@
+/*import Ant Design CSS for global Usage*/
+
+@import '~antd/dist/antd.css';
 
 .d-main-wrapper{
   display:flex;
@@ -15,5 +18,3 @@
 
 
 
-/*import Ant Design CSS for global Usage*/
-@import '~antd/dist/antd.css';

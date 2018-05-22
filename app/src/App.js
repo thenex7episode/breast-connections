@@ -2,7 +2,6 @@
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './reset.css'
 import './App.css';
 import routes from './routes'
