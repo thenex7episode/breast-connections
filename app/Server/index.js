@@ -8,7 +8,7 @@ const session = require('express-session')
 const massive = require('massive')
 const bcrypt = require('bcrypt')
 const saltRounds = 12
-const cors = require('cors')
+// const cors = require('cors')
 
 const app = express();
 
@@ -32,7 +32,7 @@ app.post('/api/addpost/', c.addPost)
 app.put('/api/editpost/', c.editPost)
 app.delete('/api/deletepost/:id', c.deletePost)
 app.get('/api/getposts/:id', c.getPosts)
-
+app.get('/api/posts/:user_id')
 // get the UserInformation for a specific user ID
 app.get('/api/user/:id', c.userInfo)
 

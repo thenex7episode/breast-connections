@@ -1,14 +1,17 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Dashboard from './Components/Dashboard.js';
+import Dashboard from './Components/Dashboard';
+import Profile from './Components/Profile';
+import Login from './Components/Login';
+import Register from './Components/Register';
 
 const routes = 
 <div>
     <Switch>
-        <Route path='/register' component={ Dashboard } />
-        <Route path='/login' component={ Dashboard } />
+        <Route path='/register' component={ Register } />
+        <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />
-        <Route path='/profile' component={ Dashboard } />
+        <Route path='/profile' component={ Profile } />
         <Route path='/info' component={ Dashboard } />
         <Route path='/' component={ Dashboard } />
     </Switch>
