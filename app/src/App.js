@@ -1,9 +1,20 @@
+<<<<<<< HEAD
 import Navbar from "./Components/Navbar/Navbar";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import React, { Component } from 'react';
 import './reset.css'
 import './App.css';
 import routes from './routes'
+=======
+
+
+import routes from './routes'
+import React, { Component } from "react";
+import "./reset.css";
+import "./App.css";
+import Navbar from "./Components/Navbar";
+import Sidebar from "./Components/Sidebar";
+>>>>>>> origin/sidebar
 
 class App extends Component {
   render() {

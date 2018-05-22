@@ -20,7 +20,7 @@ componentWillReceiveProps() {
     axios.get('/api/check-session').then(response => {
         console.log('response.................', response)
         if(response.data.username) {
-            this.setState({loggedIn: true, user: response.data.username, img: response.data.userimg})
+            this.setState({loggedIn: true, user: response.data.username, img: response.data.imageUrl})
         }
     })
 }
@@ -46,3 +46,5 @@ componentWillReceiveProps() {
 }
 }
 export default Sidebar
+
+
