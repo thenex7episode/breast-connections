@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {Avatar} from 'antd'
+import './Profile.css'
 
 export default class Profile extends Component {
     constructor(props) {
@@ -15,6 +16,8 @@ export default class Profile extends Component {
     }
 
     componentDidMount() {
+        const username = this.props.match.params.username
+        console.log('-------username', username)
         axios.get('/api/check-session').then(r => {
             if(r.data.username) {
                 console.log('profile username log', r.data.username)
@@ -34,6 +37,9 @@ export default class Profile extends Component {
 
                 <Avatar icon ='user' style = {{margin: '1em'}}/>
                 <h1>{user}'sPROFILE</h1>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
                 </div>
                 }
             </div>
@@ -44,3 +50,4 @@ export default class Profile extends Component {
         );
     }
 }
+

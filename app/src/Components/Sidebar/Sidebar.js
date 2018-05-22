@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios'
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import thumbnail from './thumbnail.png'
+import thumbnail from '../thumbnail.png'
 
 
 class Sidebar extends Component {
@@ -16,7 +16,7 @@ constructor(){
     }
 }
 
-componentDidMount() {
+componentWillReceiveProps() {
     axios.get('/api/check-session').then(response => {
         console.log('response.................', response)
         if(response.data.username) {

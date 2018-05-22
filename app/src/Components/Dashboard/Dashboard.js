@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
 import axios from 'axios';
-import Post from './Post';
+import Post from '../Post/Post';
 
 export default class Dashboard extends Component {
     constructor(props){
