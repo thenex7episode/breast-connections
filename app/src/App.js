@@ -1,10 +1,11 @@
 
+
+import routes from './routes'
+import React, { Component } from "react";
+import "./reset.css";
+import "./App.css";
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
-import React, { Component } from 'react';
-import './reset.css'
-import './App.css';
-import routes from './routes'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <div className="d-routes">
             { routes }
            
+          
           </div>
         </div>
       </div>
