@@ -25,6 +25,7 @@ export default class Dashboard extends Component {
         return (
             <ul>
                 {postList}
+                Hello
             </ul>
         );
     }

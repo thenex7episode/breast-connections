@@ -17,6 +17,7 @@ export default class Profile extends Component {
     componentDidMount() {
         axios.get('/api/check-session').then(r => {
             if(r.data.username) {
+                console.log('profile username log', r.data.username)
                 this.setState({isLoggedIn: true, user: r.data.username})
             }
         })
