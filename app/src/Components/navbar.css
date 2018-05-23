@@ -1,16 +1,5 @@
-.link{
-    text-decoration: none;
-}
-a{
-    text-decoration: none;
-    color: white;
-}
 
-.nav-container{
-    background: #F433AB;
-    height: 10em;
-    padding-top: 15px;
-}
+ 
 
 .logo{
     float: left;
@@ -33,24 +22,109 @@ ul li{
     opacity: .8;
     line-height: 40px;
     text-align: center;
+}
     
+.forums{
+    position: fixed;
+    top: 5em;
+    background-color: purple;
+    right: 2em;
 }
 .sub-menu{
     display: block;
     font-size: .4em;
 }
 .sub-menu:hover{
-background:#191716;
+background:#FF88DC;
 }
 .sub-wrapper{
     display:none;
 }
-ul li:hover .sub-wrapper{
+.sub-menu:hover .sub-wrapper{
     display: block;
+}
+.logo{
+    float: left;
+    height:4.5em;
+    width:4.5em;
+    margin-left: 65px;
+    margin-top: 5px;
+}
+.nav {
+    border-bottom: 1px solid black;
+    text-align: right;
+    line-height: 70px;
+    background-color:#F433AB; 
+    color: white;
+    min-height:5em;
+}
+.link {
+    margin: 0 30px 0 0;
+}
+.menu{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.menu a {
+    
+    clear: right;
+    text-decoration: none;
+    margin: 0 10px;
+    line-height: 70px;
+    color: white;
+    font-size: 1.3em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    margin: 0 40px 0 0;
+    font-size: 26px;
+    line-height: 70px;
+    display: none;
+    width: 26px;
+    float: right;
+}
+#toggle {
+    display: none;
 }
 
 
- 
+
+@media only screen and (max-width: 768px) {
+    .logo{
+        height:3em;
+        width:3em;
+        margin-top: 1em;
+
+    }
+    label {
+        display: block;
+        cursor: pointer;
+    }
+    .menu {
+        text-align: center;
+        width: 100%;
+        display: none;
+    }
+    .menu a {
+        display: block;
+        border-bottom: 1px solid #EAEAEB;
+        margin: 0;
+        color: black;
+     
+    }
+    #toggle:checked + .menu {
+        display: block;
+    }
+    
+    
+    
+}
+
+
+
+
 
 
 

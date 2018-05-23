@@ -39,47 +39,30 @@ render() {
   const {isLoggedIn} = this.state
   console.log('isLggediniogho;',isLoggedIn)
   return (
-    <div className="nav-container">
-            <div>
-          <img src={logo} alt="logo" className="logo" />
-          <nav>
-            <ul>
-              <li>
-                {!isLoggedIn ? <Link className="link" to="/login">Login</Link> :
-                <Link onClick={this.logout}className="link" to="/">Logout</Link>}
-              </li>
+      
+    <div>
+            <div className='nav'>
+                <img src={logo} alt="logo" className="logo" />
+                    <label for='toggle'>&#9776;</label>
+                        <input type='checkbox' id='toggle' />
+                            <div className='menu'>
+                                <a> {!isLoggedIn ? <Link className="link" to="/login">Login</Link> :
+                                    <Link onClick={this.logout}className="link" to="/">Logout</Link>}
+                                </a>
+                                <a> <Link className="link" to="/forums"> Forums
+                                  </Link>
+                                </a>
+                                <a> <Link className="link" to="/info"> Info
+                            </Link>
+                            </a>
+                        <a><Link className="link" to="/">
+                        Home
+                    </Link></a>
+            </div>
+        </div>
+    </div>
 
-
-    
-              <li>Forums
-                <ul>
-                    <li className='sub-wrapper'>
-                  <Link className="sub-menu" to="/family-support">
-                    Family Support
-                  </Link>
-                  </li>
-                  <li className='sub-wrapper'>
-                  <Link className="sub-menu" to="/resources">
-                    Resources
-                  </Link>
-                  </li>
-                </ul>
-              </li>
-    
-              <li>
-                <Link className="link" to="/info">
-                  Info
-                </Link>
-              </li>
-              <li>
-                <Link className="link" to="/">
-                  Home
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          </div>
-          </div>
         )}
         }
+
+        
