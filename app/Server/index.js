@@ -29,6 +29,7 @@ massive(process.env.CONNECTION_STRING).then(database => {
 
 // Endpoints for creating, updating and deleting a Post
 app.post('/api/addpost/', c.addPost)
+app.put('/api/addtracker/', c.addTracker)
 app.put('/api/editpost/', c.editPost)
 app.delete('/api/deletepost/:id', c.deletePost)
 app.get('/api/getposts/:id', c.getPosts)

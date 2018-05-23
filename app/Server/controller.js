@@ -14,9 +14,14 @@ module.exports = {
         }).catch(error => console.log('error in addPost', error))
     },
     editPost: (req, res) => {
+        req.app.get('db').editPost([req.body.title, req.body.body, req.body.post_id]).then(data => {
+            res.status(200).send(data)
+        })
+    },
+    addTracker: (req, res) => {
         // getting the tracker value from the Frontend
         const { post_id, tracker } = req.body;
-        req.app.get('db').editPost([post_id,tracker]).then(data => {
+        req.app.get('db').addTracker([post_id,tracker]).then(data => {
             res.status(200).json({data: data});
         }).catch(error => console.log('error in editPost', error))
     },
@@ -27,6 +32,10 @@ module.exports = {
     },
     getPosts: (req, res) => {
         req.app.get('db').getPostsForCategory(req.params.id).then(data => {
+            // sort Posts from date
+            let sortedPostssort = data.sort(function(a,b){
+                return a.post_id - b.post_id
+            });
             res.status(200).json({data: data})
         }).catch(error => console.log('error in getPosts', error))
     },
