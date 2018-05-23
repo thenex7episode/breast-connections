@@ -15,7 +15,7 @@ constructor(){
         loggedIn: false
     }
 }
-
+// fix this, wont update on rerender
 componentWillReceiveProps() {
     axios.get('/api/check-session').then(response => {
         console.log('response.................', response)

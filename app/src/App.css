@@ -6,14 +6,20 @@
   display:flex;
   flex-direction: row;
 }
+/* Changed Padding and Width. -Ben  */
 .d-routes{
   flex:1;
   background: #FFFFFA;
-  width:75%;
-  padding:25px;
-  padding-top: 5em;
+  /* width:75%; */
+  padding: 2em;
+  /* padding-top: 5em; */
 }
 
+/* antD Improvements */
+.ant-btn:hover, .ant-btn:focus {
+  color: #444;
+  border-color: #444;
+}
 
 
 

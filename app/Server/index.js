@@ -29,12 +29,20 @@ massive(process.env.CONNECTION_STRING).then(database => {
 
 // Endpoints for creating, updating and deleting a Post
 app.post('/api/addpost/', c.addPost)
+app.put('/api/addtracker/', c.addTracker)
 app.put('/api/editpost/', c.editPost)
 app.delete('/api/deletepost/:id', c.deletePost)
 app.get('/api/getposts/:id', c.getPosts)
 app.get('/api/posts/:user_id')
+
 // get the UserInformation for a specific user ID
 app.get('/api/user/:username', c.userInfo)
+
+// Comment Crud
+app.post('/api/addcomment/', c.addComment)
+app.put('/api/editcomment/', c.editComment)
+app.delete('/api/deletecomment/:id/:post', c.deleteComment)
+app.get('/api/getcomments/:id', c.getComments)
 
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//

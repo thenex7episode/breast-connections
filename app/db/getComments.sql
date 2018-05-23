@@ -1,0 +1,1 @@
+SELECT * FROM comments_bc WHERE post_id = $1;
