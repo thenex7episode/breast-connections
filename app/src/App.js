@@ -6,6 +6,7 @@ import "./reset.css";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
+import Loading from './Components/Loading'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Sidebar />
           <div className="d-routes">
             { routes }
+            <Loading />
            
           
           </div>
