@@ -15,7 +15,7 @@ constructor(){
         loggedIn: false
     }
 }
-
+// fix this, this
 componentDidMount() {
     axios.get('/api/check-session').then(response => {
         console.log('response.................', response)

@@ -14,8 +14,8 @@ a{
 
 .logo{
     float: left;
-    height:125px;
-    width:125px;
+    height:100px;
+    width:100px;
     margin-left: 25px;
 }
 ul{
@@ -51,4 +51,6 @@ ul li:hover .sub-wrapper{
 
 
  
+
+
 

@@ -9,21 +9,19 @@
     border: 1px solid grey;
 }
 
-.contentContainer {
-    padding: 1em;
-    border-bottom: 1px solid grey;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    display: flex;
-    justify-content: space-between;
+.postBody {
+    border: 1px solid grey;
+    border-top: 0;
+    padding: 0.5em;
 }
 
 .trackerBadge {
     padding: 0 0.5em;
+    display: block;
 }
 
 .editContainer {
-    position: fixed;
+    position: absolute;
     right: 1.5em;
     background: white;
     z-index: 1;
@@ -35,4 +33,9 @@
     color: grey;
     font-size: 10pt;
     width: 150px;
+}
+
+.contentContainer {
+    display: flex;
+    justify-content: space-between;
 }

@@ -34,6 +34,25 @@ module.exports = {
         req.app.get('db').getUser(req.params.id).then(data => {
             res.status(200).send(data)
         })
+    },
+    addComment: (req, res) => {
+        const { body, post_id } = req.body
+        req.app.get('db').addComment([body, req.session.user.user_id, post_id]).then(data => {
+            res.status(200).send(data)
+        })
+    },
+    editComment: (req, res) => {
+
+    },
+    deleteComment: (req, res) => {
+        req.app.get('db').deleteComment([req.params.id, req.params.post]).then(data => {
+            res.status(200).send(data)
+        })
+    },
+    getComments: (req, res) => {
+        req.app.get('db').getComments(req.params.id).then(data => {
+            res.status(200).send(data)
+        })
     }
     // getUserPosts: (req,res) => {
     //     req.app.get('db').join(req.params.user_id).then(posts => {

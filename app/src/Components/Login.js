@@ -18,7 +18,7 @@ export default class Login extends Component {
         this.setState({message: null})
         const username = this.refs.username.value;
         const password = this.refs.password.value
-        console.log('-------username',password)
+        // console.log('-------username',password)
         axios.post('/login', {
             username,
             password
@@ -34,7 +34,7 @@ export default class Login extends Component {
     }
     loginOnEnter(e) {
         if(e.key === 'Enter') {
-            console.log(e.key)
+            // console.log(e.key)
             this.setState({message: null})
             const username = this.refs.username.value
             const password = this.refs.password.value
@@ -42,7 +42,7 @@ export default class Login extends Component {
                 username,
                 password
             }).then(response => {
-                console.log('-----r.data',response.data)
+                // console.log('-----r.data',response.data)
                 this.setState({user: response.data})
                 this.props.history.push('/profile')
                 this.props.isLoggedIn()
@@ -53,7 +53,7 @@ export default class Login extends Component {
     }
     
     render() {
-        console.log('--------state', this.state)
+        // console.log('--------state', this.state)
         return (
             <div onKeyPress= {e => this.loginOnEnter(e)}>
                 <h1>Login</h1>

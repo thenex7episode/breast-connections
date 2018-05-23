@@ -4,6 +4,7 @@ import './Post.css';
 import { Avatar, Icon, Badge, Button } from 'antd';
 import { Menu, Dropdown } from 'antd';
 import { relative } from 'path';
+import Comments from './Comments';
 
 export default class Post extends Component {
     constructor(props){
@@ -14,7 +15,8 @@ export default class Post extends Component {
             userImage: '',
             tracker: this.props.tracker,
             edit: false,
-            userPost: true
+            userPost: true,
+            collapsed: false
         }
     }
 
@@ -42,7 +44,7 @@ export default class Post extends Component {
 
 
     render() {
-        const { title, body, date, tracker, user_id, deletePostFn } = this.props;
+        const { title, body, date, tracker, user_id, deletePostFn, loggedUser, post_id } = this.props;
         const { username, userImage } = this.state;
         return (
             <div className='postContainer'>
@@ -52,7 +54,7 @@ export default class Post extends Component {
                         <div style={{fontSize: '0.8em'}}>posted on {date}, by {username}</div>
                     </div>
                     <div>
-                        <Icon onClick={() => this.setState({edit: !this.state.edit})} style={{display: 'block', opacity: this.state.userPost ? '1' : '0', paddingBottom: '1em'}}type="ellipsis" />
+                        <Icon onClick={loggedUser === this.state.username ? () => this.setState({edit: !this.state.edit}): ''} style={{display: 'block' ,opacity: loggedUser === this.state.username ? '1':'0', paddingBottom: '1em'}}type="ellipsis" />
                             <ul style={{display: this.state.edit ? 'block' : 'none'}} className='editContainer'>
                                 <li onClick={() => this.deletePostFn()}><Icon type="delete" /> Delete</li>
                                 <li><Icon type="edit" /> Edit</li>
@@ -60,11 +62,19 @@ export default class Post extends Component {
                         <Avatar src={userImage} />
                     </div>
                 </div>
-                <div className='contentContainer'>
-                    <p>{body}</p>
-                    <div style={{}}>
-                        <Badge className='trackerBadge' count={this.state.tracker} style={{ backgroundColor: 'green' }} />
-                        <Button onClick={() => this.increaseTracker()} shape="circle" icon="up" />
+                <div className='postBody'>
+                    <div className='contentContainer'>
+                        <p style={{padding: '1em'}}>{body}</p>
+                        <div>
+                            <Badge className='trackerBadge' count={this.state.tracker} style={{ backgroundColor: 'green' }} />
+                            <Button onClick={() => this.increaseTracker()} shape="circle" icon="up" />
+                        </div>
+                    </div>
+                    <div style={{textAlign: 'center'}}>
+                        <div style={{display: this.state.collapsed ? 'block' : 'none'}}>
+                            <Comments post_id={post_id}/>
+                        </div>
+                        <Button onClick={() => this.setState({collapsed: !this.state.collapsed})}>Read</Button>
                     </div>
                 </div>
             </div>
