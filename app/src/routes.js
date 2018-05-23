@@ -13,7 +13,7 @@ const routes =
         <Route path='/register' component={ Register } />
         <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />
-        <Route path='/profile' component={ Profile } />
+        <Route path='/profile/:username' component={ Profile } />
         <Route path='/info' component={ Dashboard } />
         <Route path='/' exact component={ Dashboard } />
         <Route path='/forums' component={ Forums } />

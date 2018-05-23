@@ -37,7 +37,7 @@ app.get('/api/posts/:user_id')
 app.get('/api/posts/', c.getAllPosts)
 
 // get the UserInformation for a specific user ID
-app.get('/api/user/:id', c.userInfo)
+app.get('/api/user/:username', c.userInfo)
 
 // Comment Crud
 app.post('/api/addcomment/', c.addComment)
@@ -70,10 +70,11 @@ app.post('/login', (req, res) => {
     const {username, password} = req.body;
     app.get('db').find_user([username]).then(data => {
         console.log("DDDDAAAAAATTTTTTAAAAAA",data)
+        console.log('data.length:', data)
         if (data.length) {
             bcrypt.compare(password, data[0].password).then(passwordsMatch => {
                 if(passwordsMatch) {
-                    req.session.user = { username,user_id:  data[0].user_id}
+                    req.session.user = { username,user_id:  data[0].user_id, first: data[0].first, last: data[0].last, imageurl: data[0].imageurl}
                     console.log('-----req.session.user',req.session.user)
                     res.json({ user: req.session.user })
                 }else {

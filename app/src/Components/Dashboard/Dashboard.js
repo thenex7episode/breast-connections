@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'antd';
 import axios from 'axios';
+<<<<<<< HEAD:app/src/Components/Dashboard.js
 import Post from './Post';
 import { Input } from 'antd';
 import { Upload, Icon, message } from 'antd';
@@ -17,6 +18,11 @@ function beforeUpload(file) {
     }
     return isJPG && isLt2M;
   }
+=======
+import Post from '../Post/Post';
+import './Dashboard.css';
+
+>>>>>>> origin/profile:app/src/Components/Dashboard/Dashboard.js
 
 export default class Dashboard extends Component {
     constructor(props){
@@ -44,6 +50,10 @@ export default class Dashboard extends Component {
     componentDidMount(){
         const category = this.props.match.params.category;
         axios.get(`/api/getposts/${category}`).then(data => {
+<<<<<<< HEAD:app/src/Components/Dashboard.js
+=======
+            console.log('-d-a-t-a', data.data.data)
+>>>>>>> origin/profile:app/src/Components/Dashboard/Dashboard.js
             this.setState({posts: data.data.data})
         })
         axios.get(`/api/check-session/`).then( data => {
@@ -83,6 +93,7 @@ export default class Dashboard extends Component {
         const postList = this.state.posts.map((el,i) => <Post  loggedUser={this.state.loggedUser} key={i} post_id={el.post_id} title={el.title} body={el.body} user_id={el.user_id} date={el.date} tracker={el.tracker} deletePostFn={this.deletePost}/>)
         return (
             <div>
+<<<<<<< HEAD:app/src/Components/Dashboard.js
                 <div style={{display:'flex', justifyContent: 'space-between'}}>
                     <h2>{this.props.match.params.category}</h2>
                     <Button onClick={() => this.setState({createPost: true})} icon="form">Create Post</Button>
@@ -105,6 +116,12 @@ export default class Dashboard extends Component {
                 <div>
                     {postList}
                 </div>
+=======
+            <ul>
+                {postList}
+            </ul>
+                Hello
+>>>>>>> origin/profile:app/src/Components/Dashboard/Dashboard.js
             </div>
         );
     }
