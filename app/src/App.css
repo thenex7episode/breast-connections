@@ -10,8 +10,9 @@
   flex:1;
   background: #FFFFFA;
   width:75%;
-  padding:25px;
-  padding-top: 5em;
+  /* padding:5px; */
+  padding-top: 4em;
+  padding-right: 0px;
 }
 
 

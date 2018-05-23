@@ -17,58 +17,41 @@ class Forums extends Component{
             <div>
                 <div className='section-a-wrapper'>
                     <div className='section-a'>
-                        <h1><strong>Family Support</strong></h1>
-                            <p>
-                            ley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
-
-                            </p>
+                        <h1><strong>FAMILY</strong></h1>
+                           
                             <button>see posts</button>
                     </div>
                     <div className='section-b'>
-                        <h1><strong>Resources</strong></h1>
-                            <p>
-                            ley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
-
-                            </p>
+                        <h1><strong>RESOURCES</strong></h1>
+                           
                             <button>see posts</button>
                             
                     </div>
                     <div className='section-c'>
-                        <h1><strong>Health and Nutrition</strong></h1>
-                            <p>
-                            ley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
-
-                            </p>
+                        <h1><strong>NUTRITION</strong></h1>
+                          
                             <button>see posts</button>
                             
                     </div>
                     <div className='section-d'>
-                        <h1><strong>Motivations</strong></h1>
-                            <p>
-                            ley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
-
-                            </p>
+                        <h1><strong>MOTIVATION</strong></h1>
+                            
                             <button>see posts</button>
                             
                     </div>
                     <div className='section-e'>
-                        <h1><strong>Doctor Recommendations</strong></h1>
-                            <p>
-                            ley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
-
-                            </p>
+                        <h1><strong>HEALTH</strong></h1>
+                           
                             <button>see posts</button>
                             
                     </div>
                     <div className='section-f'>
-                        <h1><strong>Financial</strong></h1>
-                            <p>
-                            ley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
-
-                            </p>
-                            <button>see posts</button>
+                        <h1><strong>FINANCIAL</strong></h1>
+                        <button>see posts</button>
+                            
                             
                     </div>
+                    <input className='d-search'type='text' placeholder='search.....'></input>
                 </div>
             </div>
         )
