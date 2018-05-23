@@ -4,7 +4,8 @@ import Dashboard from './Components/Dashboard';
 import Profile from './Components/Profile';
 import Login from './Components/Login';
 import Register from './Components/Register';
-import Forums from './Components/Forums'
+import Forums from './Components/Forums';
+import Admin from './Components/Admin';
 
 const routes = 
 <div>
@@ -16,6 +17,7 @@ const routes =
         <Route path='/info' component={ Dashboard } />
         <Route path='/' exact component={ Dashboard } />
         <Route path='/forums' component={ Forums } />
+        <Route path='/admin' component={ Admin } />
         
     </Switch>
 </div>

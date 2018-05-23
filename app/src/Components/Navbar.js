@@ -2,14 +2,8 @@ import React, { Component } from 'react';
 import './navbar.css'
 import {Link, Redirect } from 'react-router-dom'
 import logo from '../logo.png'
-<<<<<<< HEAD
-import axios from'axios';
 import { Menu, Dropdown, Icon } from 'antd';
-import { browserHistory } from 'react-router'
-
-=======
 import axios from'axios'
->>>>>>> origin/forums
 
 
 export default class Navbar extends Component {

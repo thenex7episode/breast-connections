@@ -14,10 +14,7 @@ class App extends Component {
         <div className="d-main-wrapper">
           <Sidebar />
           <div className="d-routes">
-            { routes }
-            <Loading />
-           
-          
+            { routes }          
           </div>
         </div>
       </div>

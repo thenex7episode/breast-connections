@@ -34,6 +34,7 @@ app.put('/api/editpost/', c.editPost)
 app.delete('/api/deletepost/:id', c.deletePost)
 app.get('/api/getposts/:id', c.getPosts)
 app.get('/api/posts/:user_id')
+app.get('/api/posts/', c.getAllPosts)
 
 // get the UserInformation for a specific user ID
 app.get('/api/user/:id', c.userInfo)
