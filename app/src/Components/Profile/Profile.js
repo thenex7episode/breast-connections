@@ -55,7 +55,7 @@ export default class Profile extends Component {
                 <Button size={size}type= 'dashed' style={{float: 'right'}} onClick={() => this.setState({edit: false})}>Complete</Button>    
                      }
                 <Avatar icon ='user' style = {{marginLeft: '42%', height: '12em', width: '12em', borderRadius: '50%'}} src={image}/>
-                <h1 className = 'name'>{first} + '' + {last}</h1>
+                <h1 className = 'name'>{first} {last}</h1>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
                 <a href="#" className="fa fa-facebook"></a>
                 <a href="#" className="fa fa-twitter"></a>

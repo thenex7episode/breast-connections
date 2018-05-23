@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Post.css';
 import { Avatar, Icon, Badge, Button, Input, Menu, Dropdown } from 'antd';
 import { relative } from 'path';
-import Comments from './Comments';
+import Comments from '../Comments/Comments';
 const { TextArea } = Input;
 
 export default class Post extends Component {
@@ -24,7 +24,7 @@ export default class Post extends Component {
     }
 
     componentDidMount(){
-        axios.get(`/api/user/${this.props.user_id}`).then(data => {
+        axios.get(`/api/posts/${this.props.user_id}`).then(data => {
             this.setState({username: data.data[0].username, userImage: data.data[0].imageurl})
         })
     }

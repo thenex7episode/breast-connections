@@ -22,8 +22,8 @@ export default class Login extends Component {
     
    
     login(e) {
-        if(e.key === 'Enter') {
-            console.log(e.key)
+        
+            // console.log(e.key)
             this.setState({message: null})
             // const username = this.state.username
             // const password = this.state.password
@@ -38,13 +38,13 @@ export default class Login extends Component {
             }).catch(error => {
                 this.setState({message: error})
             })
-        }
+        
     }
     
     render() {
         console.log('--------state', this.state)
         return (
-            <div onKeyPress= {e => this.login(e)}>
+            <div onKeyPress= {e => e.key === 'Enter' ? this.login() : null}>
                 <h1>Login</h1>
                 <Input placeholder='username'type="text" onChange={e => this.setState({userName: e.target.value})}/>
                 <Input placeholder='password' type="password" onChange={ e => this.setState({password: e.target.value})}/>

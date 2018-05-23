@@ -40,10 +40,14 @@ module.exports = {
         }).catch(error => console.log('error in getPosts', error))
     },
     userInfo: (req, res) => {
-        // req.app.get('db').find_user(req.params.username).then(data => {
         req.app.get('db').getUser(req.params.id).then(data => {
             res.status(200).send(data)
         })
+    },
+    userData: (req,res) => {
+        req.app.get('db').find_user(req.params.username).then(data => {
+            res.status(200).send(data)
+     })
     },
     addComment: (req, res) => {
         const { body, post_id } = req.body

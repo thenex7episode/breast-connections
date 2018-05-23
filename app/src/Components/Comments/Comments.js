@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Comment from './Comment';
+import Comment from '../Comment/Comment';
 import { Input } from 'antd';
 import axios from 'axios';
 

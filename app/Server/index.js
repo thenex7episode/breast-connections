@@ -33,10 +33,10 @@ app.put('/api/addtracker/', c.addTracker)
 app.put('/api/editpost/', c.editPost)
 app.delete('/api/deletepost/:id', c.deletePost)
 app.get('/api/getposts/:id', c.getPosts)
-app.get('/api/posts/:user_id')
+app.get('/api/posts/:id', c.userInfo)
 
 // get the UserInformation for a specific user ID
-app.get('/api/user/:username', c.userInfo)
+app.get('/api/user/:username', c.userData)
 
 // Comment Crud
 app.post('/api/addcomment/', c.addComment)

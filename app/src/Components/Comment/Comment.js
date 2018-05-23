@@ -19,7 +19,7 @@ export default class Comment extends Component {
     }
 
     componentDidMount(){
-        axios.get(`/api/user/${this.props.user_id}`).then(data => {
+        axios.get(`/api/posts/${this.props.user_id}`).then(data => {
             this.setState({username: data.data[0].username, userImage: data.data[0].imageurl})
         })
     }

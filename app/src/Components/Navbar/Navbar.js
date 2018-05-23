@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './navbar.css'
 import {Link, Redirect } from 'react-router-dom'
-import logo from '../logo.png'
+import logo from '../../logo.png'
 import axios from'axios';
 import { Menu, Dropdown, Icon } from 'antd';
 import { browserHistory } from 'react-router'
@@ -32,15 +32,15 @@ export default class Navbar extends Component {
   }
 
 
-//   componentWillReceiveProps() {
-//     axios.get('/api/check-session').then(r => {
-//       console.log('hello from the mount side')
-//         if(r.data.username) {
-//             console.log('navbar username log', r.data.username)
-//             this.setState({isLoggedIn: true})
-//         }
-//     }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
-// }
+  componentWillReceiveProps() {
+    axios.get('/api/check-session').then(r => {
+      console.log('hello from the mount side')
+        if(r.data.username) {
+            console.log('navbar username log', r.data.username)
+            this.setState({isLoggedIn: true})
+        }
+    }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
+}
 
 
 logout= () => {
