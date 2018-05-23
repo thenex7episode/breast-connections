@@ -4,6 +4,7 @@ import "./App.css";
 import "./reset.css";
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
+import Loading from './Components/Loading'
 
 class App extends Component {
   render() {
@@ -13,7 +14,10 @@ class App extends Component {
         <div className="d-main-wrapper">
           <Sidebar />
           <div className="d-routes">
-          { routes }
+            { routes }
+            <Loading />
+           
+          
           </div>
         </div>
       </div>

@@ -10,9 +10,10 @@
 .d-routes{
   flex:1;
   background: #FFFFFA;
-  /* width:75%; */
-  padding: 2em;
-  /* padding-top: 5em; */
+  width:75%;
+  /* padding:5px; */
+  padding-top: 4em;
+  padding-right: 0px;
 }
 
 /* antD Improvements */
