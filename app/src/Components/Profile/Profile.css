@@ -24,3 +24,8 @@
     background: #55ACEE;
     color: white;
 }
+
+.name {
+    text-align: center;
+    font-size: 35pt
+}

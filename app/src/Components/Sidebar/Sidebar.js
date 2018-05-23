@@ -26,10 +26,13 @@ componentWillReceiveProps() {
 }
     render(){
 
-      const {user, img} = this.state
-        
+      const {user, img, loggedIn} = this.state
+        console.log('LLOOGOGOGOGOGOEOEEDDDDDIIINNN',loggedIn)
   return (
-    <div className="d-side-bar">
+        <div> 
+
+      {!loggedIn}
+      {loggedIn && <div className="d-side-bar">
       <aside>
           <div>
               <h3 className='d-welcome'>
@@ -37,11 +40,16 @@ componentWillReceiveProps() {
             </h3>
             <div className='d-thumbnail'>
                 <img src={thumbnail} className='d-img'/>
-                <Link to='/profile/:username'><button className='d-profile-button'>Profile</button></Link>
+                <Link to={`/profile/${user}`}><button className='d-profile-button'>Profile</button></Link>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <Link to='/chat'><button className='d-profile-button'>Chats</button></Link>
             </div>
         </div>
       </aside>
-    </div>
+    </div> }
+        </div>
   );
 }
 }

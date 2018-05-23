@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+import {Input, Icon, Button} from 'antd'
 
 
 export default class Login extends Component {
@@ -9,46 +11,30 @@ export default class Login extends Component {
         this.state = {
             user: null,
             message: null,
+            userName: '',
+            password: ''
         }
-        this.login = this.login.bind(this)
+        // this.login = this.login.bind(this)
     }
 
 
 
     
-    login= (e) => {
-        console.log(e.key)
-        this.setState({message: null})
-        const username = this.refs.username.value;
-        const password = this.refs.password.value
-        console.log('-------username',password)
-        axios.post('/login', {
-            username,
-            password
-        }).then(response => {
-            console.log('---------R.DATA',response.data)
-            this.setState({ user: response.data})
-            this.props.history.push(`/profile/${username}`)
-            this.props.isLoggedIn()
-           
-        }).catch(error => {
-            this.setState({ message: 'Ruh Roh'})
-        })
-    }
-    loginOnEnter(e) {
+   
+    login(e) {
         if(e.key === 'Enter') {
             console.log(e.key)
             this.setState({message: null})
-            const username = this.refs.username.value
-            const password = this.refs.password.value
+            // const username = this.state.username
+            // const password = this.state.password
             axios.post('/login', {
-                username,
-                password
+                username: this.state.userName,
+                password: this.state.password
             }).then(response => {
                 console.log('-----r.data',response.data)
                 this.setState({user: response.data})
-                this.props.history.push(`/profile/${username}`)
-                this.props.isLoggedIn()
+                this.props.history.push(`/profile/${response.data.user.username}`)
+                // this.props.isLoggedIn()
             }).catch(error => {
                 this.setState({message: error})
             })
@@ -58,11 +44,12 @@ export default class Login extends Component {
     render() {
         console.log('--------state', this.state)
         return (
-            <div onKeyPress= {e => this.loginOnEnter(e)}>
+            <div onKeyPress= {e => this.login(e)}>
                 <h1>Login</h1>
-                <input type="text" ref='username'/>
-                <input type="password" ref='password'/>
-                <button onClick = {e => this.login(e)}>Login</button>
+                <Input placeholder='username'type="text" onChange={e => this.setState({userName: e.target.value})}/>
+                <Input placeholder='password' type="password" onChange={ e => this.setState({password: e.target.value})}/>
+                <Button onClick = {e => this.login(e)}>Login</Button>
+                <Link to='/register'><Button>Register</Button></Link>
             </div>
         );
     }

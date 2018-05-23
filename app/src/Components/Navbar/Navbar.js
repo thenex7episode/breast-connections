@@ -29,6 +29,7 @@ export default class Navbar extends Component {
 logout= () => {
   axios.post('/logout').then(() => {
     this.setState({isLoggedIn: false})
+   window.location.reload(true)
   }).catch(e => {console.log('Logout error', e)})
 }
 
@@ -40,11 +41,9 @@ render() {
     <div>
             <div className='nav'>
                 <img src={logo} alt="logo" className="logo" />
-                    <label for='toggle'>&#9776;</label>
-                        <input type='checkbox' id='toggle' />
                             <div className='menu'>
                                 <a> {!isLoggedIn ? <Link className="link" to="/login">Login</Link> :
-                                    <Link onClick={this.logout}className="link" to="/">Logout</Link>}
+                                    <Link onClick={this.logout}className="link" to=''>Logout</Link>}
                                 </a>
                                 <a> <Link className="link" to="/forums"> Forums
                                   </Link>
