@@ -1,0 +1,130 @@
+.section-a-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: -4em;
+    background:#F433AB;
+    padding:1em;
+    
+}
+
+.section-a-wrapper button{
+    border:none;
+    border-radius: .3em;
+    background: #F433AB;
+    padding: 5px;
+    font-size: .75em;
+    color: white;
+    cursor: pointer;
+    
+}
+.section-a-wrapper h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0 auto;
+    color: white;
+    font-size: 2.5em;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgb(196, 194, 194), 1px 1px 1px #111;
+    text-shadow:
+		-1px -1px 0 rgb(90, 90, 90),
+		1px -1px 0 rgb(90, 90, 90),
+		-1px 1px 0 rgb(90, 90, 90),
+		1px 1px 0 rgb(90, 90, 90);
+
+}
+.section-a-wrapper button:hover{
+    background: #191716;
+}
+
+
+.section-a{
+    background: url('family2.jpeg') center;
+    background-size: cover;
+    margin: 1em auto;
+    margin-bottom: 1em;
+    color:black;
+    padding: 20px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
+    width:30%;
+    text-align: center;
+}
+.section-b{
+    background: url('resources.jpeg') center;
+    background-size: cover;
+    margin: 1em auto;
+    color:black;
+    padding: 20px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
+    width:30%;
+    overflow: hidden;
+    text-align: center;
+    
+}
+.section-c{
+    background: url('nutrition2.jpeg') center;
+    background-size: cover;
+    margin: 1em auto;
+    color:black;
+    padding: 20px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
+    width:30%;
+    text-align: center;
+     
+}
+.section-d{
+    background: url('motivations.jpeg') center;
+    background-size: cover;
+    margin: 1em auto;
+    color:black;
+    padding: 20px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
+    width:30%;
+    text-align: center;  
+    
+}
+.section-e{
+    background: url('doctor.jpeg') center;
+    background-size: cover;
+    margin: 1em auto;
+    color:black;
+    padding: 20px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
+    width:30%;
+    text-align: center;
+      
+}
+.section-f{
+    background: url('financial.jpeg') center;
+    background-size: cover;
+    margin: 1em auto;
+    color:black;
+    padding: 20px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
+    width:30%;
+    text-align: center;
+     
+}
+.d-search{
+    width:97%;
+    border:none;
+    padding: 5px;
+    box-shadow: 0 4px 7px 0 rgba(0,0,0,0.5),0 6px 10px 0 rgba(0,0,0,0.17);
+    
+}
+@media only screen and (max-width: 768px) {
+    .section-a-wrapper{
+        flex-direction: column;
+    }
+    .section-a {
+        width: 100%;
+    }
+    .section-b {
+        width: 100%;
+    }
+    .section-c, .section-d, .section-e, .section-f{
+        width: 100%;
+    }
+    
+}

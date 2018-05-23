@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import {Input, Icon, Button} from 'antd'
+import {Input, Icon, Button, Alert} from 'antd'
 
 
 export default class Login extends Component {
@@ -36,19 +36,21 @@ export default class Login extends Component {
                 this.props.history.push(`/profile/${response.data.user.username}`)
                 // this.props.isLoggedIn()
             }).catch(error => {
-                this.setState({message: error})
+                this.setState({message: <Alert message='Username or Password is incorrect' type='error' closable/>})
             })
         
     }
     
     render() {
         console.log('--------state', this.state)
+        const {message} = this.state
         return (
             <div onKeyPress= {e => e.key === 'Enter' ? this.login() : null}>
+                {message}
                 <h1>Login</h1>
                 <Input placeholder='username'type="text" onChange={e => this.setState({userName: e.target.value})}/>
                 <Input placeholder='password' type="password" onChange={ e => this.setState({password: e.target.value})}/>
-                <Button onClick = {e => this.login(e)}>Login</Button>
+                <Button type='primary' onClick = {e => this.login(e)}>Login</Button>
                 <Link to='/register'><Button>Register</Button></Link>
             </div>
         );

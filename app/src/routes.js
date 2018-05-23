@@ -5,6 +5,7 @@ import Profile from './Components/Profile/Profile';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Chatroom from './Components/Chatroom/Chatroom'
+import Forums from './Components/Forums'
 
 const routes = 
 <div>
@@ -15,8 +16,10 @@ const routes =
         <Route path='/profile/:username' component={ Profile } />
         <Route path='/info' component={ Dashboard } />
         <Route path='/' exact component={ Dashboard } />
-        
+        <Route path='/forums' component={ Forums } />
         <Route path='/chat' component={Chatroom} />
+        
+        
     </Switch>
 </div>
 
