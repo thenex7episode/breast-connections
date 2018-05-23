@@ -72,7 +72,7 @@ export default class Post extends Component {
                     </div>
                     <div style={{textAlign: 'center'}}>
                         <div style={{display: this.state.collapsed ? 'block' : 'none'}}>
-                            <Comments post_id={post_id}/>
+                            <Comments loggedUser={loggedUser} post_id={post_id}/>
                         </div>
                         <Button onClick={() => this.setState({collapsed: !this.state.collapsed})}>Read</Button>
                     </div>

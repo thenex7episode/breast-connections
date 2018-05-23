@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './navbar.css'
-import {Link } from 'react-router-dom'
+import {Link, Redirect } from 'react-router-dom'
 import logo from '../logo.png'
 import axios from'axios';
 import { Menu, Dropdown, Icon } from 'antd';
+import { browserHistory } from 'react-router'
+
 
 
 export default class Navbar extends Component {
@@ -17,16 +19,28 @@ export default class Navbar extends Component {
   }
 
 
-
-  componentWillReceiveProps() {
+  // manually redirecting with react router dom - this doesnt seem to work
+  componentDidMount(){
     axios.get('/api/check-session').then(r => {
-      console.log('hello from the mount side')
-        if(r.data.username) {
-            console.log('navbar username log', r.data.username)
-            this.setState({isLoggedIn: true})
-        }
-    }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
-}
+          if(r.data.username) {
+              this.setState({isLoggedIn: true})
+          } else {
+              console.log('not logged in')
+              this.props.history.push('/login')
+          }
+      }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
+  }
+
+
+//   componentWillReceiveProps() {
+//     axios.get('/api/check-session').then(r => {
+//       console.log('hello from the mount side')
+//         if(r.data.username) {
+//             console.log('navbar username log', r.data.username)
+//             this.setState({isLoggedIn: true})
+//         }
+//     }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
+// }
 
 
 logout= () => {

@@ -39,7 +39,7 @@ export default class Comments extends Component {
     }
 
     render() {
-        const commentsList = this.state.comments.map(el => <Comment deleteCommentFn={this.deleteComment} comment_id={el.comment_id} body={el.body} user_id={el.user_id} date={el.date}/>)
+        const commentsList = this.state.comments.map(el => <Comment loggedUser={this.props.loggedUser} deleteCommentFn={this.deleteComment} comment_id={el.comment_id} body={el.body} user_id={el.user_id} date={el.date}/>)
         return (
             <div>
                 <hr/>
@@ -51,7 +51,7 @@ export default class Comments extends Component {
                     if(e.key === 'Enter'){
                         this.addComment()
                     }
-                }} onChange={e => this.setState({bodyInput: e.target.value})} placeholder="enter a comment" />
+                }} onChange={e => this.setState({bodyInput: e.target.value})} placeholder="enter a comment" value={this.state.bodyInput} />
             </div>
         );
     }

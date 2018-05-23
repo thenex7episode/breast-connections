@@ -42,7 +42,10 @@ module.exports = {
         })
     },
     editComment: (req, res) => {
-
+        const { comment_id, body } = req.body;
+        req.app.get('db').editComment([comment_id, body]).then(data => {
+            res.status(200).send(data)
+        })
     },
     deleteComment: (req, res) => {
         req.app.get('db').deleteComment([req.params.id, req.params.post]).then(data => {
