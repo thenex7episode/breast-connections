@@ -7,7 +7,8 @@ import Register from './Components/Register/Register';
 import Chatroom from './Components/Chatroom/Chatroom'
 import Forums from './Components/Forums';
 import Admin from './Components/Admin';
-import Home from './Components/Home'
+import Search from './Components/Search/Search';
+import Home from './Components/Home';
 
 const routes = 
 <div>
@@ -21,6 +22,7 @@ const routes =
         <Route path='/chat' component={Chatroom} /> 
         <Route path='/forums' component={ Forums } />
         <Route path='/admin' component={ Admin } />
+        <Route path='/search' component={ Search } />
         <Route path='/' exact component={ Dashboard } />
         
     </Switch>

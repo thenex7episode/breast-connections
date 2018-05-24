@@ -47,6 +47,11 @@ app.put('/api/editcomment/', c.editComment)
 app.delete('/api/deletecomment/:id/:post', c.deleteComment)
 app.get('/api/getcomments/:id', c.getComments)
 
+// search Endpoint
+app.post('/api/googlesearch/', c.getGoogleResults)
+app.post('/api/googlesearch/:token/', c.getGoogleNextPage)
+app.post('/api/googleimage/:ref/', c.getGoogleImage)
+
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//
 app.post('/register', (req,res) => {

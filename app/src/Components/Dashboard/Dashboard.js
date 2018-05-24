@@ -90,7 +90,7 @@ export default class Dashboard extends Component {
           const imageUrl = this.state.imageUrl;
         const postList = this.state.posts.map((el,i) => <Post  loggedUser={this.state.loggedUser} key={i} post_id={el.post_id} title={el.title} body={el.body} user_id={el.user_id} date={el.date} tracker={el.tracker} deletePostFn={this.deletePost}/>)
         return (
-            <div>
+            <div style={{padding: '5em'}}>
                 <div style={{display:'flex', justifyContent: 'space-between'}}>
                     <h2>{this.props.match.params.category}</h2>
                     <Button onClick={() => this.setState({createPost: true})} icon="form">Create Post</Button>

@@ -54,8 +54,7 @@ render() {
   const {isLoggedIn} = this.state
   console.log('isLggediniogho;',isLoggedIn)
   return (
-      
-    <div>
+          <div>
              <div className='nav'>
                  <img src={logo} alt="logo" className="logo" />
                      <label for='toggle'>&#9776;</label>
