@@ -7,10 +7,12 @@ import Register from './Components/Register/Register';
 import Forums from './Components/Forums';
 import Admin from './Components/Admin';
 import Search from './Components/Search/Search';
+import Home from './Components/Home';
 
 const routes = 
 <div>
     <Switch>
+        <Route path='/home' component={ Home } />
         <Route path='/register' component={ Register } />
         <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />

@@ -9,6 +9,7 @@ body {
 .d-main-wrapper{
   display:flex;
   flex-direction: row;
+  height:100%;
 }
 /* Changed Padding and Width. -Ben  */
 .d-routes{
@@ -17,7 +18,8 @@ body {
   padding:5em;
   padding-top: 4em;
   /* padding-right: 0px; */
-  background: #F433AB
+  background: #F433AB;
+  height:100%;
 }
 
 /* antD Improvements */

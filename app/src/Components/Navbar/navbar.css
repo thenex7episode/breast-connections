@@ -57,6 +57,10 @@ background:#FF88DC;
     background-color:#F433AB; 
     color: white;
     min-height:5em;
+    position: fixed;
+    width:100%;
+    z-index: 300;
+
 }
 .link {
     margin: 0 30px 0 0;
@@ -88,6 +92,35 @@ label {
 #toggle {
     display: none;
 }
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 80px;
+    z-index: 1;
+    opacity: .5;
+    margin: 0 auto;
+    margin-left:1em;
+}
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    border: 1px  solid gray;
+    margin: 0 auto;
+    text-align: center;
+    padding:3px;
+    font-size: .9em;
+    line-height: 25px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content a:hover {background-color: rgb(255, 9, 144)}
 
 
 
@@ -117,7 +150,9 @@ label {
     #toggle:checked + .menu {
         display: block;
     }
-    
+    .dropdown-content, .dropdown-content a{
+        display:none;
+    }
     
     
 }
