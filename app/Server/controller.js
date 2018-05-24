@@ -1,4 +1,5 @@
 const session = require("express-session");
+const axios = require('axios');
 
 module.exports = {
     addPost: (req, res) => {
@@ -75,6 +76,12 @@ module.exports = {
     getAllPosts: (req,res) => {
         req.app.get('db').getAllPosts().then(data => {
             res.status(200).send(data)
+        })
+    },
+    getGoogleResults: (req, res) => {
+        const { tags } = req.body  
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&rankby=distance&type=${tags}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0`).then(data => {
+            res.status(200).send(data.data)
         })
     }
     // getUserPosts: (req,res) => {
