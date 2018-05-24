@@ -5,10 +5,12 @@ import Profile from './Components/Profile';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Forums from './Components/Forums'
+import Home from './Components/Home'
 
 const routes = 
 <div>
     <Switch>
+        <Route path='/home' component={ Home } />
         <Route path='/register' component={ Register } />
         <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />

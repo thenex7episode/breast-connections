@@ -54,7 +54,7 @@ render() {
                                 <a> <Link className="link" to="/info"> Info
                             </Link>
                             </a>
-                        <a><Link className="link" to="/">
+                        <a><Link className="link" to="/home">
                         Home
                     </Link></a>
             </div>

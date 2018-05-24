@@ -5,6 +5,7 @@
 .d-main-wrapper{
   display:flex;
   flex-direction: row;
+  height:100%;
 }
 .d-routes{
   flex:1;
@@ -13,6 +14,10 @@
   /* padding:5px; */
   padding-top: 4em;
   padding-right: 0px;
+  height:100%;
+}
+body{
+  min-height: 100vh;
 }
 
 

@@ -34,6 +34,10 @@ background:#FF88DC;
     background-color:#F433AB; 
     color: white;
     min-height:5em;
+    position: fixed;
+    width:100%;
+    z-index: 300;
+
 }
 .link {
     margin: 0 30px 0 0;
