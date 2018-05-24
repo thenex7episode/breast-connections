@@ -20,14 +20,14 @@ export default class Search extends Component {
             tags: this.state.selectedType
         }
         axios.post('/api/googlesearch/', type).then(data => {
-            this.setState({results: data.data})
+            this.setState({results: data.data.results})
         })
     }
 
     render() {
         const { selectedTags } = this.state;
         return (
-            <div>
+            <div style={{padding: '5em'}}>
                 <h1>Search for Doctors and see rankings by BC Users</h1>
                 <Select defaultValue="Doctors" style={{ width: 120 }} onChange={(e) => this.setState({selectedType: e})}>
                 <Option value="doctor">Doctors</Option>

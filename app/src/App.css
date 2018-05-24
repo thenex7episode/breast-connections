@@ -15,10 +15,9 @@ body {
 .d-routes{
   flex:1;
   width: 100%;
-  padding:5em;
   /* padding-top: 4em; */
   /* padding-right: 0px; */
-  background: #F433AB;
+  /* background: #F433AB; */
   /* height:100%; */
 }
 

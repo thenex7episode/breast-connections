@@ -80,8 +80,41 @@ module.exports = {
     },
     getGoogleResults: (req, res) => {
         const { tags } = req.body  
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&rankby=distance&type=${tags}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0`).then(data => {
-            res.status(200).send(data.data)
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-${`33.8670522,151.1957362`}&rankby=distance&type=${tags}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0`).then(data => {
+            console.log(data.data.next_page_token)
+            let reducedList = data.data.results.map(el => {
+                return {
+                    name: el.name,
+                    place_id: el.place_id,
+                    types: el.types,
+                    adress: el.vicinity,
+                    rating: el.rating,
+                    photos: el.photos
+                }
+            })
+            res.status(200).json({results: reducedList, next_page_token: data.data.next_page_token})
+        })
+    },
+    getGoogleNextPage: (req, res) => {
+        const { token } = req.params;
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&rankby=distance&pagetoken=${token}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0`).then(data => {
+            console.log(data.data.next_page_token)
+            let reducedList = data.data.results.map(el => {
+                return {
+                    name: el.name,
+                    place_id: el.place_id,
+                    types: el.types,
+                    adress: el.vicinity,
+                    rating: el.rating,
+                    photos: el.photos
+                }
+            })
+            res.status(200).json({results: reducedList, next_page_token: data.data.next_page_token})
+        })
+    },
+    getGoogleImage: (req, res) => {
+        axios.get(`https://maps.googleapis.com/maps/api/place/photo?photoreference=${req.params.ref}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0&maxwidth=400&maxheight=400`).then(data => {
+            res.status(200).send(data.request.socket._httpMessage._redirectable._options.href)
         })
     }
     // getUserPosts: (req,res) => {
