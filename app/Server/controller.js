@@ -35,19 +35,30 @@ module.exports = {
             // sort Posts from date
             let sortedPostssort = data.sort(function(a,b){
                 return a.post_id - b.post_id
-            });
+                });
             res.status(200).json({data: data})
         }).catch(error => console.log('error in getPosts', error))
     },
     userInfo: (req, res) => {
+<<<<<<< HEAD
+=======
+        console.log(req.params.id)
+>>>>>>> origin/dropdown
         req.app.get('db').getUser(req.params.id).then(data => {
             res.status(200).send(data)
         })
     },
+<<<<<<< HEAD
     userData: (req,res) => {
         req.app.get('db').find_user(req.params.username).then(data => {
             res.status(200).send(data)
      })
+=======
+    userData: (req, res) => {
+        req.app.get('db').find_user(req.params.username).then(data => {
+            res.status(200).send(data)
+        })
+>>>>>>> origin/dropdown
     },
     addComment: (req, res) => {
         const { body, post_id } = req.body
@@ -68,6 +79,11 @@ module.exports = {
     },
     getComments: (req, res) => {
         req.app.get('db').getComments(req.params.id).then(data => {
+            res.status(200).send(data)
+        })
+    },
+    getAllPosts: (req,res) => {
+        req.app.get('db').getAllPosts().then(data => {
             res.status(200).send(data)
         })
     },

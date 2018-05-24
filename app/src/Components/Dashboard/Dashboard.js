@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, Input, Upload, Icon, message } from 'antd';
+import { Button, Modal, Input, Upload, Icon, message, Spin } from 'antd';
 import axios from 'axios';
 import Post from '../Post/Post';
 import './Dashboard.css';
@@ -17,6 +17,9 @@ function beforeUpload(file) {
     return isJPG && isLt2M;
   }
 
+
+  const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
+
 export default class Dashboard extends Component {
     constructor(props){
         super(props);
@@ -26,7 +29,8 @@ export default class Dashboard extends Component {
             createPost: false,
             loading: false,
             titleInput: '',
-            bodyInput: ''
+            bodyInput: '',
+            loading: false
         }
         this.deletePost = this.deletePost.bind(this)
     }
@@ -43,8 +47,12 @@ export default class Dashboard extends Component {
     componentDidMount(){
         const category = this.props.match.params.category;
         axios.get(`/api/getposts/${category}`).then(data => {
+<<<<<<< HEAD
             console.log('-d-a-t-a', data.data.data)
             this.setState({posts: data.data.data})
+=======
+            this.setState({posts: data.data.data, loading: true})
+>>>>>>> origin/dropdown
         })
         axios.get(`/api/check-session/`).then( data => {
             console.log('session res', data)
@@ -102,9 +110,13 @@ export default class Dashboard extends Component {
                     {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
                 </Upload>
                 </Modal>
-                <div>
+                {this.state.loading
+                ? <div>
                     {postList}
                 </div>
+                  
+                : <Spin indicator={antIcon} />
+                }
             </div>
         );
     }

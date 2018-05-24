@@ -4,9 +4,12 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: -4em;
+    /* margin-top: -4em; */
     background:#F433AB;
     padding:1em;
+    min-height: 80vh;
+    justify-content: space-between;
+    margin-top: 5em;
     
 }
 
@@ -49,6 +52,8 @@
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
     width:30%;
     text-align: center;
+    box-sizing: border-box;
+    
 }
 .section-b{
     background: url('resources.jpeg') center;
@@ -60,6 +65,8 @@
     width:30%;
     overflow: hidden;
     text-align: center;
+    box-sizing: border-box;
+   
     
 }
 .section-c{
@@ -71,6 +78,8 @@
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
     width:30%;
     text-align: center;
+    box-sizing: border-box;
+ 
      
 }
 .section-d{
@@ -81,7 +90,9 @@
     padding: 20px;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
     width:30%;
-    text-align: center;  
+    text-align: center;
+    box-sizing: border-box;
+  
     
 }
 .section-e{
@@ -93,6 +104,8 @@
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
     width:30%;
     text-align: center;
+    box-sizing: border-box;
+  
       
 }
 .section-f{
@@ -104,6 +117,8 @@
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.5),0 7px 20px 0 rgba(0,0,0,0.17);
     width:30%;
     text-align: center;
+    box-sizing: border-box;
+  
      
 }
 .d-search{
@@ -111,6 +126,7 @@
     border:none;
     padding: 5px;
     box-shadow: 0 4px 7px 0 rgba(0,0,0,0.5),0 6px 10px 0 rgba(0,0,0,0.17);
+    margin: 0 auto;
     
 }
 @media only screen and (max-width: 768px) {

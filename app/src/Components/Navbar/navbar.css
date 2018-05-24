@@ -24,12 +24,13 @@ ul li{
     text-align: center;
 }
     
-.forums{
+/* .forums{
     position: fixed;
     top: 5em;
     background-color: purple;
-    right: 2em;
-}
+    right: 2em; */
+/* } */
+
 .sub-menu{
     display: block;
     font-size: .4em;
@@ -45,10 +46,10 @@ background:#FF88DC;
 }
 .logo{
     float: left;
-    height:4.5em;
-    width:4.5em;
+    height:6em;
+    width:6em;
     margin-left: 40px;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 .nav {
     /* border-bottom: 1px solid black; */
@@ -56,7 +57,11 @@ background:#FF88DC;
     line-height: 70px;
     background-color:#F433AB; 
     color: white;
-    min-height:5em;
+    min-height:8em;
+    position: fixed;
+    width:100%;
+    z-index: 300;
+
 }
 .link {
     margin: 0 30px 0 0;
@@ -88,6 +93,35 @@ label {
 #toggle {
     display: none;
 }
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 80px;
+    z-index: 1;
+    opacity: .5;
+    margin: 0 auto;
+    margin-left:1em;
+}
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    border: 1px  solid gray;
+    margin: 0 auto;
+    text-align: center;
+    padding:3px;
+    font-size: .9em;
+    line-height: 25px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content a:hover {background-color: rgb(255, 9, 144)}
 
 
 
@@ -117,7 +151,9 @@ label {
     #toggle:checked + .menu {
         display: block;
     }
-    
+    .dropdown-content, .dropdown-content a{
+        display:none;
+    }
     
     
 }

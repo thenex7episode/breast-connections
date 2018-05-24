@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './Post.css';
-import { Avatar, Icon, Badge, Button, Input, Menu, Dropdown } from 'antd';
+import '../Post.css';
+import { Avatar, Icon, Badge, Button, Input, Menu, Dropdown, Spin } from 'antd';
 import { relative } from 'path';
 import Comments from '../Comments/Comments';
 const { TextArea } = Input;
+
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
+
 
 export default class Post extends Component {
     constructor(props){
@@ -19,12 +22,14 @@ export default class Post extends Component {
             titleInput: null,
             bodyInput: null,
             userPost: true,
-            collapsed: false
+            collapsed: false,
+            comments: null
         }
     }
 
     componentDidMount(){
         axios.get(`/api/posts/${this.props.user_id}`).then(data => {
+            console.log(data)
             this.setState({username: data.data[0].username, userImage: data.data[0].imageurl})
         })
     }
@@ -60,6 +65,7 @@ export default class Post extends Component {
     render() {
         const { title, body, date, tracker, user_id, deletePostFn, loggedUser, post_id } = this.props;
         const { username, userImage } = this.state;
+        <Comments loggedUser={loggedUser} post_id={post_id}/>
         return (
             <div className='postContainer'>
                 <div className='titleContainer'>
@@ -89,9 +95,9 @@ export default class Post extends Component {
                     </div>
                     <div style={{textAlign: 'center'}}>
                         <div style={{display: this.state.collapsed ? 'block' : 'none'}}>
-                            <Comments loggedUser={loggedUser} post_id={post_id}/>
+                            {this.state.comments}
                         </div>
-                        <Button onClick={() => this.setState({collapsed: !this.state.collapsed})}>Read</Button>
+                        <Button onClick={() => this.setState({collapsed: !this.state.collapsed, comments: <Comments loggedUser={loggedUser} post_id={post_id}/>})}>Read</Button>
                     </div>
                 </div>
             </div>

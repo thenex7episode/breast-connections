@@ -5,20 +5,23 @@ import Profile from './Components/Profile/Profile';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Chatroom from './Components/Chatroom/Chatroom'
-import Forums from './Components/Forums'
+import Forums from './Components/Forums';
+import Admin from './Components/Admin';
+import Home from './Components/Home'
 
 const routes = 
 <div>
     <Switch>
+        <Route path='/home' component={ Home } />
         <Route path='/register' component={ Register } />
         <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />
         <Route path='/profile/:username' component={ Profile } />
         <Route path='/info' component={ Dashboard } />
-        <Route path='/' exact component={ Dashboard } />
+        <Route path='/chat' component={Chatroom} /> 
         <Route path='/forums' component={ Forums } />
-        <Route path='/chat' component={Chatroom} />
-        
+        <Route path='/admin' component={ Admin } />
+        <Route path='/' exact component={ Dashboard } />
         
     </Switch>
 </div>

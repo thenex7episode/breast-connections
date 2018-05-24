@@ -2,9 +2,14 @@
 
 @import '~antd/dist/antd.css';
 
+body {
+  min-height: 100vh;
+}
+
 .d-main-wrapper{
   display:flex;
   flex-direction: row;
+  height:100%;
 }
 /* Changed Padding and Width. -Ben  */
 .d-routes{
@@ -12,11 +17,8 @@
   background: #FFFFFA;
   /* width:75%; */
   /* padding: 2em; */
-  padding: 5em;
+  /* padding: 5em; */
   width:100%;
-  /* padding:5px; */
-  /* padding-top: 4em; */
-  /* padding-right: 0px; */
 }
 
 /* antD Improvements */
