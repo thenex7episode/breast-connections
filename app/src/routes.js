@@ -6,6 +6,7 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Forums from './Components/Forums';
 import Admin from './Components/Admin';
+import Home from './Components/Home'
 
 const routes = 
 <div>
