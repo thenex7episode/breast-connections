@@ -2,24 +2,30 @@
 
 @import '~antd/dist/antd.css';
 
+body {
+  min-height: 100vh;
+}
+
 .d-main-wrapper{
   display:flex;
   flex-direction: row;
   height:100%;
 }
+/* Changed Padding and Width. -Ben  */
 .d-routes{
   flex:1;
-  background: #FFFFFA;
-  width:75%;
-  /* padding:5px; */
+  width: 100%;
+  padding:5em;
   padding-top: 4em;
-  padding-right: 0px;
-  height:100%;
-}
-body{
-  min-height: 100vh;
+  /* padding-right: 0px; */
+  background: #F433AB
 }
 
+/* antD Improvements */
+.ant-btn:hover, .ant-btn:focus {
+  color: #444;
+  border-color: #444;
+}
 
 
 

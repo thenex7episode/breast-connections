@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './navbar.css'
-import {Link } from 'react-router-dom'
-import logo from '../logo.png'
+import {Link, Redirect } from 'react-router-dom'
+import { Menu, Dropdown, Icon } from 'antd';
+import logo from '../../logo.png'
 import axios from'axios'
 
 
@@ -16,21 +17,34 @@ export default class Navbar extends Component {
   }
 
 
-
-  componentWillReceiveProps() {
+  // manually redirecting with react router dom - this doesnt seem to work
+  componentDidMount(){
     axios.get('/api/check-session').then(r => {
-      console.log('hello from the mount side')
-        if(r.data.username) {
-            console.log('navbar username log', r.data.username)
-            this.setState({isLoggedIn: true})
-        }
-    }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
-}
+          if(r.data.username) {
+              this.setState({isLoggedIn: true})
+          } else {
+              console.log('not logged in')
+              this.props.history.push('/login')
+          }
+      }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
+  }
+
+
+//   componentWillReceiveProps() {
+//     axios.get('/api/check-session').then(r => {
+//       console.log('hello from the mount side')
+//         if(r.data.username) {
+//             console.log('navbar username log', r.data.username)
+//             this.setState({isLoggedIn: true})
+//         }
+//     }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
+// }
 
 
 logout= () => {
   axios.post('/logout').then(() => {
     this.setState({isLoggedIn: false})
+   window.location.reload(true)
   }).catch(e => {console.log('Logout error', e)})
 }
 
@@ -42,11 +56,9 @@ render() {
     <div>
             <div className='nav'>
                 <img src={logo} alt="logo" className="logo" />
-                    <label for='toggle'>&#9776;</label>
-                        <input type='checkbox' id='toggle' />
                             <div className='menu'>
                                 <a> {!isLoggedIn ? <Link className="link" to="/login">Login</Link> :
-                                    <Link onClick={this.logout}className="link" to="/">Logout</Link>}
+                                    <Link onClick={this.logout}className="link" to=''>Logout</Link>}
                                 </a>
 
                                 {/* DROPDOWN MENU */}

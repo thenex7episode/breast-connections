@@ -1,0 +1,41 @@
+.postContainer {
+    margin: 2em 0;
+}
+
+.titleContainer {
+    padding: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid grey;
+}
+
+.postBody {
+    border: 1px solid grey;
+    border-top: 0;
+    padding: 0.5em;
+}
+
+.trackerBadge {
+    padding: 0 0.5em;
+    display: block;
+}
+
+.editContainer {
+    position: absolute;
+    right: 1.5em;
+    background: white;
+    z-index: 1;
+    border: 1px solid #eee;
+}
+
+.editContainer > li {
+    float: none;
+    color: grey;
+    font-size: 10pt;
+    width: 150px;
+}
+
+.contentContainer {
+    display: flex;
+    justify-content: space-between;
+}

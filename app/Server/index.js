@@ -29,12 +29,21 @@ massive(process.env.CONNECTION_STRING).then(database => {
 
 // Endpoints for creating, updating and deleting a Post
 app.post('/api/addpost/', c.addPost)
+app.put('/api/addtracker/', c.addTracker)
 app.put('/api/editpost/', c.editPost)
 app.delete('/api/deletepost/:id', c.deletePost)
 app.get('/api/getposts/:id', c.getPosts)
-app.get('/api/posts/:user_id')
+app.get('/api/posts/:id', c.userInfo)
+app.get('/api/posts/', c.getAllPosts)
+
 // get the UserInformation for a specific user ID
-app.get('/api/user/:id', c.userInfo)
+app.get('/api/user/:username', c.userData)
+
+// Comment Crud
+app.post('/api/addcomment/', c.addComment)
+app.put('/api/editcomment/', c.editComment)
+app.delete('/api/deletecomment/:id/:post', c.deleteComment)
+app.get('/api/getcomments/:id', c.getComments)
 
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//
@@ -42,7 +51,7 @@ app.post('/register', (req,res) => {
     const {username, email, first, last, password} = req.body
     bcrypt.hash(password, saltRounds).then(hashedPassword => {
         app.get('db').create_user([username, email, first , last, hashedPassword]).then(newUser => {
-            req.session.user = {username: newUser[0].username, user_id: newUser[0].user_id }
+            req.session.user = {username: newUser[0].username, user_id: newUser[0].user_id, admin: data[0].admin }
             const user = req.session.user
             res.status(200).json({ username })
         })
@@ -61,10 +70,11 @@ app.post('/login', (req, res) => {
     const {username, password} = req.body;
     app.get('db').find_user([username]).then(data => {
         console.log("DDDDAAAAAATTTTTTAAAAAA",data)
+        console.log('data.length:', data)
         if (data.length) {
             bcrypt.compare(password, data[0].password).then(passwordsMatch => {
                 if(passwordsMatch) {
-                    req.session.user = { username,user_id:  data[0].user_id}
+                    req.session.user = { username,user_id:  data[0].user_id, first: data[0].first, last: data[0].last, imageurl: data[0].imageurl, admin: data[0].admin}
                     console.log('-----req.session.user',req.session.user)
                     res.json({ user: req.session.user })
                 }else {

@@ -1,6 +1,32 @@
 
  
 
+.logo{
+    float: left;
+    height:100px;
+    width:100px;
+    margin-left: 25px;
+}
+ul{
+    cursor: pointer;
+    font-size: 1.5em;
+}
+nav{
+    padding-right: 10em;
+}
+ul li{
+    float: right;
+    width: 200px;
+    height: 40px;
+    color: white;
+    opacity: .8;
+    line-height: 40px;
+    text-align: center;
+}
+<<<<<<< HEAD:app/src/Components/navbar.css
+    
+=======
+>>>>>>> origin/profile:app/src/Components/Navbar/navbar.css
 .forums{
     position: fixed;
     top: 5em;
@@ -133,6 +159,8 @@ label {
     
     
 }
+
+
 
 
 
