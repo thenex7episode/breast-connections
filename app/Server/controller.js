@@ -70,10 +70,17 @@ module.exports = {
         req.app.get('db').getComments(req.params.id).then(data => {
             res.status(200).send(data)
         })
-    }
+    },
     // getUserPosts: (req,res) => {
     //     req.app.get('db').join(req.params.user_id).then(posts => {
     //         res.json({posts: posts})
     //     }).catch(err => {console.log('WEEEWOOOWEEEWOOO', err)})
     // }
+
+      editProfile: (req,res) => {
+          console.log('req----------', req.params.username, req.body.body, req.body.image)
+            req.app.get('db').editProfile([req.params.username, req.body.body, req.body.image]).then(data => {
+                res.status(200).send(data)
+            })
+      }
 }

@@ -42,7 +42,7 @@ export default class Login extends Component {
     }
     
     render() {
-        console.log('--------state', this.state)
+        // console.log('--------state', this.state)
         const {message} = this.state
         return (
             <div onKeyPress= {e => e.key === 'Enter' ? this.login() : null}>

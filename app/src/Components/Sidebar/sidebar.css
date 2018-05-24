@@ -1,8 +1,9 @@
 .d-side-bar{
     width: 150px;
     height:58em;
-    background: #FF88DC;
+    background: linear-gradient(to bottom, #F433AB, white);
     float:left;
+    /* position: fixed; */
 }
 aside{
     padding:20px;
@@ -23,6 +24,7 @@ aside{
     max-width: 100px; 
     max-height: 150px;
     padding: 5px;
+    /* border-radius: 50%; */
 }
 .d-profile-button{
     margin: 0 auto;

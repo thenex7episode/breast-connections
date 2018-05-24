@@ -20,7 +20,7 @@ componentWillReceiveProps() {
     axios.get('/api/check-session').then(response => {
         console.log('response.................', response)
         if(response.data.username) {
-            this.setState({loggedIn: true, user: response.data.username, img: response.data.imageUrl})
+            this.setState({loggedIn: true, user: response.data.username, img: response.data.imageurl})
         }
     })
 }
@@ -28,6 +28,9 @@ componentWillReceiveProps() {
 
       const {user, img, loggedIn} = this.state
         console.log('LLOOGOGOGOGOGOEOEEDDDDDIIINNN',loggedIn)
+        console.log('img:', img)
+        console.log('user:', user)
+        
   return (
         <div> 
 
@@ -39,11 +42,11 @@ componentWillReceiveProps() {
             Welcome {user}
             </h3>
             <div className='d-thumbnail'>
-                <img src={thumbnail} className='d-img'/>
+                <img src={img} className='d-img'/>
                 <Link to={`/profile/${user}`}><button className='d-profile-button'>Profile</button></Link>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" className="fa fa-facebook"></a>
+                <a href="#" className="fa fa-twitter"></a>
                 <Link to='/chat'><button className='d-profile-button'>Chats</button></Link>
             </div>
         </div>

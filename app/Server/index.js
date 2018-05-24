@@ -8,6 +8,7 @@ const session = require('express-session')
 const massive = require('massive')
 const bcrypt = require('bcrypt')
 const saltRounds = 12
+const cloudinary = require('cloudinary')
 // const cors = require('cors')
 
 const app = express();
@@ -37,6 +38,7 @@ app.get('/api/posts/:id', c.userInfo)
 
 // get the UserInformation for a specific user ID
 app.get('/api/user/:username', c.userData)
+app.put('/api/editprofile/:username', c.editProfile)
 
 // Comment Crud
 app.post('/api/addcomment/', c.addComment)
@@ -100,3 +102,16 @@ app.get('/api/check-session', (req,res) => {
         req.session.user
     )
 })
+// --------------------------------------Cloudinary-----------------------------------//
+app.get('/api/upload', (req,res) => {
+    const timestamp = Math.round((new Date()).getTime()/ 1000);
+    const api_secret = process.env.CLOUDINARY_SECRET_API;
+    const signature = cloudinary.utils.api_sign_request({ timestamp: timestamp}, api_secret)
+    const payload = {
+        signature: signature,
+        timestamp: timestamp
+    }
+    console.log('payload--------', payload)
+    res.json(payload)
+})
+

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './forums.css'
+import {Link} from 'react-router-dom'
 
 
 class Forums extends Component{
@@ -36,7 +37,7 @@ class Forums extends Component{
                     <div className='section-d'>
                         <h1><strong>MOTIVATION</strong></h1>
                             
-                            <button>see posts</button>
+                            <Link to='/dashboard/Motivation'><button>see posts</button></Link>
                             
                     </div>
                     <div className='section-e'>
