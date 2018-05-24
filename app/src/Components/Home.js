@@ -49,6 +49,18 @@ export default function Home() {
 
        
       </div>
+
+        <div>
+            <div className='d-wrapper-section3'>
+                <div className='d-content-section3'>
+                    <h1 className='connect'>Connect.</h1>
+                    <h1 className='inspire'>Inspire.</h1>
+                    <h1 className='thrive'>Thrive.</h1>
+                    
+                </div>
+            </div>
+        </div>
+      
      
 
 

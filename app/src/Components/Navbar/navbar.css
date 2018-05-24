@@ -23,16 +23,7 @@ ul li{
     line-height: 40px;
     text-align: center;
 }
-<<<<<<< HEAD:app/src/Components/navbar.css
-    
-=======
->>>>>>> origin/profile:app/src/Components/Navbar/navbar.css
-.forums{
-    position: fixed;
-    top: 5em;
-    background-color: purple;
-    right: 2em;
-}
+
 .sub-menu{
     display: block;
     font-size: .4em;
@@ -48,10 +39,10 @@ background:#FF88DC;
 }
 .logo{
     float: left;
-    height:4.5em;
-    width:4.5em;
+    height:6em;
+    width:6em;
     margin-left: 40px;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 .nav {
     border-bottom: 1px solid black;
@@ -59,7 +50,7 @@ background:#FF88DC;
     line-height: 70px;
     background-color:#F433AB; 
     color: white;
-    min-height:5em;
+    min-height:8em;
     position: fixed;
     width:100%;
     z-index: 300;

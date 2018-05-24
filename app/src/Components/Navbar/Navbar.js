@@ -54,36 +54,38 @@ render() {
   return (
       
     <div>
-            <div className='nav'>
-                <img src={logo} alt="logo" className="logo" />
-                            <div className='menu'>
-                                <a> {!isLoggedIn ? <Link className="link" to="/login">Login</Link> :
-                                    <Link onClick={this.logout}className="link" to=''>Logout</Link>}
-                                </a>
-
-                                {/* DROPDOWN MENU */}
-                                <div className='dropdown'>
-                                <a> <Link className="link" to="/forums"> Forums
-                                  </Link>
-                                  <div class="dropdown-content">
-                                    <a href="#">Motivation</a>
-                                    <a href="#">Family</a>
-                                    <a href="#">Resources</a>
-                                  </div>
-                                </a>
-                                </div>
-
-                                {/* END DROPDOWN MENU */}
-
-                                <a> <Link className="link" to="/info"> Info
-                            </Link>
-                            </a>
-                        <a><Link className="link" to="/home">
-                        Home
-                    </Link></a>
-            </div>
-        </div>
-    </div>
+             <div className='nav'>
+                 <img src={logo} alt="logo" className="logo" />
+                     <label for='toggle'>&#9776;</label>
+                         <input type='checkbox' id='toggle' />
+                             <div className='menu'>
+                                 <a> {!isLoggedIn ? <Link className="link" to="/login">Login</Link> :
+                                     <Link onClick={this.logout}className="link" to="/">Logout</Link>}
+                                 </a>
+ 
+                                 {/* DROPDOWN MENU */}
+                                 <div className='dropdown'>
+                                 <a> <Link className="link" to="/forums"> Forums
+                                   </Link>
+                                   <div class="dropdown-content">
+                                     <a href="#">Motivation</a>
+                                     <a href="#">Family</a>
+                                     <a href="#">Resources</a>
+                                   </div>
+                                 </a>
+                                 </div>
+ 
+                                 {/* END DROPDOWN MENU */}
+ 
+                                 <a> <Link className="link" to="/info"> Info
+                             </Link>
+                             </a>
+                         <a><Link className="link" to="/home">
+                         Home
+                     </Link></a>
+             </div>
+         </div>
+     </div>
 
         )}
         }
