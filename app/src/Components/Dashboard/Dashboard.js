@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'antd';
 import axios from 'axios';
-<<<<<<< HEAD:app/src/Components/Dashboard.js
-import Post from './Post';
+import Post from '../Post/Post';
 import { Input } from 'antd';
-import { Upload, Icon, message } from 'antd';
+import { Upload, Icon, message, Spin } from 'antd';
+import './Dashboard.css';
 const { TextArea } = Input;
 
 function beforeUpload(file) {
@@ -18,11 +18,9 @@ function beforeUpload(file) {
     }
     return isJPG && isLt2M;
   }
-=======
-import Post from '../Post/Post';
-import './Dashboard.css';
 
->>>>>>> origin/profile:app/src/Components/Dashboard/Dashboard.js
+
+  const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 export default class Dashboard extends Component {
     constructor(props){
@@ -33,7 +31,8 @@ export default class Dashboard extends Component {
             createPost: false,
             loading: false,
             titleInput: '',
-            bodyInput: ''
+            bodyInput: '',
+            loading: false
         }
         this.deletePost = this.deletePost.bind(this)
     }
@@ -50,11 +49,7 @@ export default class Dashboard extends Component {
     componentDidMount(){
         const category = this.props.match.params.category;
         axios.get(`/api/getposts/${category}`).then(data => {
-<<<<<<< HEAD:app/src/Components/Dashboard.js
-=======
-            console.log('-d-a-t-a', data.data.data)
->>>>>>> origin/profile:app/src/Components/Dashboard/Dashboard.js
-            this.setState({posts: data.data.data})
+            this.setState({posts: data.data.data, loading: true})
         })
         axios.get(`/api/check-session/`).then( data => {
             console.log('session res', data)
@@ -93,7 +88,6 @@ export default class Dashboard extends Component {
         const postList = this.state.posts.map((el,i) => <Post  loggedUser={this.state.loggedUser} key={i} post_id={el.post_id} title={el.title} body={el.body} user_id={el.user_id} date={el.date} tracker={el.tracker} deletePostFn={this.deletePost}/>)
         return (
             <div>
-<<<<<<< HEAD:app/src/Components/Dashboard.js
                 <div style={{display:'flex', justifyContent: 'space-between'}}>
                     <h2>{this.props.match.params.category}</h2>
                     <Button onClick={() => this.setState({createPost: true})} icon="form">Create Post</Button>
@@ -113,15 +107,12 @@ export default class Dashboard extends Component {
                     {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
                 </Upload>
                 </Modal>
-                <div>
+                {this.state.loading
+                ? <div>
                     {postList}
-                </div>
-=======
-            <ul>
-                {postList}
-            </ul>
-                Hello
->>>>>>> origin/profile:app/src/Components/Dashboard/Dashboard.js
+                  </div>
+                : <Spin indicator={antIcon} />
+                }
             </div>
         );
     }

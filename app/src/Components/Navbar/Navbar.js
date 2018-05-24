@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import './navbar.css'
-<<<<<<< HEAD:app/src/Components/Navbar.js
 import {Link, Redirect } from 'react-router-dom'
-import logo from '../logo.png'
 import { Menu, Dropdown, Icon } from 'antd';
-=======
-import {Link } from 'react-router-dom'
 import logo from '../../logo.png'
->>>>>>> origin/profile:app/src/Components/Navbar/Navbar.js
 import axios from'axios'
 
 

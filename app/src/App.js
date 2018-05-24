@@ -2,8 +2,8 @@ import routes from './routes'
 import React, { Component } from "react";
 import "./App.css";
 import "./reset.css";
-import Navbar from "./Components/Navbar";
-import Sidebar from "./Components/Sidebar";
+import Navbar from "./Components/Navbar/Navbar";
+import Sidebar from "./Components/Sidebar/Sidebar";
 import Loading from './Components/Loading'
 
 class App extends Component {
