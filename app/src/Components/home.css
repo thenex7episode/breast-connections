@@ -124,7 +124,8 @@
     grid-gap: 1em;
     grid-auto-columns: minmax(100px, auto);
     padding: 1em;
-    background-color: #F433AB;
+    background-color: #F433AB;;
+    padding-bottom: 12em;
 }
 .box4{
     background-position: center;
@@ -187,7 +188,7 @@
     background-size: cover;
     min-height:77vh;
     border: none;
-    margin-top:8em;
+    /* margin-top:8em; */
 }
 .d-content-section3{
     display: flex;

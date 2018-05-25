@@ -85,9 +85,9 @@ export default class Profile extends Component {
         console.log('edit:', edit)
         
         return (
-            <div>
+            <div style={{padding: '5em'}}>
                 <div>
-                <div>
+                <div className='edit'>
 
                 {!edit  
                     ?<Button size={size}type= 'dashed' style={{float: 'right'}} onClick={() => this.setState({edit: true})}>Edit</Button>    
@@ -97,6 +97,7 @@ export default class Profile extends Component {
                                 <Input type='file' onChange={e => this.handleImageUpload(e.target.files)}/>
                     </div>
                 }
+                </div>
                 <div className = 'avatar'>
                 <Avatar icon ='user' style = {{alignContent: 'center', height: '12em', width: '12em', borderRadius: '50%'}} src={image}/>
                 </div>
@@ -107,7 +108,6 @@ export default class Profile extends Component {
                             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
                             <a href="#" className="fa fa-facebook"></a>
                             <a href="#" className="fa fa-twitter"></a>
-                </div>
 
 
                 

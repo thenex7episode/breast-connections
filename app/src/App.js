@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <div className="d-main-wrapper">
-          {/* <Sidebar /> */}
+          <Sidebar />
           <div className="d-routes">
             { routes }          
           </div>

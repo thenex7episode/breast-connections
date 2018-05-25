@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../Post.css';
+import './Post.css';
 import { Avatar, Icon, Badge, Button, Input, Menu, Dropdown, Spin } from 'antd';
 import { relative } from 'path';
 import Comments from '../Comments/Comments';

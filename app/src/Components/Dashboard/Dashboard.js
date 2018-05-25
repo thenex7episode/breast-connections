@@ -47,12 +47,8 @@ export default class Dashboard extends Component {
     componentDidMount(){
         const category = this.props.match.params.category;
         axios.get(`/api/getposts/${category}`).then(data => {
-<<<<<<< HEAD
             console.log('-d-a-t-a', data.data.data)
-            this.setState({posts: data.data.data})
-=======
             this.setState({posts: data.data.data, loading: true})
->>>>>>> origin/dropdown
         })
         axios.get(`/api/check-session/`).then( data => {
             console.log('session res', data)
