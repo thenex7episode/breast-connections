@@ -31,7 +31,9 @@
 }
 .bio {
     text-align: center;
-    max-width: 3px
+    max-width: 300px;
+    margin: 0 auto;
+    justify-content: center
 }
 
 .avatar {

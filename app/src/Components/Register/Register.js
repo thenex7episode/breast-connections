@@ -68,7 +68,7 @@ export default class Register extends Component {
     render() {
         const {message} = this.state
         return (
-            <div>
+            <div style={{padding: '5em'}}>
                 {message}
                 <h1>Register</h1>
                 <Input placeholder='username'prefix={<Icon type="user"/>}type="text" onChange={e => this.setUser(e.target.value)}/>
