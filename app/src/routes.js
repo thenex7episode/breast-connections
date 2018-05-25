@@ -9,6 +9,7 @@ import Forums from './Components/Forums';
 import Admin from './Components/Admin';
 import Search from './Components/Search/Search';
 import Home from './Components/Home';
+import Info from './Components/Info/Info'
 
 const routes = 
 <div>
@@ -18,7 +19,7 @@ const routes =
         <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />
         <Route path='/profile/:username' component={ Profile } />
-        <Route path='/info' component={ Dashboard } />
+        <Route path='/info' component={ Info } />
         <Route path='/chat' component={Chatroom} /> 
         <Route path='/forums' component={ Forums } />
         <Route path='/admin' component={ Admin } />
