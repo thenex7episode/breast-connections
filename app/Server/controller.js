@@ -79,8 +79,9 @@ module.exports = {
         })
     },
     getGoogleResults: (req, res) => {
-        const { tags } = req.body  
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-${`33.8670522,151.1957362`}&rankby=distance&type=${tags}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0`).then(data => {
+        const { tags, cords } = req.body;
+        console.log(cords, tags)
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${cords.lat},${cords.lng}&rankby=distance&type=${tags}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A`).then(data => {
             console.log(data.data.next_page_token)
             let reducedList = data.data.results.map(el => {
                 return {
@@ -97,7 +98,7 @@ module.exports = {
     },
     getGoogleNextPage: (req, res) => {
         const { token } = req.params;
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&rankby=distance&pagetoken=${token}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0`).then(data => {
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&rankby=distance&pagetoken=${token}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A`).then(data => {
             console.log(data.data.next_page_token)
             let reducedList = data.data.results.map(el => {
                 return {
@@ -113,20 +114,33 @@ module.exports = {
         })
     },
     getGoogleImage: (req, res) => {
-        axios.get(`https://maps.googleapis.com/maps/api/place/photo?photoreference=${req.params.ref}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0&maxwidth=400&maxheight=400`).then(data => {
+        axios.get(`https://maps.googleapis.com/maps/api/place/photo?photoreference=${req.params.ref}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A&maxwidth=400&maxheight=400`).then(data => {
             res.status(200).send(data.request.socket._httpMessage._redirectable._options.href)
         })
     },
+    addExperience: (req, res) => {
+        req.app.get('db').addExperience([body, user, place, rating]).then(data => {
+            res.status(200).send(data)
+        }).catch(err => console.log('Error in add Experience', err))
+    },
+    editExperience: (req, res) => {
+        req.app.get('db').editExperience([body, rating, experience_id]).then(data => {
+            res.status(200).send(data)
+        }).catch(err => console.log('Error in add Experience', err))
+    },
+    deleteExperience: (req, res) => {
+        req.app.get('db').deleteExperience([experience_id, place_id]).then(data => {
+            res.status(200).send(data)
+        }).catch(err => console.log('Error in add Experience', err))
+    },
+    getExperiences: (req, res) => {
+        req.app.get('db').addExperiences(place_id).then(data => {
+            res.status(200).send(data)
+        }).catch(err => console.log('Error in add Experience', err))
+    }
     // getUserPosts: (req,res) => {
     //     req.app.get('db').join(req.params.user_id).then(posts => {
     //         res.json({posts: posts})
     //     }).catch(err => {console.log('WEEEWOOOWEEEWOOO', err)})
     // }
-
-      editProfile: (req,res) => {
-          console.log('req----------', req.params.username, req.body.body, req.body.image)
-            req.app.get('db').editProfile([req.params.username, req.body.body, req.body.image]).then(data => {
-                res.status(200).send(data)
-            })
-      }
 }

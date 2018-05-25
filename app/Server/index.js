@@ -38,7 +38,7 @@ app.get('/api/posts/:id', c.userInfo)
 
 // get the UserInformation for a specific user ID
 app.get('/api/user/:username', c.userData)
-app.put('/api/editprofile/:username', c.editProfile)
+// app.put('/api/editprofile/:username', c.editProfile)
 app.get('/api/posts/', c.getAllPosts)
 
 // Comment Crud
@@ -51,6 +51,12 @@ app.get('/api/getcomments/:id', c.getComments)
 app.post('/api/googlesearch/', c.getGoogleResults)
 app.post('/api/googlesearch/:token/', c.getGoogleNextPage)
 app.post('/api/googleimage/:ref/', c.getGoogleImage)
+
+// Experience Endpoints
+app.post('/api/addexperience/', c.addExperience)
+app.put('/api/editexperience/', c.editExperience)
+app.delete('/api/deleteexperience/', c.deleteExperience)
+app.get('/api/experiences/', c.getExperiences)
 
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//
