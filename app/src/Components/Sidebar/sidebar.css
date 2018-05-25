@@ -1,9 +1,9 @@
 .d-side-bar{
     width: 150px;
-    height:58em;
+    min-height: 100vh;
     background: linear-gradient(to bottom, #F433AB, white);
     float:left;
-    margin-top: 7em;
+    margin-top: 3em;
 }
 aside{
     padding:20px;
@@ -11,28 +11,33 @@ aside{
 .d-welcome{
     text-align: center;
     padding: 10px;
+    font-size: 1.5em;
 }
 .d-thumbnail{
     width: 100px;
     height: 100px;
-    background-color: #F433AB;
+    /* background-color: #F433AB; */
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    padding-top:5em;
 }
 .d-img{
     width: auto;
     height:auto;
     max-width: 100px; 
     max-height: 150px;
-    padding: 5px;
+    padding-bottom: 5px;
     /* border-radius: 50%; */
 }
 .d-profile-button{
-    margin: 0 auto;
     padding: 5px;
     border: none;
     border-radius: .3em;
     width: 100px;
-    margin-top: 10px;
+    /* margin-top: 20px; */
     background-color: #191716;
     color: #FFFFFA;
     opacity: .9;

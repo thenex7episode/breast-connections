@@ -1,6 +1,5 @@
 import React from 'react'
 import './home.css'
-import butterfly from './butterfly.webp'
 
 export default function Home() {
     return (

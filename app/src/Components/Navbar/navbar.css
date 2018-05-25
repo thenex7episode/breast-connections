@@ -70,6 +70,7 @@ background:#FF88DC;
     display:flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin: 0;
 }
 .menu a {
     
