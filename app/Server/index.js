@@ -38,7 +38,7 @@ app.get('/api/posts/:id', c.userInfo)
 
 // get the UserInformation for a specific user ID
 app.get('/api/user/:username', c.userData)
-// app.put('/api/editprofile/:username', c.editProfile)
+app.put('/api/editprofile/:username', c.editProfile)
 app.get('/api/posts/', c.getAllPosts)
 
 // Comment Crud
