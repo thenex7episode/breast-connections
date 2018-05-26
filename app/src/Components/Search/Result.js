@@ -7,9 +7,9 @@ export default class Result extends Component {
 
     render() {
         const { name, adress, gRating, reference, createMode } = this.props;
-        console.log('--Result', reference.photos || 'no photo')
+        // console.log('--Result', reference.photos || 'no photo')
         return (
-            <li className='place_container'>
+            <li key={name} className='place_container'>
                     <div>
                         <h6>{name}</h6>
                         <p>{adress}</p>

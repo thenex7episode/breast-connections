@@ -50,7 +50,7 @@ export default class SearchList extends Component {
 
     render() {
         // console.log('--render Searchlist!')
-        const resultsList = this.props.results.map(el => {
+        const resultsList = this.props.results.map((el,i) => {
             const star = <Icon type="star" />
             let gRating = [];
             let bRating = [];
@@ -61,7 +61,7 @@ export default class SearchList extends Component {
                 bRating.push(star)
             }
             return (
-                <Result name={el.name} adress={el.adress} gRating={el.rating ? gRating : 'no rating'} reference={el} createMode={this.createMode}/> 
+                <Result key={i} name={el.name} adress={el.adress} gRating={el.rating ? gRating : 'no rating'} reference={el} createMode={this.createMode}/> 
                 // <li className='place_container'>
                 //     <div>
                 //         <h6>{el.name}</h6>
@@ -76,6 +76,7 @@ export default class SearchList extends Component {
                 // </li>
             )
         })
+                console.log('--render Searchlist!', resultsList)
         return (
                     <div>
                         <div>{resultsList}</div>

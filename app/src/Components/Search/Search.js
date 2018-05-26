@@ -13,21 +13,36 @@ export default class Search extends Component {
         this.state = {
             results: [],
             selectedType: '',
-            selectedLocation: ''
+            selectedLocation: '',
+            locationResponse: '',
+            timer: null
         }
     }
 
-    getGoogleResults(){
+    isTyping(e){
+        clearTimeout(this.state.timer)
+        this.setState({timer: setTimeout(() => {
+            console.log('run get Location')
+            this.getLocation()
+        }, 500)})
+    }
+
+    getLocation(){
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.selectedLocation}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A`).then(data => {
             console.log(data.data.results[0].geometry.location)
-            const type = {
-                tags: this.state.selectedType,
-                cords: data.data.results[0].geometry.location
-            }
-            axios.post('/api/googlesearch/', type).then(data => {
-                this.setState({results: data.data.results})
-                console.log(this.state.results)
-            })
+            this.setState({locationResponse: data.data.results[0].geometry.location})
+        })
+    }
+
+    getGoogleResults(){
+        console.log('results call')
+        const type = {
+            tags: this.state.selectedType,
+            cords: this.state.locationResponse
+        }
+        axios.post('/api/googlesearch/', type).then(data => {
+            this.setState({results: data.data.results})
+            console.log(this.state.results)
         })
     }
 
@@ -43,7 +58,10 @@ export default class Search extends Component {
                     <Option value="pharmacy">Pharmacies</Option>
                     <Option value="insurance_agency">Insurance Agencies</Option>
                 </Select>
-                <Input value={this.state.selectedLocation} onChange={e => this.setState({selectedLocation: e.target.value})}/>
+                <Input value={this.state.selectedLocation} onChange={e => {
+                    this.setState({selectedLocation: e.target.value})
+                    this.isTyping()
+                }}/>
                 <Button onClick={() => this.getGoogleResults()}>Get Results</Button>
                 <SearchList results={this.state.results}/>
             </div>
