@@ -1,0 +1,1 @@
+SELECT * FROM experiences_bc WHERE place_id = $1;

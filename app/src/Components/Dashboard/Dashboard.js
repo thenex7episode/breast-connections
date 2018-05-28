@@ -5,6 +5,9 @@ import Post from '../Post/Post';
 import './Dashboard.css';
 const { TextArea } = Input;
 
+const CLOUDINARY_UPLOAD_PRESET = 'Breast Connections';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/thenex7episode/image/upload';
+
 function beforeUpload(file) {
     const isJPG = file.type === 'image/jpeg';
     if (!isJPG) {
@@ -30,18 +33,32 @@ export default class Dashboard extends Component {
             loading: false,
             titleInput: '',
             bodyInput: '',
-            loading: false
+            loading: false,
+            file: '',
+            imageArray: []
         }
         this.deletePost = this.deletePost.bind(this)
     }
 
-    handleChange = (info) => {
-        console.log('handleImageupload', info)
+    handleImageUpload = (file) => {
+        console.log('handleImageupload', file)
         // send Picture to Cloudinary
+        axios.get('/api/upload').then(response => {
+            let formData = new FormData();
+            console.log(CLOUDINARY_UPLOAD_PRESET)
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+            console.log(file[0]);
+            formData.append('file', file[0])
 
-        // receive imageUrl, set it to state and send it to the Database
-
-        // 
+            axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
+                console.log('CLoudinary response', response.data)
+                let newImageArray = this.state.imageArray.push(response.data.secure_url)
+                this.setState({
+                    image: newImageArray,
+                    file: null
+                })
+            }).catch(err => console.log('cloudinary err', err))
+        })
       }
 
     componentDidMount(){
@@ -72,11 +89,37 @@ export default class Dashboard extends Component {
         }
         axios.post('/api/addpost/', post).then(data => {
             this.setState({createPost: false, posts: data.data.data})
+            // create DB Input format for backend
+            const images = this.state.imageArray.map(el => {
+                return {
+                    post_id: data.data.lastID,
+                    url: el
+                }
+            })
+            console.log(images)
+            axios.post('/api/images/', {
+                    images: images
+                }).then(data => {
+                console.log('Image Upload Response', data)
+            })
         })
+    }
+
+    deleteUpload(index){
+        let newImageArray = this.state.imageArray;
+        newImageArray.splice(index,1);
+        this.setState({imageArray: newImageArray});
     }
 
 
     render() {
+        const imageList = this.state.imageArray.map((el, i) => {
+            return <div style={{position: 'relative', margin: '1em'}}>
+                <Icon className='uploadIcon' onClick={() => this.deleteUpload(i)} type='close-circle'/>
+                <img className='imageUpload' src={el} alt={'image Upload'} key={i} />
+            </div>
+        })
+        console.log('rerender dashboard', imageList)
         const uploadButton = (
             <div>
               <Icon type={this.state.loading ? 'loading' : 'plus'} />
@@ -94,17 +137,10 @@ export default class Dashboard extends Component {
                 <Modal title="Create Post" visible={this.state.createPost} onOk={() => this.createPost()} onCancel={() => this.setState({createPost: false})}>
                     <Input onChange={e => this.setState({titleInput: e.target.value})}style={{margin: '1em 0'}} placeholder="set the Title of your Post" />
                     <TextArea onChange={e => this.setState({bodyInput: e.target.value})} rows={4} placeholder='what do you think?'/>
-                    <Upload
-                    name="avatar"
-                    listType="picture-card"
-                    className="avatar-uploader"
-                    showUploadList={false}
-                    action="//jsonplaceholder.typicode.com/posts/"
-                    beforeUpload={beforeUpload}
-                    onChange={this.handleChange}
-                    >
-                    {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
-                </Upload>
+                    <input type='file' onChange={e => this.handleImageUpload(e.target.files)}/>
+                    <div className='imageContainer'>
+                        {imageList}
+                    </div>
                 </Modal>
                 {this.state.loading
                 ? <div>

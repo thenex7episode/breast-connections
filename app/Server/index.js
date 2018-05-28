@@ -25,7 +25,33 @@ app.use(session({
 
 massive(process.env.CONNECTION_STRING).then(database => {
     app.set('db', database)
+    db = database
 });
+
+// image Endpoints
+app.post('/api/images/', (req, res) => {
+    console.log(req.body.images)
+    const images = req.body.images.map(el => {
+        return {
+            user_id: req.session.user.user_id,
+            post_id: el.post_id,
+            comment_id: null,
+            date: new Date(),
+            url: el.url
+        }
+    })
+    console.log(images)
+    db.images_bc.insert(images).then(response => {
+        console.log(response)
+        res.status(200).send('Image Upload Succesfull')
+    })
+})
+
+app.get('/api/images/:id', (req, res) => {
+    req.app.get('db').getImages(req.params.id).then(data => {
+        res.status(200).send(data)
+    })
+})
 
 
 // Endpoints for creating, updating and deleting a Post
@@ -52,6 +78,12 @@ app.post('/api/googlesearch/', c.getGoogleResults)
 app.post('/api/googlesearch/:token/', c.getGoogleNextPage)
 app.post('/api/googleimage/:ref/', c.getGoogleImage)
 
+// Experience Endpoints
+app.post('/api/addexperience/', c.addExperience)
+app.put('/api/editexperience/', c.editExperience)
+app.delete('/api/deleteexperience/', c.deleteExperience)
+app.get('/api/experiences/', c.getExperiences)
+
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//
 app.post('/register', (req,res) => {
@@ -76,8 +108,8 @@ app.post('/register', (req,res) => {
 app.post('/login', (req, res) => {
     const {username, password} = req.body;
     app.get('db').find_user([username]).then(data => {
-        console.log("DDDDAAAAAATTTTTTAAAAAA",data)
-        console.log('data.length:', data)
+        // console.log("DDDDAAAAAATTTTTTAAAAAA",data)
+        // console.log('data.length:', data)
         if (data.length) {
             bcrypt.compare(password, data[0].password).then(passwordsMatch => {
                 if(passwordsMatch) {
