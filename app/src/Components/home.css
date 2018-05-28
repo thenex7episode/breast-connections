@@ -225,11 +225,9 @@
         font-size: 4em;
         
     }
-    .d-content-section3{
-        flex-direction: column;
-        /* margin:0 auto; */
-        font-size: 1em;
-    }
     
+    .connect, .thrive,.inspire{
+        font-size: 2.5em;
+    }
     
 }

@@ -16,22 +16,29 @@ class Forums extends Component{
 
         return(
             <div>
+                <div className='forum-header'>
+                        <h1 className='d-header-connect'>Connect.</h1>
+                        <h1 className ='d-header-inspire'>Inspire.</h1>
+                        <h1 className='d-header-love'>Love.</h1>
+                        
+                        </div>
+                
                 <div className='section-a-wrapper'>
                     <div className='section-a'>
                         <h1><strong>FAMILY</strong></h1>
                            
-                            <button>see posts</button>
+                            <Link to='/dashboard/family'><button>see posts</button></Link>
                     </div>
                     <div className='section-b'>
                         <h1><strong>RESOURCES</strong></h1>
                            
-                            <button>see posts</button>
+                            <Link to='/dashboard/resources'><button>see posts</button></Link>
                             
                     </div>
                     <div className='section-c'>
                         <h1><strong>NUTRITION</strong></h1>
                           
-                            <button>see posts</button>
+                            <Link to='/dashboard/nutrition'><button>see posts</button></Link>
                             
                     </div>
                     <div className='section-d'>
@@ -43,12 +50,12 @@ class Forums extends Component{
                     <div className='section-e'>
                         <h1><strong>HEALTH</strong></h1>
                            
-                            <button>see posts</button>
+                            <Link to='/dashboard/health'><button>see posts</button></Link>
                             
                     </div>
                     <div className='section-f'>
                         <h1><strong>FINANCIAL</strong></h1>
-                        <button>see posts</button>
+                       <Link to='dashboard/financial'> <button>see posts</button></Link>
                             
                             
                     </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {Input, Icon, Button, Alert} from 'antd'
+import './login.css'
 
 
 export default class Login extends Component {
@@ -45,7 +46,7 @@ export default class Login extends Component {
         // console.log('--------state', this.state)
         const {message} = this.state
         return (
-            <div onKeyPress= {e => e.key === 'Enter' ? this.login() : null} style={{ padding: '5em'}}>
+            <div className='d-login'onKeyPress= {e => e.key === 'Enter' ? this.login() : null} style={{ padding: '5em'}}>
                 {message}
                 <h1>Login</h1>
                 <Input placeholder='username'type="text" onChange={e => this.setState({userName: e.target.value})}/>
