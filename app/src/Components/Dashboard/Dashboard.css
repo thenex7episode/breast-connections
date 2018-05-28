@@ -1,0 +1,17 @@
+.imageUpload {
+    width: 100px;
+    height: 100px;
+}
+
+.imageContainer {
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.uploadIcon {
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    color: greenyellow;
+}

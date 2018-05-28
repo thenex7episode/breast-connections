@@ -1,0 +1,1 @@
+SELECT * FROM images_bc WHERE post_id = $1;

@@ -10,11 +10,13 @@ module.exports = {
         const post = [category, title, body, req.session.user.user_id];
         // console.log(body);
         req.app.get('db').addPost(post).then(data => {
+            console.log(data[data.length-1])
+            const lastID = data[data.length-1].post_id
             let sortedPostssort = data.sort(function(a,b){
                 return b.post_id - a.post_id
                 });
-            console.log(sortedPostssort)
-            res.status(200).json({data: sortedPostssort})
+            // console.log(sortedPostssort)
+            res.status(200).json({data: sortedPostssort, lastID: lastID})
         }).catch(error => console.log('error in addPost', error))
     },
     editPost: (req, res) => {
