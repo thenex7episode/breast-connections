@@ -19,7 +19,7 @@ class Forums extends Component{
                 <div className='forum-header'>
                         <h1 className='d-header-connect'>Connect.</h1>
                         <h1 className ='d-header-inspire'>Inspire.</h1>
-                        <h1 className='d-header-love'>Love.</h1>
+                        <h1 className='d-header-love'>Thrive.</h1>
                         
                         </div>
                 
