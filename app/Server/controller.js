@@ -130,22 +130,18 @@ module.exports = {
         })
     },
     addExperience: (req, res) => {
-        req.app.get('db').addExperience([body, user, place, rating]).then(data => {
-            res.status(200).send(data)
-        }).catch(err => console.log('Error in add Experience', err))
-    },
-    editExperience: (req, res) => {
-        req.app.get('db').editExperience([body, rating, experience_id]).then(data => {
+        req.app.get('db').addExperience([req.body.body, req.session.user.user_id, req.body.place_id, req.body.rating]).then(data => {
             res.status(200).send(data)
         }).catch(err => console.log('Error in add Experience', err))
     },
     deleteExperience: (req, res) => {
-        req.app.get('db').deleteExperience([experience_id, place_id]).then(data => {
+        console.log([req.params.eid, req.params.pid])
+        req.app.get('db').deleteExperience([req.params.eid, req.params.pid]).then(data => {
             res.status(200).send(data)
-        }).catch(err => console.log('Error in add Experience', err))
+        }).catch(err => console.log('Error in delete Experience', err))
     },
     getExperiences: (req, res) => {
-        req.app.get('db').addExperiences(place_id).then(data => {
+        req.app.get('db').getExperiences(req.params.id).then(data => {
             res.status(200).send(data)
         }).catch(err => console.log('Error in add Experience', err))
     },

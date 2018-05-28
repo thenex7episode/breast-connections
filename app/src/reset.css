@@ -18,6 +18,7 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
     font-family: sans-serif;
+    list-style-type: none;
 }
 html {
   box-sizing: border-box;
