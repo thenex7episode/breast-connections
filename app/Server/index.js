@@ -62,6 +62,10 @@ app.delete('/api/deletepost/:id', c.deletePost)
 app.get('/api/getposts/:id', c.getPosts)
 app.get('/api/posts/:id', c.userInfo)
 
+// Endpoints for Like Checking
+app.post('/api/likes/', c.addLike)
+app.get('/api/likes/:post_id', c.getLikes)
+
 // get the UserInformation for a specific user ID
 app.get('/api/user/:username', c.userData)
 app.put('/api/editprofile/:username', c.editProfile)

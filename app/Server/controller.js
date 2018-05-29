@@ -167,5 +167,17 @@ module.exports = {
           req.app.get('db').deleteUser(req.params.user_id).then(data => {
               res.status(200).send(data)
           })
+      },
+      addLike: (req, res) => {
+          req.app.get('db').addLike([req.body.user_id, req.body.post_id]).then(data => {
+              res.status(200).send(data)
+          })
+      },
+      getLikes: (req, res) => {
+          req.app.get('db').getLikes(req.params.post_id).then(data => {
+              console.log(data);
+              let likes = data.map(el => el.user_id)
+              res.status(200).send(likes)
+          })
       }
 }
