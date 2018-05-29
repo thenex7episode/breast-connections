@@ -20,7 +20,11 @@ export default class Result extends Component {
 
     getExperiences(id){
         axios.get(`/api/experiences/${id}`).then(data => {
-            this.setState({experiences: data.data, loading: false})
+            console.log(data.data);
+            const total = data.data.reduce((total, el) => total + el.rating, 0);
+            const avg =  total/data.data.length
+            console.log('total', total)
+            this.setState({experiences: data.data, loading: false, avg })
         })
     }
 
@@ -55,6 +59,7 @@ export default class Result extends Component {
                     this.getExperiences(place_id)
                 }}>Experiences</Button> 
                 <div style={{display: this.state.exp ? 'block' : 'none'}}>
+                    <div>{`${name}'s BC Score - ${this.state.avg}/5 stars`}</div>
                     {this.state.loading
                     ? <Spin indicator={antIcon} />
                     : <div>{experienceList}</div>}

@@ -76,7 +76,7 @@ export default class SearchList extends Component {
                 bRating.push(star)
             }
             return (
-                <Result place_id={el.place_id} key={i} name={el.name} adress={el.adress} gRating={el.rating ? gRating : 'no rating'} reference={el} createMode={this.createMode}/> 
+                <Result className='searchResult' place_id={el.place_id} key={i} name={el.name} adress={el.adress} gRating={el.rating ? gRating : 'no rating'} reference={el} createMode={this.createMode}/> 
                 // <li className='place_container'>
                 //     <div>
                 //         <h6>{el.name}</h6>
@@ -93,7 +93,9 @@ export default class SearchList extends Component {
         })
         return (
                     <div>
-                        <div>{resultsList}</div>
+                        <div className='resultsContainer'>
+                            {resultsList}
+                        </div>
                         <Modal title={`Create Experience for ${this.state.currentPlace}`} visible={this.state.add} onOk={() => this.addExperience()} onCancel={() => this.setState({add: false})}>
                             <TextArea onChange={e => this.setState({expInput: e.target.value})} rows={4} placeholder='what do you think?'/>
                             <Rate onChange={value => this.setState({expRating: value})}/>

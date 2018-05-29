@@ -52,17 +52,19 @@ export default class Search extends Component {
         return (
             <div style={{padding: '5em'}}>
                 <h1>Search for Doctors and see rankings by BC Users</h1>
-                <Select defaultValue="doctor" style={{ width: 120 }} onChange={(e) => this.setState({selectedType: e})}>
-                    <Option value="doctor">Doctors</Option>
-                    <Option value="hospital">Hospitals</Option>
-                    <Option value="pharmacy">Pharmacies</Option>
-                    <Option value="insurance_agency">Insurance Agencies</Option>
-                </Select>
-                <Input value={this.state.selectedLocation} onChange={e => {
-                    this.setState({selectedLocation: e.target.value})
-                    this.isTyping()
-                }}/>
-                <Button onClick={() => this.getGoogleResults()}>Get Results</Button>
+                <div className='inputContainer'>
+                    <Input value={this.state.selectedLocation} onChange={e => {
+                        this.setState({selectedLocation: e.target.value})
+                        this.isTyping()
+                    }}/>
+                    <Select defaultValue="doctor" style={{ width: 120 }} onChange={(e) => this.setState({selectedType: e})}>
+                        <Option value="doctor">Doctors</Option>
+                        <Option value="hospital">Hospitals</Option>
+                        <Option value="pharmacy">Pharmacies</Option>
+                        <Option value="insurance_agency">Insurance Agencies</Option>
+                    </Select>
+                    <Button onClick={() => this.getGoogleResults()}>Get Results</Button>
+                </div>
                 <SearchList results={this.state.results}/>
             </div>
         );
