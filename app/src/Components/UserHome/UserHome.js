@@ -33,7 +33,6 @@ class UserHome extends Component{
             )
         })
         return <div>
-            <Sidebar />
             <div className="d-userhome-header">
                 <div className='d-userhome-content'>
                     <h1 className='d-connect'>Connect.</h1>

@@ -70,7 +70,7 @@ render() {
                                  <a> <Link className="link" to="/forums"> Forums
                                    </Link>
                                    <div class="dropdown-content">
-                                     <a href="/dashboard/forums">Family</a>
+                                     <a href="/dashboard/family">Family</a>
                                      <a href="/dashboard/resources">Resources</a>
                                      <a href="/dashboard/motivation">Motivation</a>
                                      <a href="/dashboard/nutrition">Nutrition</a>

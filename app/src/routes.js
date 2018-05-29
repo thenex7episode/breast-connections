@@ -25,7 +25,7 @@ const routes =
         <Route path='/forums' component={ Forums } />
         <Route path='/admin' component={ Admin } />
         <Route path='/search' component={ Search } />
-        <Route path='/dashboard' component={ Dashboard } />
+        <Route path='/dashboard' component={ UserHome } />
         <Route path='/' component={ Home } />
         
     </Switch>
