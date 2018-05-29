@@ -13,7 +13,6 @@ import Home from './Components/Home';
 const routes = 
 <div>
     <Switch>
-        <Route path='/home' component={ Home } />
         <Route path='/register' component={ Register } />
         <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />
@@ -23,7 +22,8 @@ const routes =
         <Route path='/forums' component={ Forums } />
         <Route path='/admin' component={ Admin } />
         <Route path='/search' component={ Search } />
-        <Route path='/' exact component={ Dashboard } />
+        <Route path='/dashboard' component={ Dashboard } />
+        <Route path='/' component={ Home } />
         
     </Switch>
 </div>

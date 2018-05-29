@@ -81,9 +81,12 @@ render() {
                                  <a> <Link className="link" to="/info"> Info
                              </Link>
                              </a>
-                         <a><Link className="link" to="/home">
-                         Home
-                     </Link></a>
+                         <a>
+                             {!isLoggedIn 
+                             ? <Link className="link" to="/">Home</Link>
+                             : <Link className="link" to="/dashboard">Home</Link>
+                             }
+                         </a>
              </div>
          </div>
      </div>
