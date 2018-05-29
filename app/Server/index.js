@@ -80,10 +80,9 @@ app.post('/api/googlesearch/:token/', c.getGoogleNextPage)
 app.post('/api/googleimage/:ref/', c.getGoogleImage)
 
 // Experience Endpoints
-app.post('/api/addexperience/', c.addExperience)
-app.put('/api/editexperience/', c.editExperience)
-app.delete('/api/deleteexperience/', c.deleteExperience)
-app.get('/api/experiences/', c.getExperiences)
+app.post('/api/experience/', c.addExperience)
+app.delete('/api/experience/:eid/:pid', c.deleteExperience)
+app.get('/api/experiences/:id', c.getExperiences)
 
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//

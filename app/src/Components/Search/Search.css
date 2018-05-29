@@ -2,4 +2,19 @@
     display: flex;
     justify-content: space-between;
     margin: 4em 2em;
+    text-align: left;
+}
+
+.inputContainer {
+    display: flex;
+    width: 50%;
+}
+
+.resultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.searchResult {
+    width: 30%;
 }

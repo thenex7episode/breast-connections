@@ -10,6 +10,7 @@
     "body-parser": "^1.18.3",
     "cloudinary": "^1.11.0",
     "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "massive": "^4.8.2",
@@ -24,5 +25,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:4000"
+  "proxy": "http://localhost:4000",
+  "devDependencies": {
+    "cypress": "^2.1.0"
+  }
 }

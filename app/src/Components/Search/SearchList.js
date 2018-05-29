@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Avatar, Icon, Button, Modal, Input, Rate } from 'antd';
+import { List, Avatar, Icon, Button, Modal, Input, Rate, message } from 'antd';
 import axios from 'axios';
 import Image from './Image';
 import Result from './Result';
@@ -13,6 +13,10 @@ const IconText = ({ type, text }) => (
     </span>
   );
 
+  const success = () => {
+    message.success('Thanks for your Feedback!');
+  };
+
 export default class SearchList extends Component {
     constructor(props){
         super(props);
@@ -21,7 +25,8 @@ export default class SearchList extends Component {
             images: [],
             add: false,
             expInput: '',
-            expRating: 0
+            expRating: 0,
+            currentID: ''
         }
         this.createMode = this.createMode.bind(this)
     }
@@ -40,17 +45,27 @@ export default class SearchList extends Component {
     }
 
     addExperience(){
+        const experience = {
+            body: this.state.expInput,
+            place_id: this.state.currentID,
+            rating: this.state.expRating
+        }
+        axios.post('/api/experience/', experience).then(data => {
+            console.log('Epxerience Posted');
+            this.setState({add: false, expInput: '', currentID: '', expRating: '', images: []})+
+            success()
 
+        }).catch(err => console.log('Error in post Experience:', err))
     }
 
-    createMode(name){
-        this.setState({add: true, currentPlace: name})
+    createMode(name, place_id){
+        this.setState({add: true, currentPlace: name, currentID: place_id})
     }
 
 
     render() {
-        // console.log('--render Searchlist!')
         const resultsList = this.props.results.map((el,i) => {
+            console.log('searchList', el)
             const star = <Icon type="star" />
             let gRating = [];
             let bRating = [];
@@ -61,7 +76,7 @@ export default class SearchList extends Component {
                 bRating.push(star)
             }
             return (
-                <Result key={i} name={el.name} adress={el.adress} gRating={el.rating ? gRating : 'no rating'} reference={el} createMode={this.createMode}/> 
+                <Result className='searchResult' place_id={el.place_id} key={i} name={el.name} adress={el.adress} gRating={el.rating ? gRating : 'no rating'} reference={el} createMode={this.createMode}/> 
                 // <li className='place_container'>
                 //     <div>
                 //         <h6>{el.name}</h6>
@@ -76,12 +91,13 @@ export default class SearchList extends Component {
                 // </li>
             )
         })
-                console.log('--render Searchlist!', resultsList)
         return (
                     <div>
-                        <div>{resultsList}</div>
+                        <div className='resultsContainer'>
+                            {resultsList}
+                        </div>
                         <Modal title={`Create Experience for ${this.state.currentPlace}`} visible={this.state.add} onOk={() => this.addExperience()} onCancel={() => this.setState({add: false})}>
-                            <TextArea onChange={e => this.setState({bodyInput: e.target.value})} rows={4} placeholder='what do you think?'/>
+                            <TextArea onChange={e => this.setState({expInput: e.target.value})} rows={4} placeholder='what do you think?'/>
                             <Rate onChange={value => this.setState({expRating: value})}/>
                         </Modal>
                     </div>

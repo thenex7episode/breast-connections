@@ -1,26 +1,70 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import { Button, Spin, Icon } from 'antd';
 import Image from './Image';
+import axios from 'axios';
+import Experience from './Experience';
+
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
+
 
 export default class Result extends Component {
+    constructor(){
+        super();
+        this.state = {
+            exp: false,
+            experiences: [],
+            loading: true
+        }
+        this.deleteExperience = this.deleteExperience.bind(this);
+    }
 
+    getExperiences(id){
+        axios.get(`/api/experiences/${id}`).then(data => {
+            console.log(data.data);
+            const total = data.data.reduce((total, el) => total + el.rating, 0);
+            const avg =  total/data.data.length
+            console.log('total', total)
+            this.setState({experiences: data.data, loading: false, avg })
+        })
+    }
+
+    deleteExperience(id){
+        axios.delete(`/api/experience/${id}/${this.props.place_id}`).then(data => {
+            this.setState({experiences: data.data})
+        })
+    }
 
     render() {
-        const { name, adress, gRating, reference, createMode } = this.props;
+        const { name, adress, gRating, reference, createMode, place_id } = this.props;
+        const experienceList = this.state.experiences.map((el,i) => {
+            return <Experience deleteExperienceFn={this.deleteExperience} experience_id={el.experience_id} key={i} rating={el.rating} body={el.body} user_id={el.user_id}/> 
+        })
         // console.log('--Result', reference.photos || 'no photo')
         return (
-            <li key={name} className='place_container'>
-                    <div>
-                        <h6>{name}</h6>
-                        <p>{adress}</p>
-                        <div className='ratingContainer'>
-                            <div>Google {gRating}</div>
-                            <div>BC {gRating}</div>
+            <div style={{textAlign: 'center'}}>
+                <div key={name} className='place_container'>
+                        <div>
+                            <h6>{name}</h6>
+                            <p>{adress}</p>
+                            <div className='ratingContainer'>
+                                <div>Google {gRating}</div>
+                                <div>BC {gRating}</div>
+                            </div>
+                            <Button onClick={() => createMode(name, place_id)}>Share your Experience</Button> 
                         </div>
-                        <Button onClick={() => createMode(name)}>Share your Experience</Button> 
-                    </div>
-                    <Image width={272} reference={reference} />
-                </li>
+                        <Image width={272} reference={reference} />
+                </div>
+                <Button onClick={() => {
+                    this.setState({exp: !this.state.exp})
+                    this.getExperiences(place_id)
+                }}>Experiences</Button> 
+                <div style={{display: this.state.exp ? 'block' : 'none'}}>
+                    <div>{`${name}'s BC Score - ${this.state.avg}/5 stars`}</div>
+                    {this.state.loading
+                    ? <Spin indicator={antIcon} />
+                    : <div>{experienceList}</div>}
+                </div>
+            </div>
         );
     }
 }
