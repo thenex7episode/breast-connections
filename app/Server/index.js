@@ -40,6 +40,7 @@ app.get('/api/posts/:id', c.userInfo)
 app.get('/api/user/:username', c.userData)
 app.put('/api/editprofile/:username', c.editProfile)
 app.get('/api/posts/', c.getAllPosts)
+app.delete('/api/deleteuser/:user_id', c.deleteUser)
 
 // Comment Crud
 app.post('/api/addcomment/', c.addComment)
@@ -56,23 +57,24 @@ app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//
 app.post('/register', (req,res) => {
     const {username, email, first, last, password} = req.body
-    bcrypt.hash(password, saltRounds).then(hashedPassword => {
-        app.get('db').create_user([username, email, first , last, hashedPassword]).then(newUser => {
-            req.session.user = {username: newUser[0].username, user_id: newUser[0].user_id, admin: data[0].admin }
-            const user = req.session.user
-            res.status(200).json({ username })
+    app.get('db').find_user([username]).then(data => {
+        console.log('data:', data)
+        if(data[0]) {
+            res.status(500).json({message: 'User already exists'})
+        }else {
+            bcrypt.hash(password, saltRounds).then(hashedPassword => {
+                app.get('db').create_user([username, email, first , last, hashedPassword]).then(newUser => {
+                    req.session.user = {username: newUser[0].username, user_id: newUser[0].user_id, admin: newUser[0].admin }
+                    const user = req.session.user
+                    res.status(200).json({ username })
+                })
         })
-        //still Registers a user_id if duplicate but won't let you login with duplicate. Might fix later//
-        .catch(error => {
-            if (error.message.match(/duplicate key/)) {
-                res.status(409).json({message: 'That user already exists'})
-            }else {
-                res.status(500).json({message: error})
-            }
-        })
-    }).catch (err => res.status(500).json({message: 'Sorry, something has happened and we are working on fixing it now'}))
-}
-)
+
+    }
+        
+    }).catch (err => res.status(500).json({message: 'WWWEEEWWOOOWWEEEWWOOOWWEEEWOOOO'}))
+})
+
 app.post('/login', (req, res) => {
     const {username, password} = req.body;
     app.get('db').find_user([username]).then(data => {
@@ -81,7 +83,7 @@ app.post('/login', (req, res) => {
         if (data.length) {
             bcrypt.compare(password, data[0].password).then(passwordsMatch => {
                 if(passwordsMatch) {
-                    req.session.user = { username,user_id:  data[0].user_id, first: data[0].first, last: data[0].last, imageurl: data[0].imageurl, admin: data[0].admin}
+                    req.session.user = { username: data[0].username ,user_id:  data[0].user_id, first: data[0].first, last: data[0].last, imageurl: data[0].imageurl, admin: data[0].admin}
                     console.log('-----req.session.user',req.session.user)
                     res.json({ user: req.session.user })
                 }else {

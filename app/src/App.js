@@ -5,8 +5,19 @@ import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Loading from './Components/Loading'
+import axios from 'axios'
+import {Link} from 'react-router-dom'
+
+
 
 class App extends Component {
+
+  
+
+
+
+
+
   render() {
     return (
       <div className="App">
@@ -15,6 +26,7 @@ class App extends Component {
           <Sidebar />
           <div className="d-routes">
             { routes }          
+       
           </div>
         </div>
       </div>

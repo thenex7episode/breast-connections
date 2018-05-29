@@ -1,1 +1,0 @@
-Select posts_bc.title, posts_bc.body, posts_bc.tracker, posts_bc.date,

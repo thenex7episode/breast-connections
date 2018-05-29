@@ -44,25 +44,30 @@ export default class Register extends Component {
             "password": this.state.password
                     }
                     axios.post('/register', newUser).then(response => {
-                        // console.log('-----newUser',newUser)
-                        const {username, password} = newUser;
-                        axios.post('/login', {
-                            username,
-                            password
-                        }).then(response => {
-                            // console.log('---------R.DATA',response.data)
-                            this.setState({ user: response.data})
-                            this.props.history.push('/profile')
-                           
-                        }).catch(error => {
-                            this.setState({ message: 'Something went wrong'})
-                        })
-                        // this.props.history.push('/profile')
+                        console.log('-----response in register:',response)
+                        if(response.data.username) {
+                            const {username, password} = newUser;
+                            axios.post('/login', {
+                                username,
+                                password
+                            }).then(response => {
+                                // console.log('---------R.DATA',response.data)
+                                // this.setState({ user: response.data})
+                                window.location= `/profile/${username}`
+                               
+                            }).catch(error => {
+                               console.log('error in login:', error)
+                            })
+                            // this.setState({ user: response.data });
+                            // this.props.history.push('/profile')
+                            
+                        } else {
+                            this.setState({message: <Alert message='This User Already Exists' type='error' closable showIcon/> })
+                        }
                         // console.log('-_-_-_-_-_-_-_-_R.DATA',response.data)
-              this.setState({ user: response.data });
             }).catch(error => {
-              this.setState({ message: <Alert message='This User Already Exists' type='error' closable showIcon/>});
-              
+              console.log('error in register:', error)
+             
             });
     }
     render() {

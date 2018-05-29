@@ -1,6 +1,7 @@
 import { List, Avatar, Button, Spin } from 'antd';
 import React, { Component } from 'react';
 import axios from 'axios';
+import './admin.css'
 
 export default class Admin extends Component {
     constructor(){
@@ -33,7 +34,7 @@ export default class Admin extends Component {
   render() {
     const { loading, loadingMore, showLoadingMore, data } = this.state;
     return (
-    <div>
+    <div className='admin'>
         <h1>Administration</h1>
         <div style={{display: this.state.admin ? 'none' : 'block'}}>
             <h3>You don't seem to be an Admin. If you are, log in with an Admin Account, otherwise click on Forum to </h3>

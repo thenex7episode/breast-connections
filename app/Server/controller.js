@@ -124,9 +124,14 @@ module.exports = {
     // }
 
       editProfile: (req,res) => {
-          console.log('req----------', req.params.username, req.body.body, req.body.image)
+        //   console.log('req----------', req.params.username, req.body.body, req.body.image)
             req.app.get('db').editProfile([req.params.username, req.body.body, req.body.image]).then(data => {
                 res.status(200).send(data)
             })
+      },
+      deleteUser: (req, res) => {
+          req.app.get('db').deleteUser(req.params.user_id).then(data => {
+              res.status(200).send(data)
+          })
       }
 }

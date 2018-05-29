@@ -23,21 +23,20 @@ export default class Login extends Component {
    
     login(e) {
         
-            // console.log(e.key)
-            this.setState({message: null})
-            // const username = this.state.username
-            // const password = this.state.password
-            axios.post('/login', {
-                username: this.state.userName,
-                password: this.state.password
-            }).then(response => {
-                console.log('-----r.data',response.data)
-                this.setState({user: response.data})
-                this.props.history.push(`/profile/${response.data.user.username}`)
-                // this.props.isLoggedIn()
-            }).catch(error => {
-                this.setState({message: <Alert message='Username or Password is incorrect' type='error' closable/>})
-            })
+        this.setState({message: null})
+        // const username = this.state.username
+        // const password = this.state.password
+        axios.post('/login', {
+            username: this.state.userName,
+            password: this.state.password
+        }).then(response => {
+            console.log('-----r.data',response.data)
+            this.setState({user: response.data})
+            this.props.history.push(`/profile/${response.data.user.username}`)
+            // this.props.isLoggedIn()
+        }).catch(error => {
+            this.setState({message: <Alert message='Username or Password is incorrect' type='error' closable/>})
+        })
         
     }
     
@@ -45,6 +44,7 @@ export default class Login extends Component {
         // console.log('--------state', this.state)
         const {message} = this.state
         return (
+            
             <div onKeyPress= {e => e.key === 'Enter' ? this.login() : null} style={{ padding: '5em'}}>
                 {message}
                 <h1>Login</h1>
