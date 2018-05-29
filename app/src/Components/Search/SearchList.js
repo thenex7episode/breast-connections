@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { List, Avatar, Icon } from 'antd';
+import { List, Avatar, Icon, Button, Modal, Input, Rate } from 'antd';
 import axios from 'axios';
 import Image from './Image';
+import Result from './Result';
+
+const TextArea = Input.TextArea;
 
 const IconText = ({ type, text }) => (
     <span>
@@ -10,24 +13,17 @@ const IconText = ({ type, text }) => (
     </span>
   );
 
-  const listData = [];
-for (let i = 0; i < 23; i++) {
-  listData.push({
-    href: 'http://ant.design',
-    title: `ant design part ${i}`,
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-    content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-  });
-}
-
 export default class SearchList extends Component {
     constructor(props){
         super(props);
         this.state = {
             results: [],
-            images: []
+            images: [],
+            add: false,
+            expInput: '',
+            expRating: 0
         }
+        this.createMode = this.createMode.bind(this)
     }
 
     getImage(ref){
@@ -43,29 +39,52 @@ export default class SearchList extends Component {
         }
     }
 
+    addExperience(){
+
+    }
+
+    createMode(name){
+        this.setState({add: true, currentPlace: name})
+    }
+
 
     render() {
+        // console.log('--render Searchlist!')
+        const resultsList = this.props.results.map((el,i) => {
+            const star = <Icon type="star" />
+            let gRating = [];
+            let bRating = [];
+            for(let i = 0; i < el.rating; i++){
+                gRating.push(star)
+            }
+            for(let i = 0; i < el.rating; i++){
+                bRating.push(star)
+            }
+            return (
+                <Result key={i} name={el.name} adress={el.adress} gRating={el.rating ? gRating : 'no rating'} reference={el} createMode={this.createMode}/> 
+                // <li className='place_container'>
+                //     <div>
+                //         <h6>{el.name}</h6>
+                //         <p>{el.adress}</p>
+                //         <div className='ratingContainer'>
+                //             <div>Google {el.rating ? gRating : 'no rating'}</div>
+                //             <div>BC {el.rating ? bRating : 'no rating'}</div>
+                //         </div>
+                //         <Button onClick={() => this.setState({add: true, currentPlace: el.name})}>Share your Experience</Button> 
+                //     </div>
+                //     <Image width={272} reference={el} />
+                // </li>
+            )
+        })
+                console.log('--render Searchlist!', resultsList)
         return (
-                    <List
-                        itemLayout="vertical"
-                        size="large"
-                        dataSource={this.props.results}
-                        footer={<div><b>ant design</b> footer part</div>}
-                        renderItem={item => (
-                        <List.Item
-                            key={item.name}
-                            actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-                            extra={<Image width={272} reference={item} />}
-                        >
-                            <List.Item.Meta
-                            // avatar={<Avatar src={item.photos[0] || null} />}
-                            title={<a href={item.name}>{item.name}</a>}
-                            description={item.adress}
-                            />
-                            {item.content}
-                        </List.Item>
-                        )}
-                    />
+                    <div>
+                        <div>{resultsList}</div>
+                        <Modal title={`Create Experience for ${this.state.currentPlace}`} visible={this.state.add} onOk={() => this.addExperience()} onCancel={() => this.setState({add: false})}>
+                            <TextArea onChange={e => this.setState({bodyInput: e.target.value})} rows={4} placeholder='what do you think?'/>
+                            <Rate onChange={value => this.setState({expRating: value})}/>
+                        </Modal>
+                    </div>
         );
     }
 }

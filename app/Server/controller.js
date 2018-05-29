@@ -10,8 +10,13 @@ module.exports = {
         const post = [category, title, body, req.session.user.user_id];
         // console.log(body);
         req.app.get('db').addPost(post).then(data => {
-            // console.log(data)
-            res.status(200).json({data: data})
+            console.log(data[data.length-1])
+            const lastID = data[data.length-1].post_id
+            let sortedPostssort = data.sort(function(a,b){
+                return b.post_id - a.post_id
+                });
+            // console.log(sortedPostssort)
+            res.status(200).json({data: sortedPostssort, lastID: lastID})
         }).catch(error => console.log('error in addPost', error))
     },
     editPost: (req, res) => {
@@ -35,7 +40,7 @@ module.exports = {
         req.app.get('db').getPostsForCategory(req.params.id).then(data => {
             // sort Posts from date
             let sortedPostssort = data.sort(function(a,b){
-                return a.post_id - b.post_id
+                return b.post_id - a.post_id
                 });
             res.status(200).json({data: data})
         }).catch(error => console.log('error in getPosts', error))
@@ -54,7 +59,10 @@ module.exports = {
     addComment: (req, res) => {
         const { body, post_id } = req.body
         req.app.get('db').addComment([body, req.session.user.user_id, post_id]).then(data => {
-            res.status(200).send(data)
+            let sortedPostssort = data.sort(function(a,b){
+                return b.post_id - a.post_id
+            });
+            res.status(200).send(sortedPostssort)
         })
     },
     editComment: (req, res) => {
@@ -75,12 +83,16 @@ module.exports = {
     },
     getAllPosts: (req,res) => {
         req.app.get('db').getAllPosts().then(data => {
-            res.status(200).send(data)
+            let sortedPostssort = data.sort(function(a,b){
+                return b.post_id - a.post_id
+                });
+            res.status(200).send(sortedPostssort)
         })
     },
     getGoogleResults: (req, res) => {
-        const { tags } = req.body  
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-${`33.8670522,151.1957362`}&rankby=distance&type=${tags}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0`).then(data => {
+        const { tags, cords } = req.body;
+        console.log(cords, tags)
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${cords.lat},${cords.lng}&rankby=distance&type=${tags}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A`).then(data => {
             console.log(data.data.next_page_token)
             let reducedList = data.data.results.map(el => {
                 return {
@@ -97,7 +109,7 @@ module.exports = {
     },
     getGoogleNextPage: (req, res) => {
         const { token } = req.params;
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&rankby=distance&pagetoken=${token}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0`).then(data => {
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&rankby=distance&pagetoken=${token}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A`).then(data => {
             console.log(data.data.next_page_token)
             let reducedList = data.data.results.map(el => {
                 return {
@@ -113,9 +125,35 @@ module.exports = {
         })
     },
     getGoogleImage: (req, res) => {
-        axios.get(`https://maps.googleapis.com/maps/api/place/photo?photoreference=${req.params.ref}&key=AIzaSyDMe9dzsNrtmkU1P7tD2r28Qt0ewJfgdY0&maxwidth=400&maxheight=400`).then(data => {
+        axios.get(`https://maps.googleapis.com/maps/api/place/photo?photoreference=${req.params.ref}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A&maxwidth=400&maxheight=400`).then(data => {
             res.status(200).send(data.request.socket._httpMessage._redirectable._options.href)
         })
+    },
+    addExperience: (req, res) => {
+        req.app.get('db').addExperience([body, user, place, rating]).then(data => {
+            res.status(200).send(data)
+        }).catch(err => console.log('Error in add Experience', err))
+    },
+    editExperience: (req, res) => {
+        req.app.get('db').editExperience([body, rating, experience_id]).then(data => {
+            res.status(200).send(data)
+        }).catch(err => console.log('Error in add Experience', err))
+    },
+    deleteExperience: (req, res) => {
+        req.app.get('db').deleteExperience([experience_id, place_id]).then(data => {
+            res.status(200).send(data)
+        }).catch(err => console.log('Error in add Experience', err))
+    },
+    getExperiences: (req, res) => {
+        req.app.get('db').addExperiences(place_id).then(data => {
+            res.status(200).send(data)
+        }).catch(err => console.log('Error in add Experience', err))
+    },
+    editProfile: (req,res) => {
+        console.log('req----------', req.params.username, req.body.body, req.body.image)
+          req.app.get('db').editProfile([req.params.username, req.body.body, req.body.image]).then(data => {
+              res.status(200).send(data)
+          })
     },
     // getUserPosts: (req,res) => {
     //     req.app.get('db').join(req.params.user_id).then(posts => {

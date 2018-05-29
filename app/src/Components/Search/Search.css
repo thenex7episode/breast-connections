@@ -1,0 +1,5 @@
+.place_container {
+    display: flex;
+    justify-content: space-between;
+    margin: 4em 2em;
+}

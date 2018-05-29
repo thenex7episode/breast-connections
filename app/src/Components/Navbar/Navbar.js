@@ -65,13 +65,18 @@ render() {
                                  </a>
  
                                  {/* DROPDOWN MENU */}
+
                                  <div className='dropdown'>
                                  <a> <Link className="link" to="/forums"> Forums
                                    </Link>
                                    <div class="dropdown-content">
-                                     <a href="#">Motivation</a>
-                                     <a href="#">Family</a>
-                                     <a href="#">Resources</a>
+                                     <a href="/dashboard/forums">Family</a>
+                                     <a href="/dashboard/resources">Resources</a>
+                                     <a href="/dashboard/motivation">Motivation</a>
+                                     <a href="/dashboard/nutrition">Nutrition</a>
+                                     <a href="/dashboard/health">Health</a>
+                                     <a href="/dashboard/financial">Financial</a>
+                                     
                                    </div>
                                  </a>
                                  </div>

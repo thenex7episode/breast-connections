@@ -4,6 +4,7 @@ import './Post.css';
 import { Avatar, Icon, Badge, Button, Input, Menu, Dropdown, Spin } from 'antd';
 import { relative } from 'path';
 import Comments from '../Comments/Comments';
+import PostImage from './PostImage';
 const { TextArea } = Input;
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
@@ -84,6 +85,9 @@ export default class Post extends Component {
                     </div>
                 </div>
                 <div className='postBody'>
+                    <div>
+                        <PostImage post_id={post_id}/>
+                    </div>
                     <div className='contentContainer'>
                         <TextArea style={{fontSize: '1.5em', display: this.state.editMode ? 'block' : 'none'}} value={this.state.bodyInput === null ? body : this.state.bodyInput} onChange={e => this.setState({bodyInput: e.target.value})}/>
                         <Button style={{display: this.state.editMode ? 'block' : 'none'}} onClick={() => this.editPost(body, title)} >Save</Button>

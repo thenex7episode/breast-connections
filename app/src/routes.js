@@ -10,10 +10,12 @@ import Admin from './Components/Admin';
 import Search from './Components/Search/Search';
 import Home from './Components/Home';
 import Info from './Components/Info/Info'
+import UserHome from './Components/UserHome/UserHome'
 
 const routes = 
 <div>
     <Switch>
+        <Route path='/userhome' component={ UserHome } />
         <Route path='/register' component={ Register } />
         <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />

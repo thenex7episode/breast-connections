@@ -1,0 +1,77 @@
+
+
+.d-posts-wrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+}
+.d-posts-content{
+    background-color: white;
+    padding:1em;
+    color: black;
+    font-size: 1.5em;
+}
+.d-userhome-header{
+    background: black;
+    width:100%;
+    align-content: center;
+    justify-content: center;
+    height: 180px;
+    
+
+}
+.d-userhome-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.d-connect{
+    color:white;
+    font-size: 6em;
+    margin:0;
+    padding-top:.5em
+}
+.d-inspire{
+    color:#F433AB;
+    font-size: 6em;
+    margin:0;
+    padding-top:.5em
+    
+}
+.d-thrive{
+    color:white;
+    font-size: 6em;
+    margin:0;
+    padding-top:.5em
+    
+
+}
+@media only screen and (max-width: 1027px) {
+    .d-connect, .d-inspire, .d-thrive{
+        font-size: 5em;
+    }
+}
+@media only screen and (max-width: 885px) {
+    .d-connect, .d-inspire, .d-thrive{
+        font-size: 4em;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .d-connect, .d-inspire, .d-thrive{
+        font-size: 3em;
+    }
+    .d-userhome-content{
+        padding-top: 3.5em;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .d-connect, .d-inspire, .d-thrive{
+        font-size: 2em;
+    }
+    .d-userhome-content{
+        padding-top: 3.5em;
+    }
+}
