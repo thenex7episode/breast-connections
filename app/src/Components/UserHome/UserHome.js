@@ -40,7 +40,6 @@ class UserHome extends Component{
                     <h1 className='d-inspire'>Inspire.</h1>
                     <h1 className='d-thrive'>Thrive.</h1>
                 </div> 
-                
             </div>
             
             {allPosts}
