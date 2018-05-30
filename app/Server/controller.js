@@ -167,5 +167,12 @@ module.exports = {
           req.app.get('db').deleteUser(req.params.user_id).then(data => {
               res.status(200).send(data)
           })
+      },
+      getUserPosts: (req,res) => {
+          req.app.get('db').getUserPosts(req.params.user_id).then(data => {
+              res.status(200).send(data)
+          }).catch(error => {
+              console.log('error in getUserPosts:' , error)
+          })
       }
 }

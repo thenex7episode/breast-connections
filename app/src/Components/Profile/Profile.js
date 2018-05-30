@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import {Avatar, Button, Icon, Input, Popconfirm, message} from 'antd'
 import './Profile.css'
+import Post from '../Post/Post'
 import {Link} from 'react-router-dom'
 import { image } from 'cloudinary';
 const { TextArea } = Input
@@ -17,7 +18,7 @@ export default class Profile extends Component {
 
         this.state = {
             user: '',
-            user2: '',
+            loggedInUser: '',
             userID: '',
             admin: false,
             first: '',
@@ -31,23 +32,32 @@ export default class Profile extends Component {
             edit: false,
             uploadedFileCloudinaryUrl: ''
         }
+
+        this.deletePost= this.deletePost.bind(this)
     }
 
     componentDidMount() {
         const username = this.props.match.params.username
         console.log('-------username', username)
         axios.get(`/api/user/${username}`).then(r => {
-            console.log('-----------------r',r)
-    this.setState({isLoggedIn: true, user: r.data[0].username, first: r.data[0].first, last: r.data[0].last, image: r.data[0].imageurl, body: r.data[0].body, admin: r.data[0].admin, userID: r.data[0].user_id})
-            
+            console.log('-----------------r.data:',r.data[0].username)
+            this.setState({isLoggedIn: true, user: r.data[0].username, first: r.data[0].first, last: r.data[0].last, image: r.data[0].imageurl, body: r.data[0].body, admin: r.data[0].admin, userID: r.data[0].user_id})
+            axios.get(`/api/userposts/${this.state.userID}`).then(data => {
+                console.log('data:', data)
+                this.setState({posts: data.data})
+                console.log('------------------data.data.data:',data.data)
+            })
         })
 
         axios.get('/api/check-session').then(response => {
             console.log('--------------response', response.data.username) 
-            this.setState({user2: response.data.username})
+            this.setState({loggedInUser: response.data.username})
         })
+
     }
-    
+
+
+     
     handleSize = e => {
         this.setState({ size: e.target.value})
     }
@@ -83,9 +93,16 @@ export default class Profile extends Component {
         })
     }
 
+    deletePost(id){
+        axios.delete(`/api/deletepost/${id}`).then(data => {
+            console.log('data.data in delete in profile:', data.data)
+            this.setState({posts: data.data.data})
+        })
+    }
+
     render() {
         
-        const {isLoggedIn, userID, user, user2, first, last, image, size, edit, body, admin} = this.state
+        const {isLoggedIn, userID, user, loggedInUser, first, last, image, size, edit, body, admin} = this.state
         console.log('admin:', admin)
         function confirm(e) {
             axios.delete(`/api/deleteuser/${userID}`).then( r => {
@@ -101,12 +118,20 @@ export default class Profile extends Component {
             console.log(e);
             message.error('Click on No');
           }
+
+          let userPosts = this.state.posts.map((e,i) => {
+              console.log('posts:', this.state.posts)
+              return <Post  loggedUser={this.state.user} key={i} post_id={e.post_id} title={e.title} body={e.body} user_id={e.user_id} date={e.date} tracker={e.tracker} deletePostFn={this.deletePost}/>
+          })
+
+
+
         return (
             <div style={{padding: '5em'}}>
                 <div>
                 <div className='edit'>
                     {!edit  
-                        ? user2 === user ?
+                        ? loggedInUser === user ?
                             <Button size={size}type= 'dashed' style={{float: 'right'}} onClick={() => this.setState({edit: true})}>Edit</Button> 
                             :  ''   
                     :<div>
@@ -136,7 +161,7 @@ export default class Profile extends Component {
                 
                 
             </div>
-                
+                {userPosts}
                 
             </div>
         );

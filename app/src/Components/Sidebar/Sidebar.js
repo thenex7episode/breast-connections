@@ -54,6 +54,7 @@ componentWillReceiveProps() {
                 </div>
                 <div>
                 <Link to='/chat'><button className='d-profile-button'>Chats</button></Link>
+                <Link to='/shop'><button className='d-profile-button'>Donations</button></Link>
                 </div>
             </div>
         </div>

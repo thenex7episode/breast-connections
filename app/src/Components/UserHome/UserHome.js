@@ -11,14 +11,29 @@ class UserHome extends Component{
 
         this.state = {
 
-            posts: []
+            posts: [],
+            loggedUser: ''
 
         }
+        this.deletePost = this.deletePost.bind(this)
     }
     componentDidMount(){
         axios.get('/api/posts/').then(response => {
             console.log('all posts-----------------------------',response)
             this.setState({posts: response.data})
+        })
+
+        axios.get(`/api/check-session/`).then( data => {
+            console.log('session res', data)
+            this.setState({loggedUser: data.data.username})
+        })
+    }
+
+
+    deletePost(id){
+        axios.delete(`/api/deletepost/${id}`).then(data => {
+            console.log('data.data in delete in profile:', data.data)
+            this.setState({posts: data.data.data})
         })
     }
 

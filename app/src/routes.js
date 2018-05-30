@@ -11,6 +11,7 @@ import Search from './Components/Search/Search';
 import Home from './Components/Home';
 import Info from './Components/Info/Info'
 import UserHome from './Components/UserHome/UserHome'
+import Shop from './Components/Shop/Shop'
 
 const routes = 
 <div>
@@ -26,6 +27,7 @@ const routes =
         <Route path='/admin' component={ Admin } />
         <Route path='/search' component={ Search } />
         <Route path='/dashboard' component={ UserHome } />
+        <Route path='/shop' component={Shop}/>
         <Route path='/' component={ Home } />
         
     </Switch>
