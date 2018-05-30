@@ -1,0 +1,1 @@
+SELECT user_id FROM likes_bc WHERE post_id = $1;

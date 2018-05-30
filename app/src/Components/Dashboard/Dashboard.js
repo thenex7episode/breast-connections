@@ -69,7 +69,7 @@ export default class Dashboard extends Component {
         })
         axios.get(`/api/check-session/`).then( data => {
             console.log('session res', data)
-            this.setState({loggedUser: data.data.username})
+            this.setState({loggedUser: data.data.username, loggedUserID: data.data.user_id})
         })
     }
 
@@ -127,7 +127,7 @@ export default class Dashboard extends Component {
             </div>
           );
           const imageUrl = this.state.imageUrl;
-        const postList = this.state.posts.map((el,i) => <Post  loggedUser={this.state.loggedUser} key={i} post_id={el.post_id} title={el.title} body={el.body} user_id={el.user_id} date={el.date} tracker={el.tracker} deletePostFn={this.deletePost}/>)
+        const postList = this.state.posts.map((el,i) => <Post  loggedUserID={this.state.loggedUserID} loggedUser={this.state.loggedUser} key={i} post_id={el.post_id} title={el.title} body={el.body} user_id={el.user_id} date={el.date} tracker={el.tracker} deletePostFn={this.deletePost}/>)
         return (
             <div style={{padding: '5em'}}>
                 <div style={{display:'flex', justifyContent: 'space-between'}}>
