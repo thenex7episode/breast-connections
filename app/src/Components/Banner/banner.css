@@ -1,0 +1,27 @@
+.d-banner{
+    display:flex;
+    flex-direction: row;
+    background:black;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15em;
+    padding-top:5em;
+
+}
+
+.d-banner-content1{
+    color:white;
+    font-size: 6em;
+    padding:10px;
+}
+.d-banner-content2{
+    color:#F433AB;
+    font-size: 6em;
+    padding:10px;
+}
+.d-banner-content3{
+    color:white;
+    font-size: 6em;
+    padding:10px;
+}
