@@ -5,7 +5,7 @@ import Banner from '../Banner/Banner'
 export default class Info extends Component {
     render() {
         return (<div>
-                <Banner text1 = { "Its wrking" } text2 ={"nope"}/>
+                <Banner text1 = { "About" } text2 ={"Breast"} text3={'Connections'}/>
             <div className = 'info'>
                 <h1>About Breast Connections</h1>
                 <p>Breast connections is a non-profit social media platform that gives cancer patients, family/friends of cancer patients, and anyone 
