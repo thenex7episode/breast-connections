@@ -106,7 +106,7 @@ class UserHome extends Component{
                 <Button>Categories</Button>
             </Dropdown>
                 <div className='category-current'>
-                    <Button>Current Category is {this.state.category}</Button>
+                    <button className='category-button'>Current Category is {this.state.category}</button>
                 </div>
                 <Button onClick={ () => this.setState({
                     filteredPosts: this.state.posts
