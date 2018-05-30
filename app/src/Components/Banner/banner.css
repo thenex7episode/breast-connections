@@ -13,7 +13,7 @@
 .d-banner-content1{
     color:white;
     font-size: 6em;
-    padding:10px;
+    padding:12px;
 }
 .d-banner-content2{
     color:#F433AB;
@@ -23,7 +23,7 @@
 .d-banner-content3{
     color:white;
     font-size: 6em;
-    padding:10px;
+    padding:12px;
 }
 
 @media only screen and (max-width: 1000px) {
