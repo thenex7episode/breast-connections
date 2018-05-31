@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="postContainer"
+>
+  <div
+    className="titleContainer"
+  >
+    <div
+      style={
+        Object {
+          "padding": "1em",
+        }
+      }
+    >
+      <Input
+        disabled={false}
+        onChange={[Function]}
+        prefixCls="ant-input"
+        style={
+          Object {
+            "display": "none",
+            "fontSize": "1.5em",
+          }
+        }
+        type="text"
+      />
+      <div
+        style={
+          Object {
+            "display": "block",
+            "fontSize": "1.5em",
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "fontSize": "0.8em",
+          }
+        }
+      >
+        posted on 
+        , by 
+      </div>
+    </div>
+    <div>
+      <Icon
+        onClick=""
+        style={
+          Object {
+            "display": "block",
+            "opacity": "0",
+            "paddingBottom": "1em",
+          }
+        }
+        type="ellipsis"
+      />
+      <ul
+        className="editContainer"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <li
+          onClick={[Function]}
+        >
+          <Icon
+            type="delete"
+          />
+           Delete
+        </li>
+        <li
+          onClick={[Function]}
+        >
+          <Icon
+            type="edit"
+          />
+           Edit
+        </li>
+      </ul>
+      <Avatar
+        prefixCls="ant-avatar"
+        shape="circle"
+        size="default"
+        src=""
+      />
+    </div>
+  </div>
+  <div
+    className="postBody"
+  >
+    <div>
+      <PostImage />
+    </div>
+    <div
+      className="contentContainer"
+    >
+      <TextArea
+        onChange={[Function]}
+        prefixCls="ant-input"
+        style={
+          Object {
+            "display": "none",
+            "fontSize": "1.5em",
+          }
+        }
+      />
+      <Button
+        ghost={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="ant-btn"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        Save
+      </Button>
+      <p
+        style={
+          Object {
+            "display": "block",
+            "padding": "1em",
+          }
+        }
+      />
+      <div>
+        <Badge
+          className="trackerBadge"
+          count={null}
+          dot={false}
+          overflowCount={99}
+          prefixCls="ant-badge"
+          scrollNumberPrefixCls="ant-scroll-number"
+          showZero={false}
+          style={
+            Object {
+              "backgroundColor": "green",
+            }
+          }
+        />
+        <Button
+          ghost={false}
+          icon="up"
+          loading={false}
+          onClick={[Function]}
+          prefixCls="ant-btn"
+          shape="circle"
+        />
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      />
+      <Button
+        ghost={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="ant-btn"
+      >
+        Read
+      </Button>
+    </div>
+  </div>
+</div>
+`;
