@@ -132,7 +132,10 @@ export default class Profile extends Component {
                 <div className='edit'>
                     {!edit  
                         ? loggedInUser === user ?
+                        <div>
                             <Button size={size}type= 'dashed' style={{float: 'right'}} onClick={() => this.setState({edit: true})}>Edit</Button> 
+                            <Link to='/donate'><Button size={size}type= 'dashed' style={{float: 'right'}}>Donate Product</Button></Link>
+                        </div>
                             :  ''   
                     :<div>
                         <Popconfirm title="Are you sure delete this user? All of your posts, comments, and your profile will be deleted form our database and you will have to re-register" onConfirm={confirm} onCancel={cancel} okText="Yes" cancelText="No">
@@ -161,6 +164,7 @@ export default class Profile extends Component {
                 
                 
             </div>
+            <Link to='/shop'><Button>Shop</Button></Link>
                 {userPosts}
                 
             </div>
