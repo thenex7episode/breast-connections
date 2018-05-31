@@ -99,7 +99,7 @@ app.post('/register', (req,res) => {
         }else {
             bcrypt.hash(password, saltRounds).then(hashedPassword => {
                 app.get('db').create_user([username, email, first , last, hashedPassword]).then(newUser => {
-                    req.session.user = {username: newUser[0].username, user_id: newUser[0].user_id, admin: newUser[0].admin }
+                    req.session.user = {username: newUser[0].username, user_id: newUser[0].user_id, admin: newUser[0].admin, imageurl: newUser[0].imageurl }
                     const user = req.session.user
                     res.status(200).json({ username })
                 })

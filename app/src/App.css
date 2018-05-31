@@ -39,8 +39,17 @@ h6 {
 }
 
 a {
-  color: #C16200;
+  color: #f2f2f2;
 }
+
+a:hover {
+  color: #f2f2f2;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
 
 
 .d-main-wrapper{
@@ -60,11 +69,9 @@ a {
 }
 
 /* antD Improvements */
-.ant-btn:hover,.ant-input .ant-btn:focus {
-  color: #444;
-  border-color: #444;
-  
+.ant-btn:hover, .ant-btn:focus {
+  color: #666;
+  border-color: #666;
 }
-
 
 

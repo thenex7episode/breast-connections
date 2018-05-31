@@ -5,7 +5,7 @@ import logo from '../../logo.png'
 import axios from'axios';
 import { Menu, Dropdown, Icon } from 'antd';
 import { browserHistory } from 'react-router'
-import textLogo from '../textlogo.png'
+import textLogo from '../textlogo1.png'
 
 
 

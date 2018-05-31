@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import "./reset.css";
 import Navbar from "./Components/Navbar/Navbar";
+import Nav from "./Components/Navbar/Nav";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Loading from './Components/Loading'
 import axios from 'axios'
@@ -32,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Nav />
         <div className="d-main-wrapper">
           {/* {this.state.logged ? <Sidebar /> : ''} */}
           <div className="d-routes">
