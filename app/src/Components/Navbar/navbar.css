@@ -7,6 +7,13 @@
     width:100px;
     margin-left: 25px;
 }
+.textlogo{
+    float: left;
+    height:150px;
+    width:300px;
+    margin-left: -125px;
+    z-index: 1;
+}
 ul{
     cursor: pointer;
     font-size: 1.5em;
