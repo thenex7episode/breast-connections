@@ -5,6 +5,7 @@ import logo from '../../logo.png'
 import axios from'axios';
 import { Menu, Dropdown, Icon } from 'antd';
 import { browserHistory } from 'react-router'
+import textLogo from '../textlogo.png'
 
 
 
@@ -47,6 +48,8 @@ render() {
           <div>
              <div className='nav'>
                  <img src={logo} alt="logo" className="logo" />
+                    <img src={textLogo} alt="logo" className="textlogo" />
+                 
                      <label for='toggle'>&#9776;</label>
                          <input type='checkbox' id='toggle' />
                              <div className='menu'>

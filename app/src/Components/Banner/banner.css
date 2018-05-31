@@ -1,0 +1,52 @@
+.d-banner{
+    display:flex;
+    flex-direction: row;
+    background:black;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15em;
+    padding-top:7em;
+
+}
+
+.d-banner-content1{
+    color:white;
+    font-size: 6em;
+    padding:12px;
+}
+.d-banner-content2{
+    color:#F433AB;
+    font-size: 6em;
+    padding:10px;
+}
+.d-banner-content3{
+    color:white;
+    font-size: 6em;
+    padding:12px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .d-banner-content1, .d-banner-content2, .d-banner-content3{
+        font-size: 4em;
+    }
+    
+}
+@media only screen and (max-width: 700px) {
+    .d-banner-content1, .d-banner-content2, .d-banner-content3{
+        font-size: 3em;
+    }
+    
+}
+@media only screen and (max-width: 550px) {
+    .d-banner-content1, .d-banner-content2, .d-banner-content3{
+        font-size: 2em;
+    }
+    
+}
+@media only screen and (max-width: 375px) {
+    .d-banner-content1, .d-banner-content2, .d-banner-content3{
+        font-size: 1.5em;
+    }
+    
+}
