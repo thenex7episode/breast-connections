@@ -34,8 +34,8 @@ export default class Image extends Component {
 
     render() {
         return (
-            <div>
-                <img maxwidth='400' maxheight='400' src={this.state.image} alt='resultphoto' />
+            <div className='imageBox' style={{background: `url(${this.state.image}) center`}}>
+                {/* <img maxwidth='400' maxheight='400' src={this.state.image} alt='resultphoto' /> */}
             </div>
         );
     }

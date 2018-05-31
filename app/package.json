@@ -27,6 +27,7 @@
   },
   "proxy": "http://localhost:4000",
   "devDependencies": {
-    "cypress": "^2.1.0"
+    "cypress": "^2.1.0",
+    "react-test-renderer": "^16.4.0"
   }
 }

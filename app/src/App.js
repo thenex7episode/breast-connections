@@ -1,7 +1,7 @@
 import routes from './routes'
 import React, { Component } from "react";
-import "./reset.css";
 import "./App.css";
+import "./reset.css";
 import Navbar from "./Components/Navbar/Navbar";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Loading from './Components/Loading'
@@ -11,10 +11,21 @@ import {Link} from 'react-router-dom'
 
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      logged: false
+    }
+  }
 
-  
-
-
+  componentDidMount(){
+    axios.get(`/api/check-session/`).then( data => {
+      console.log('session data', data)
+      if(data.data.username){
+        this.setState({logged: true})
+      }
+    })
+  }
 
 
 
@@ -23,7 +34,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <div className="d-main-wrapper">
-          <Sidebar />
+          {/* {this.state.logged ? <Sidebar /> : ''} */}
           <div className="d-routes">
             { routes }          
        

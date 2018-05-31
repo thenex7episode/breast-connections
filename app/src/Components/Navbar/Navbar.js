@@ -26,21 +26,11 @@ export default class Navbar extends Component {
               this.setState({isLoggedIn: true})
           } else {
               console.log('not logged in')
-              this.props.history.push('/login')
+              this.props.history.location.push('/login')
           }
       }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
   }
 
-
-  componentWillReceiveProps() {
-    axios.get('/api/check-session').then(r => {
-      console.log('hello from the mount side')
-        if(r.data.username) {
-            console.log('navbar username log', r.data.username)
-            this.setState({isLoggedIn: true})
-        }
-    }).catch(err => {console.log('WWEEEWWWOOOWWWEEEWWWOOO',err)})
-}
 
 
 logout= () => {
