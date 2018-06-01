@@ -15,6 +15,7 @@ export default class Chatroom extends Component {
             user_id: '',
             receiver: '',
             bodyInput: '',
+            receiver_id: '',
             users: [],
             chats: []
         }
@@ -28,14 +29,17 @@ export default class Chatroom extends Component {
                 window.location = '/login'
             }
             axios.get('/api/chat/chats').then(data => {
-                // const chats = [];
-                for(let i =0; i < data.data.length; i++) {
-                    if(data.data[i].receiver === data.data[i].sender ) {
-                        
+                const chats = [];
+                const ids = [];
+                for(let i = 0; i < data.data.length; i++){
+                    if(ids.includes(data.data[i].chat_id)){
+                        console.log('know about that chat')
+                    } else {
+                        ids.push(data.data[i].chat_id)
+                        chats.push(data.data[i])
                     }
-                    this.setState({chats: data.data[i].receiver})
-                    console.log('data in chatroom:', data.data[i].receiver != this.state.username)
                 }
+                this.setState({chats: chats})
             })
         })
     }
@@ -48,9 +52,15 @@ export default class Chatroom extends Component {
 
     sendMessage(){
         if(this.state.bodyInput && this.state.receiver){
+            const chat_id = this.state.user_id < this.state.receiver_id 
+            ? this.state.user_id.toString() + this.state.receiver_id.toString() 
+            : this.state.receiver_id.toString() + this.state.user_id.toString()
+            console.log(chat_id)
             const message = {
                 receiver: this.state.receiver,
-                body: this.state.bodyInput
+                body: this.state.bodyInput,
+                receiver_id: this.state.receiver_id,
+                chat_id: parseInt(chat_id,10)
             }
             axios.post('/api/chat/addmessage', message).then( data => {
                 console.log(data.data)
@@ -61,8 +71,13 @@ export default class Chatroom extends Component {
     }
 
     render() {
+<<<<<<< HEAD
         const userList = this.state.users.map(el => <li onClick={() => this.setState({receiver: el.username})}>{el.username}</li>);
         // const chatList = this.state.chats.ma
+=======
+        const userList = this.state.users.map(el => <li onClick={() => this.setState({receiver: el.username, receiver_id: el.user_id})}>{el.username}</li>);
+        const chatList = this.state.chats.ma
+>>>>>>> e7a747cdda6734ca6aa412bbaa2545d6e65fe6c4
         return (
             <div style={{marginTop: '5em'}}>
                 <h2>Start a new chat</h2>

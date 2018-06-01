@@ -1,1 +1,1 @@
-select username from users_bc; 
+select * from users_bc; 
