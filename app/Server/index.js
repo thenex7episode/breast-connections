@@ -100,7 +100,9 @@ app.get('/api/product/:id', c.getProductById)
 
 //Messages Endpoints
 app.get('/api/chat/usernames', cc.getUsernames)
+app.post('/api/chat/addmessage', cc.sendMessage)
 app.get('/api/chat/chats/', cc.getAllUserChats)
+app.get('/api/chat/messages/:user/:chatpartner', cc.getMessages)
 
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//

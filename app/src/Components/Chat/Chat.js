@@ -6,7 +6,9 @@ export default class Chat extends Component {
         super();
         this.state = {
             username: '',
-            user_id: ''
+            user_id: '',
+            messagesSender: [],
+            messagesReceiver: []
         }
     }
 
@@ -14,6 +16,10 @@ export default class Chat extends Component {
         axios.get(`/api/check-session/`).then( data => {
             console.log('session res', data)
             this.setState({username: data.data.username, user_id: data.data.user_id})
+            axios.get(`/api/chat/messages/${data.data.username}/${this.props.match.params.username}`).then(data => {
+                console.log(data.data)
+                this.setState({messagesSender: data.data})
+            })
         })
     }
 
