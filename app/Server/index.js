@@ -54,6 +54,7 @@ app.get('/api/images/:id', (req, res) => {
 })
 
 
+
 // Endpoints for creating, updating and deleting a Post
 app.post('/api/addpost/', c.addPost)
 app.put('/api/addtracker/', c.addTracker)
