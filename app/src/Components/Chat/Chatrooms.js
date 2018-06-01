@@ -28,6 +28,10 @@ export default class Chatroom extends Component {
                 window.location = '/login'
             }
             axios.get('/api/chat/chats').then(data => {
+                const chats = [];
+                for(let i =0; i < data.data.length; i++) {
+                    if(data.data[i].receiver )
+                }
                 this.setState({chats: data.data})
             })
         })
@@ -71,7 +75,7 @@ export default class Chatroom extends Component {
                 dataSource={this.state.chats}
                 renderItem={item => (
                 <List.Item>
-                    <Card title={item.sender}>{item.body}</Card>
+                    <Card title={item.sender}>{item.receiver}{item.body}</Card>
                 </List.Item>
                 )}
             />
