@@ -79,7 +79,7 @@ export default class Nav extends Component {
                                             </Menu.Item>
                                             <Menu.Item>
                                                 <Icon type='chat' />
-                                                <Link to={`/chatroom/`}>Profile</Link>
+                                                <Link to={`/chatroom/`}>Chat</Link>
                                             </Menu.Item>
                                             <Menu.Item>
                                                 <Icon type='logout' />
