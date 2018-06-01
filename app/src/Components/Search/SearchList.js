@@ -76,7 +76,7 @@ export default class SearchList extends Component {
                 bRating.push(star)
             }
             return (
-                <Result className='searchResult' place_id={el.place_id} key={i} name={el.name} adress={el.adress} gRating={el.rating ? gRating : 'no rating'} reference={el} createMode={this.createMode}/> 
+                <Result className='searchResult' types={el.types} place_id={el.place_id} key={i} name={el.name} adress={el.adress} gRating={el.rating ? gRating : 'no rating'} reference={el} createMode={this.createMode}/> 
                 // <li className='place_container'>
                 //     <div>
                 //         <h6>{el.name}</h6>

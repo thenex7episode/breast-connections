@@ -90,9 +90,9 @@ module.exports = {
         })
     },
     getGoogleResults: (req, res) => {
-        const { tags, cords } = req.body;
+        const { tags, cords, radius } = req.body;
         console.log(cords, tags)
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${cords.lat},${cords.lng}&rankby=distance&type=${tags}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A`).then(data => {
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${cords.lat},${cords.lng}&radius=${radius}&type=${tags}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A`).then(data => {
             console.log(data.data.next_page_token)
             let reducedList = data.data.results.map(el => {
                 return {
