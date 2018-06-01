@@ -71,6 +71,7 @@ app.get('/api/user/:username', c.userData)
 app.put('/api/editprofile/:username', c.editProfile)
 app.get('/api/posts/', c.getAllPosts)
 app.delete('/api/deleteuser/:user_id', c.deleteUser)
+app.get('/api/userposts/:user_id', c.getUserPosts)
 
 // Comment Crud
 app.post('/api/addcomment/', c.addComment)
