@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const ctrl = require('./controller.js');
 const PORT = 4000;
 const c = require('./controller');
+const cc = require('./chatcontroller')
 const session = require('express-session')
 const massive = require('massive')
 const bcrypt = require('bcrypt')
@@ -97,7 +98,7 @@ app.put('/api/editproduct/:id', c.editProduct)
 app.get('/api/product/:id', c.getProductById)
 
 //Messages Endpoints
-app.get('/api/usernames', c.getUsernames)
+app.get('/api/usernames', cc.getUsernames)
 
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//
