@@ -28,11 +28,14 @@ export default class Chatroom extends Component {
                 window.location = '/login'
             }
             axios.get('/api/chat/chats').then(data => {
-                const chats = [];
+                // const chats = [];
                 for(let i =0; i < data.data.length; i++) {
-                    if(data.data[i].receiver )
+                    if(data.data[i].receiver === data.data[i].sender ) {
+                        
+                    }
+                    this.setState({chats: data.data[i].receiver})
+                    console.log('data in chatroom:', data.data[i].receiver != this.state.username)
                 }
-                this.setState({chats: data.data})
             })
         })
     }
@@ -59,7 +62,7 @@ export default class Chatroom extends Component {
 
     render() {
         const userList = this.state.users.map(el => <li onClick={() => this.setState({receiver: el.username})}>{el.username}</li>);
-        const chatList = this.state.chats.ma
+        // const chatList = this.state.chats.ma
         return (
             <div style={{marginTop: '5em'}}>
                 <h2>Start a new chat</h2>
