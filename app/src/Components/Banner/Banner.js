@@ -1,7 +1,5 @@
 import React from 'react'
 import './banner.css'
-import styled from 'styled-components';
-
 
 const Banner = (props) => {
 
