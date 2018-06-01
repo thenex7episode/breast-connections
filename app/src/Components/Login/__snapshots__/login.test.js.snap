@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="d-login"
+  onKeyPress={[Function]}
+  style={
+    Object {
+      "padding": "5em",
+    }
+  }
+>
+  <h1>
+    Login
+  </h1>
+  <Input
+    disabled={false}
+    onChange={[Function]}
+    placeholder="username"
+    prefixCls="ant-input"
+    type="text"
+  />
+  <Input
+    disabled={false}
+    onChange={[Function]}
+    placeholder="password"
+    prefixCls="ant-input"
+    type="password"
+  />
+  <Button
+    ghost={false}
+    loading={false}
+    onClick={[Function]}
+    prefixCls="ant-btn"
+    type="primary"
+  >
+    Login
+  </Button>
+  <Link
+    replace={false}
+    to="/register"
+  >
+    <Button
+      ghost={false}
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      Register
+    </Button>
+  </Link>
+</div>
+`;

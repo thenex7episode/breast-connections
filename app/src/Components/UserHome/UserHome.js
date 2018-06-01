@@ -17,7 +17,6 @@ class UserHome extends Component{
             loggedUser: '',
             filteredPosts: [],
             category:''
-
         }
         this.deletePost = this.deletePost.bind(this)
     }

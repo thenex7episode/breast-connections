@@ -70,7 +70,7 @@ export default class Nav extends Component {
                     </Dropdown>
                     <li><Icon className='navIcon' type="environment" /><Link to='/search'>Search</Link></li>
                     <li><Icon className='navIcon' type="shopping-cart" /><Link to='/shop'>Shop</Link></li>
-                    <li><Icon className='navIcon' type="bulb" /><Link to='/about'>Info</Link></li>
+                    <li><Icon className='navIcon' type="bulb" /><Link to='/info'>Info</Link></li>
                     <li style={{display: this.state.user_id ? 'none' : 'block'}}><Link to='/login'><Button icon="user">Login</Button></Link></li>
                     <Dropdown overlay={<Menu>
                                             <Menu.Item>
@@ -92,7 +92,7 @@ export default class Nav extends Component {
                 <li><Icon className='navIcon' type="team" /><Link to='/dashboard'>Forums</Link></li>
                 <li><Icon className='navIcon' type="environment" /><Link to='/search'>Search</Link></li>
                 <li><Icon className='navIcon' type="shopping-cart" /><Link to='/shop'>Shop</Link></li>
-                <li><Icon className='navIcon' type="bulb" /><Link to='/about'>Info</Link></li>
+                <li><Icon className='navIcon' type="bulb" /><Link to='/info'>Info</Link></li>
                 <li style={{display: this.state.user_id ? 'none' : 'block'}}><Link to='/login'><Button icon="user">Login</Button></Link></li>
             </ul>
             </div>

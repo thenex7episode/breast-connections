@@ -189,5 +189,32 @@ module.exports = {
               let likes = data.map(el => el.user_id)
               res.status(200).send(likes)
           })
+      },
+      getProducts: (req,res) => {
+          req.app.get('db').getProducts().then(data => {
+              res.status(200).send(data)
+          })
+      },
+      newProduct: (req, res) => {
+          const {item_name, description, username, imageurl} = req.body
+          req.app.get('db').createProduct([item_name, description, username, imageurl]).then(data => {
+            res.status(200).send(data)
+          })
+      },
+      deleteProduct: (req, res) => {
+          req.app.get('db').deleteProduct(req.params.id).then(data => {
+              res.status(200).send(data)
+          })
+      },
+      editProduct: (req, res) => {
+          console.log(req.body)
+          req.app.get('db').editProduct([req.params.id, req.body.product, req.body.description]).then(data => {
+              res.status(200).send(data)
+          })
+      },
+      getProductById: (req, res) => {
+          req.app.get('db').getProductById(req.params.id).then(data => {
+              res.status(200).send(data)
+          })
       }
 }
