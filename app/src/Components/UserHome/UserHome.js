@@ -12,7 +12,6 @@ class UserHome extends Component{
         super()
 
         this.state = {
-
             posts: [],
             loggedUser: '',
             filteredPosts: [],
