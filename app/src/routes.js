@@ -14,11 +14,15 @@ import UserHome from './Components/UserHome/UserHome'
 import Shop from './Components/Shop/Shop'
 import NewProduct from './Components/NewProduct/NewProduct'
 import EditProduct from './Components/editProduct/editProduct'
+import Chatrooms from './Components/Chat/Chatrooms'
+import Chat from './Components/Chat/Chat'
 
 const routes = 
 <div>
     <Switch>
         <Route path='/userhome' component={ UserHome } />
+        <Route path='/chatroom' component={ Chatrooms } />
+        <Route path='/chat/:username' component={ Chat } />
         <Route path='/register' component={ Register } />
         <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />

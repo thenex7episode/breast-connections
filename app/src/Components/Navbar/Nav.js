@@ -78,6 +78,10 @@ export default class Nav extends Component {
                                                 <Link to={`/profile/${this.state.username}`}>Profile</Link>
                                             </Menu.Item>
                                             <Menu.Item>
+                                                <Icon type='chat' />
+                                                <Link to={`/chatroom/`}>Profile</Link>
+                                            </Menu.Item>
+                                            <Menu.Item>
                                                 <Icon type='logout' />
                                                 <Link onClick={() => this.logout()}to='/dashboard/motivation'>Logout</Link>
                                             </Menu.Item>
