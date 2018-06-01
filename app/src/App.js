@@ -35,7 +35,7 @@ class App extends Component {
       <div className="App">
         <Nav />
         <div className="d-main-wrapper">
-          {/* {this.state.logged ? <Sidebar /> : ''} */}
+          {/* <Sidebar /> */}
           <div className="d-routes">
             { routes }          
        

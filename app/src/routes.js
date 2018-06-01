@@ -12,6 +12,8 @@ import Home from './Components/Home';
 import Info from './Components/Info/Info'
 import UserHome from './Components/UserHome/UserHome'
 import Shop from './Components/Shop/Shop'
+import NewProduct from './Components/NewProduct/NewProduct'
+import EditProduct from './Components/editProduct/editProduct'
 
 const routes = 
 <div>
@@ -28,6 +30,8 @@ const routes =
         <Route path='/search' component={ Search } />
         <Route path='/dashboard' component={ UserHome } />
         <Route path='/shop' component={Shop}/>
+        <Route path='/donate' component={NewProduct}/>
+        <Route path='/edit/:id' component={EditProduct}/>
         <Route path='/' component={ Home } />
         
     </Switch>
