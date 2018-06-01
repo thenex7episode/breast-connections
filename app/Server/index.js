@@ -89,12 +89,15 @@ app.post('/api/experience/', c.addExperience)
 app.delete('/api/experience/:eid/:pid', c.deleteExperience)
 app.get('/api/experiences/:id', c.getExperiences)
 
-// Shop Page endpoints
+// Shop Page Endpoints
 app.get('/api/products', c.getProducts)
 app.post('/api/newproduct', c.newProduct)
 app.delete('/api/delete/:id', c.deleteProduct)
 app.put('/api/editproduct/:id', c.editProduct)
 app.get('/api/product/:id', c.getProductById)
+
+//Messages Endpoints
+app.get('/api/usernames', c.getUsernames)
 
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//
