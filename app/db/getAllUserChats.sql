@@ -1,0 +1,1 @@
+select * from messages_bc where sender = $1 or receiver = $1

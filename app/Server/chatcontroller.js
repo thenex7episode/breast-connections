@@ -9,5 +9,10 @@ module.exports = {
         req.app.get('db').getUsers().then(data => {
             res.status(200).send(data)
         })
+    },
+    getAllUserChats: (req, res) => {
+        req.app.get('db').getAllUserChats(req.session.user.username).then(data => {
+            res.status(200).send(data)
+        })
     }
 }
