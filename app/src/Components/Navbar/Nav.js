@@ -79,7 +79,7 @@ export default class Nav extends Component {
                                             </Menu.Item>
                                             <Menu.Item>
                                                 <Icon type='chat' />
-                                                <Link to={`/chatroom/`}>Profile</Link>
+                                                <Link to={`/chatroom/`}>Chat</Link>
                                             </Menu.Item>
                                             <Menu.Item>
                                                 <Icon type='logout' />
@@ -97,6 +97,7 @@ export default class Nav extends Component {
                 <li><Icon className='navIcon' type="environment" /><Link to='/search'>Search</Link></li>
                 <li><Icon className='navIcon' type="shopping-cart" /><Link to='/shop'>Shop</Link></li>
                 <li><Icon className='navIcon' type="bulb" /><Link to='/info'>Info</Link></li>
+                <li><Icon className='navIcon' type="chat" /><Link to='/chatroom'>Chat</Link></li>
                 <li style={{display: this.state.user_id ? 'none' : 'block'}}><Link to='/login'><Button icon="user">Login</Button></Link></li>
             </ul>
             </div>

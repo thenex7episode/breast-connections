@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { message, Button } from 'antd';
+import { message, Button, List, Card } from 'antd';
+
 
 const error = () => {
-    message.error('This is a message of error');
+    message.warning('Please enter a Message and a Receiver');
   };
 
 export default class Chatroom extends Component {
@@ -14,7 +15,8 @@ export default class Chatroom extends Component {
             user_id: '',
             receiver: '',
             bodyInput: '',
-            users: []
+            users: [],
+            chats: []
         }
     }
 
@@ -22,11 +24,17 @@ export default class Chatroom extends Component {
         axios.get(`/api/check-session/`).then( data => {
             console.log('session res', data)
             this.setState({username: data.data.username, user_id: data.data.user_id})
+            if(!data.data.username){
+                window.location = '/login'
+            }
+            axios.get('/api/chat/chats').then(data => {
+                this.setState({chats: data.data})
+            })
         })
     }
 
     getUsers(){
-        axios.get('/api/chat/users').then(data => {
+        axios.get('/api/chat/usernames').then(data => {
             this.setState({users: data.data})
         })
     }
@@ -46,15 +54,27 @@ export default class Chatroom extends Component {
     }
 
     render() {
-        const userList = this.state.users.map(el => <li onClick={() => this.setState({receiver: el.username})}>{el.username}</li>)
+        const userList = this.state.users.map(el => <li onClick={() => this.setState({receiver: el.username})}>{el.username}</li>);
+        const chatList = this.state.chats.ma
         return (
             <div style={{marginTop: '5em'}}>
                 <h2>Start a new chat</h2>
-                <input value={this.state.bodyInput} onChange={e => this.setState({body: e.target.value})}/>
+                <input value={this.state.bodyInput} onChange={e => this.setState({bodyInput: e.target.value})}/>
                 <Button onClick={() => this.getUsers()}>Search Users</Button>
-            <ul>
+                <Button onClick={() => this.sendMessage()}>Start chatting</Button>
+                <div>selected: {this.state.receiver}</div>
+            <ul style={{display: this.state.receiver ? 'none' : 'block'}}>
                 {userList}    
             </ul>
+            <List
+                grid={{ gutter: 16, column: 4 }}
+                dataSource={this.state.chats}
+                renderItem={item => (
+                <List.Item>
+                    <Card title={item.sender}>{item.body}</Card>
+                </List.Item>
+                )}
+            />
             </div>
         );
     }
