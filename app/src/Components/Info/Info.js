@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './info.css'
+import Banner from '../Banner/Banner'
 
 export default class Info extends Component {
     render() {
-        return (
+        return (<div>
+                <Banner text1 = { "About" } text2 ={"Breast"} text3={'Connections'}/>
             <div className = 'info'>
                 <h1>About Breast Connections</h1>
                 <p>Breast connections is a non-profit social media platform that gives cancer patients, family/friends of cancer patients, and anyone 
@@ -21,6 +23,7 @@ export default class Info extends Component {
                     that will allow you to post what you need to know based off what you want to know. You can post a question or about and what you've been 
                     doing and let people reply to you.
                 </p>
+            </div>
             </div>
         );
     }

@@ -7,20 +7,20 @@
     width:100px;
     margin-left: 25px;
 }
+.textlogo{
+    float: left;
+    height:150px;
+    width:300px;
+    margin-left: -125px;
+    z-index: 1;
+    margin-top:-1em;
+    padding:0;
+}
 ul{
     cursor: pointer;
     font-size: 1.5em;
 }
-nav{
-    padding-right: 10em;
-}
     
-/* .forums{
-    position: fixed;
-    top: 5em;
-    background-color: purple;
-    right: 2em; */
-/* } */
 
 .sub-menu{
     display: block;
@@ -46,7 +46,7 @@ background:#FF88DC;
     /* border-bottom: 1px solid black; */
     text-align: right;
     line-height: 70px;
-    background-color:#F433AB; 
+    background-color: #BD2D87; 
     color: white;
     min-height:8em;
     position: fixed;
@@ -95,7 +95,6 @@ label {
     background-color: black;
     min-width: 80px;
     z-index: 1;
-    opacity: .5;
     margin: 0 auto;
     margin-left:1em;
 }

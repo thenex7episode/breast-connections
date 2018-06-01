@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="d-userhome-header"
+  >
+    <h1
+      className="d-connect"
+    >
+      Connect.
+    </h1>
+    <h1
+      className="d-inspire"
+    >
+      Inspire.
+    </h1>
+    <h1
+      className="d-thrive"
+    >
+      Thrive.
+    </h1>
+  </div>
+  <div
+    className="category-dropdown"
+  >
+    <Dropdown
+      mouseEnterDelay={0.15}
+      mouseLeaveDelay={0.1}
+      overlay={
+        <Menu
+          className=""
+          focusable={false}
+          prefixCls="ant-menu"
+          theme="light"
+        >
+          <MenuItem>
+            <a
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Motivation
+            </a>
+          </MenuItem>
+          <MenuItem>
+            <a
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Resources
+            </a>
+          </MenuItem>
+          <MenuItem>
+            <a
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Family
+            </a>
+          </MenuItem>
+          <MenuItem>
+            <a
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Nutrition
+            </a>
+          </MenuItem>
+          <MenuItem>
+            <a
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Health
+            </a>
+          </MenuItem>
+          <MenuItem>
+            <a
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Financial
+            </a>
+          </MenuItem>
+        </Menu>
+      }
+      placement="bottomCenter"
+      prefixCls="ant-dropdown"
+    >
+      <Button
+        ghost={false}
+        loading={false}
+        prefixCls="ant-btn"
+      >
+        Categories
+      </Button>
+    </Dropdown>
+    <div
+      className="category-current"
+    >
+      <button
+        className="category-button"
+      >
+        Current Category is 
+      </button>
+    </div>
+    <Button
+      ghost={false}
+      loading={false}
+      onClick={[Function]}
+      prefixCls="ant-btn"
+    >
+      Clear Category
+    </Button>
+  </div>
+</div>
+`;

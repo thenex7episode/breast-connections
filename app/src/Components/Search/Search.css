@@ -1,7 +1,5 @@
 .place_container {
     display: flex;
-    justify-content: space-between;
-    margin: 4em 2em;
     text-align: left;
 }
 
@@ -13,8 +11,35 @@
 .resultsContainer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .searchResult {
     width: 30%;
+}
+
+.imageBox {
+    /* background-position: center; */
+    width: 250px;
+    height: 200px;
+}
+
+.infoContainer {
+    flex: 1;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ant-slider {
+    margin: 0;
+    padding: 0;
+}
+
+.searchContainer {
+    background: url('https://images.unsplash.com/photo-1508873787497-1b513a18217a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9b4a2d26c22230e8131a67ef9ab76ef0&auto=format&fit=crop&w=1650&q=80');
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding: 8em;
 }

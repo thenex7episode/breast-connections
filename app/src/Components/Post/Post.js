@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Post.css';
-import { Avatar, Icon, Badge, Button, Input, Menu, Dropdown, Spin } from 'antd';
+import { Avatar, Icon, Badge, Button, Input, Menu, Dropdown, Spin, Tooltip } from 'antd';
 import { relative } from 'path';
 import Comments from '../Comments/Comments';
 import PostImage from './PostImage';
@@ -24,7 +24,9 @@ export default class Post extends Component {
             bodyInput: null,
             userPost: true,
             collapsed: false,
-            comments: null
+            comments: null,
+            allow: true,
+            likes: []
         }
     }
 
@@ -32,10 +34,19 @@ export default class Post extends Component {
         axios.get(`/api/posts/${this.props.user_id}`).then(data => {
             console.log(data)
             this.setState({username: data.data[0].username, userImage: data.data[0].imageurl})
-        })
+        });
+        axios.get(`/api/likes/${this.props.post_id}`).then(data => {
+            console.log('---COMPARISON', data.data, this.props.loggedUserID)
+            if(data.data.includes(this.props.loggedUserID)){
+                this.setState({likes: data.data, allow: false})
+            } else {
+                this.setState({likes: data.data})
+            }
+        });
     }
 
     increaseTracker(){
+        // increase Tracker in Posts Table
         const post = {
             post_id: this.props.post_id,
             tracker: this.state.tracker+1
@@ -43,6 +54,17 @@ export default class Post extends Component {
         axios.put(`/api/addtracker/`, post).then(data => {
             console.log(data.data.data[0].tracker)
             this.setState({tracker: data.data.data[0].tracker})
+        })
+
+        // save the User ID to the likes table to identify if the user is allowed to like that post
+        const like = {
+            post_id: this.props.post_id,
+            user_id: this.props.loggedUserID
+        }
+        axios.post('/api/likes/', like).then(data => {
+            const newLikes = this.state.likes;
+            newLikes.push(this.props.loggedUserID)
+            this.setState({likes: newLikes})
         })
     }
 
@@ -94,9 +116,11 @@ export default class Post extends Component {
                         <p style={{padding: '1em', display: this.state.editMode ? 'none' : 'block'}}>{this.state.bodyInput || body}</p>
                         <div>
                             <Badge className='trackerBadge' count={this.state.tracker} style={{ backgroundColor: 'green' }} />
-                            <Button onClick={() => this.increaseTracker()} shape="circle" icon="up" />
+                            <Button  style={{color: this.state.allow ? 'black' : '#f4f4f4'}} onClick={this.state.allow ? () => this.increaseTracker(): ''} shape="circle" icon="up" />
                         </div>
                     </div>
+
+                    {/* // comments Section - hide on default */}
                     <div style={{textAlign: 'center'}}>
                         <div style={{display: this.state.collapsed ? 'block' : 'none'}}>
                             {this.state.comments}

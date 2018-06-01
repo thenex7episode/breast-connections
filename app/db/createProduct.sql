@@ -1,0 +1,1 @@
+insert into products_bc (item_name, description, username, imageurl) values ($1, $2, $3, $4)

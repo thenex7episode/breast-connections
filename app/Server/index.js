@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const ctrl = require('./controller.js');
 const PORT = 4000;
 const c = require('./controller');
+const cc = require('./chatcontroller')
 const session = require('express-session')
 const massive = require('massive')
 const bcrypt = require('bcrypt')
@@ -63,11 +64,16 @@ app.delete('/api/deletepost/:id', c.deletePost)
 app.get('/api/getposts/:id', c.getPosts)
 app.get('/api/posts/:id', c.userInfo)
 
+// Endpoints for Like Checking
+app.post('/api/likes/', c.addLike)
+app.get('/api/likes/:post_id', c.getLikes)
+
 // get the UserInformation for a specific user ID
 app.get('/api/user/:username', c.userData)
 app.put('/api/editprofile/:username', c.editProfile)
 app.get('/api/posts/', c.getAllPosts)
 app.delete('/api/deleteuser/:user_id', c.deleteUser)
+app.get('/api/userposts/:user_id', c.getUserPosts)
 
 // Comment Crud
 app.post('/api/addcomment/', c.addComment)
@@ -85,6 +91,17 @@ app.post('/api/experience/', c.addExperience)
 app.delete('/api/experience/:eid/:pid', c.deleteExperience)
 app.get('/api/experiences/:id', c.getExperiences)
 
+// Shop Page Endpoints
+app.get('/api/products', c.getProducts)
+app.post('/api/newproduct', c.newProduct)
+app.delete('/api/delete/:id', c.deleteProduct)
+app.put('/api/editproduct/:id', c.editProduct)
+app.get('/api/product/:id', c.getProductById)
+
+//Messages Endpoints
+app.get('/api/chat/usernames', cc.getUsernames)
+app.get('/api/chat/chats/', cc.getAllUserChats)
+
 app.listen(PORT, () => console.log("You are running on port 4000"));
 // -------------------------Bcrpt Registration & Login----------------------------//
 app.post('/register', (req,res) => {
@@ -96,7 +113,7 @@ app.post('/register', (req,res) => {
         }else {
             bcrypt.hash(password, saltRounds).then(hashedPassword => {
                 app.get('db').create_user([username, email, first , last, hashedPassword]).then(newUser => {
-                    req.session.user = {username: newUser[0].username, user_id: newUser[0].user_id, admin: newUser[0].admin }
+                    req.session.user = {username: newUser[0].username, user_id: newUser[0].user_id, admin: newUser[0].admin, imageurl: newUser[0].imageurl }
                     const user = req.session.user
                     res.status(200).json({ username })
                 })

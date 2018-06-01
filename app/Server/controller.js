@@ -90,9 +90,9 @@ module.exports = {
         })
     },
     getGoogleResults: (req, res) => {
-        const { tags, cords } = req.body;
+        const { tags, cords, radius } = req.body;
         console.log(cords, tags)
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${cords.lat},${cords.lng}&rankby=distance&type=${tags}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A`).then(data => {
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${cords.lat},${cords.lng}&radius=${radius}&type=${tags}&key=AIzaSyDP2xc5L8pWjHE2vgmIRDCK-834Q2eGA0A`).then(data => {
             console.log(data.data.next_page_token)
             let reducedList = data.data.results.map(el => {
                 return {
@@ -168,5 +168,53 @@ module.exports = {
               res.status(200).send(data)
           })
       },
+      getUserPosts: (req,res) => {
+          req.app.get('db').getUserPosts(req.params.user_id).then(data => {
+              res.status(200).send(data)
+          }).catch(error => {
+              console.log('error in getUserPosts:' , error)
+            })
+        },
+              addLike: (req, res) => {
+                  req.app.get('db').addLike([req.body.user_id, req.body.post_id]).then(data => {
+                      res.status(200).send(data)
 
-    }
+                  })
+                },
+      
+      
+        getLikes: (req, res) => {
+          req.app.get('db').getLikes(req.params.post_id).then(data => {
+              console.log(data);
+              let likes = data.map(el => el.user_id)
+              res.status(200).send(likes)
+          })
+      },
+      getProducts: (req,res) => {
+          req.app.get('db').getProducts().then(data => {
+              res.status(200).send(data)
+          })
+      },
+      newProduct: (req, res) => {
+          const {item_name, description, username, imageurl} = req.body
+          req.app.get('db').createProduct([item_name, description, username, imageurl]).then(data => {
+            res.status(200).send(data)
+          })
+      },
+      deleteProduct: (req, res) => {
+          req.app.get('db').deleteProduct(req.params.id).then(data => {
+              res.status(200).send(data)
+          })
+      },
+      editProduct: (req, res) => {
+          console.log(req.body)
+          req.app.get('db').editProduct([req.params.id, req.body.product, req.body.description]).then(data => {
+              res.status(200).send(data)
+          })
+      },
+      getProductById: (req, res) => {
+          req.app.get('db').getProductById(req.params.id).then(data => {
+              res.status(200).send(data)
+          })
+      }
+}

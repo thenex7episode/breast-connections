@@ -1,0 +1,66 @@
+nav {
+    /* border-bottom: 1px solid black; */
+    background-color: #F433AB; 
+    color: white;
+    position: fixed;
+    z-index: 5;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.deskNav {
+    display: flex;
+    margin: 0;
+    padding: 1em;
+}
+
+nav > ul > li {
+    padding: 1em;
+}
+
+nav > ul > li > a{
+    color: white;
+}
+
+.navIcon {
+    padding: 0 0.3em;
+    color: white;
+}
+
+.hamburger {
+    display: none;
+    padding: 1.2em;
+    color: white;
+    font-size: 2.2em;
+    cursor: pointer;
+}
+
+.mobNav {
+    background-color: #F433AB; 
+    position: fixed;
+    padding: 8em 0;
+    height: 100vh;
+    z-index: 4;
+    transition: 1s;
+}
+
+.showMob {
+    right: 0;
+}
+
+.mobNav > li {
+    padding: 0.5em 2em;
+}
+
+@media (max-width: 900px){
+    .deskNav {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    .mobNav {
+        display: block
+    }
+}

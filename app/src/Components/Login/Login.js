@@ -33,7 +33,7 @@ export default class Login extends Component {
         }).then(response => {
             console.log('-----r.data',response.data)
             this.setState({user: response.data})
-            this.props.history.push(`/profile/${response.data.user.username}`)
+            window.location = `/profile/${response.data.user.username}`
             // this.props.isLoggedIn()
         }).catch(error => {
             this.setState({message: <Alert message='Username or Password is incorrect' type='error' closable/>})

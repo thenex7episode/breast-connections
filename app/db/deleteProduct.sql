@@ -1,0 +1,1 @@
+delete from products_bc where product_id = $1
