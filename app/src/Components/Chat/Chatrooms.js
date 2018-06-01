@@ -28,11 +28,21 @@ export default class Chatroom extends Component {
                 window.location = '/login'
             }
             axios.get('/api/chat/chats').then(data => {
-                const chats = [];
+                const comb = [];
+                const newChats = [];
                 for(let i =0; i < data.data.length; i++) {
-                    if(data.data[i].receiver )
+                    let c = arr[i].receiver.length < arr[i].sender.length ? arr[i].receiver : arr[i].sender
+                    let o = arr[i].receiver.length > arr[i].sender.length ? arr[i].receiver : arr[i].sender;
+                    let co = c+o;
+                    console.log(co)
+                    if(comb.includes(co)){
+                        console.log('know about that bro')
+                    } else {
+                        comb.push(co)
+                        newChats.push(data.data[i])
+                    }
                 }
-                this.setState({chats: data.data})
+                this.setState({chats: newChats})
             })
         })
     }
