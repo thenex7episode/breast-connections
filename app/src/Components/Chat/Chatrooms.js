@@ -71,13 +71,8 @@ export default class Chatroom extends Component {
     }
 
     render() {
-<<<<<<< HEAD
-        const userList = this.state.users.map(el => <li onClick={() => this.setState({receiver: el.username})}>{el.username}</li>);
-        // const chatList = this.state.chats.ma
-=======
         const userList = this.state.users.map(el => <li onClick={() => this.setState({receiver: el.username, receiver_id: el.user_id})}>{el.username}</li>);
         const chatList = this.state.chats.ma
->>>>>>> e7a747cdda6734ca6aa412bbaa2545d6e65fe6c4
         return (
             <div style={{marginTop: '5em'}}>
                 <h2>Start a new chat</h2>
@@ -93,7 +88,7 @@ export default class Chatroom extends Component {
                 dataSource={this.state.chats}
                 renderItem={item => (
                 <List.Item>
-                    <Card title={item.sender}>{item.receiver}{item.body}</Card>
+                    <Card title={this.state.username === item.sender ? item.receiver : item.sender}>{item.body}</Card>
                 </List.Item>
                 )}
             />
