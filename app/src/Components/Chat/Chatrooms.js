@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { message, Button, List, Card } from 'antd';
 
 
@@ -53,14 +54,14 @@ export default class Chatroom extends Component {
     sendMessage(){
         if(this.state.bodyInput && this.state.receiver){
             const chat_id = this.state.user_id < this.state.receiver_id 
-            ? this.state.user_id.toString() + this.state.receiver_id.toString() 
-            : this.state.receiver_id.toString() + this.state.user_id.toString()
+            ? this.state.user_id.toString() + '.' + this.state.receiver_id.toString() 
+            : this.state.receiver_id.toString() + '.' + this.state.user_id.toString()
             console.log(chat_id)
             const message = {
                 receiver: this.state.receiver,
                 body: this.state.bodyInput,
                 receiver_id: this.state.receiver_id,
-                chat_id: parseInt(chat_id,10)
+                chat_id: chat_id
             }
             axios.post('/api/chat/addmessage', message).then( data => {
                 console.log(data.data)
@@ -88,7 +89,7 @@ export default class Chatroom extends Component {
                 dataSource={this.state.chats}
                 renderItem={item => (
                 <List.Item>
-                    <Card title={item.sender}>{item.receiver}{item.body}</Card>
+                    <Card title={<Link to={`/chat/${item.chat_id}`}>{item.sender}</Link>}>{item.receiver}{item.body}</Card>
                 </List.Item>
                 )}
             />
