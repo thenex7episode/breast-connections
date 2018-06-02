@@ -89,7 +89,7 @@ export default class Chatroom extends Component {
                 dataSource={this.state.chats}
                 renderItem={item => (
                 <List.Item>
-                    <Card title={<Link to={`/chat/${item.chat_id}`}>{item.sender}</Link>}>{item.receiver}{item.body}</Card>
+                    <Card title={<Link to={`/chat/${item.chat_id}`}>{this.state.username === item.sender ? item.receiver : item.sender}</Link>}>{item.body}</Card>
                 </List.Item>
                 )}
             />
