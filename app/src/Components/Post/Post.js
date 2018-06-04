@@ -14,7 +14,6 @@ export default class Post extends Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedUser: '',
             username: '',
             userImage: '',
             tracker: this.props.tracker,
@@ -33,16 +32,20 @@ export default class Post extends Component {
     componentDidMount(){
         axios.get(`/api/posts/${this.props.user_id}`).then(data => {
             console.log(data)
-            this.setState({username: data.data[0].username, userImage: data.data[0].imageurl})
+            this.setState({username: data.data[0].username, userImage: data.data[0].imageurl, loggedUser: data.data[0].user_id})
         });
-        axios.get(`/api/likes/${this.props.post_id}`).then(data => {
-            console.log('---COMPARISON', data.data, this.props.loggedUserID)
-            if(data.data.includes(this.props.loggedUserID)){
-                this.setState({likes: data.data, allow: false})
-            } else {
-                this.setState({likes: data.data})
-            }
-        });
+        axios.get(`/api/check-session/`).then( data => {
+            console.log('session res', data)
+            this.setState({loggedUser: data.data.username, loggedUserID: data.data.user_id})
+            axios.get(`/api/likes/${this.props.post_id}`).then(response => {
+                console.log('---COMPARISON', response.data, data.data.user_id)
+                if(response.data.includes(data.data.user_id)){
+                    this.setState({likes: response.data, allow: false})
+                } else {
+                    this.setState({likes: response.data})
+                }
+            });
+        })
     }
 
     increaseTracker(){
@@ -64,7 +67,7 @@ export default class Post extends Component {
         axios.post('/api/likes/', like).then(data => {
             const newLikes = this.state.likes;
             newLikes.push(this.props.loggedUserID)
-            this.setState({likes: newLikes})
+            this.setState({likes: newLikes, allow: false})
         })
     }
 

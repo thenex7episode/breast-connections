@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button, message } from 'antd';
+import { setInterval } from 'timers';
 
 const error = () => {
     message.warning('Please enter a Message and a Receiver');
   };
+
 
 export default class Chat extends Component {
     constructor(){
@@ -18,6 +20,19 @@ export default class Chat extends Component {
         }
     }
 
+    listener(){
+        setInterval(() => axios.get(`/api/chat/messages/${this.props.match.params.chat_id}`).then(data => {
+            if(data.data[0].sender_id === this.state.user_id){
+                this.setState({receiver_id: data.data[0].receiver_id, receiver: data.data[0].receiver})
+            } else {
+                this.setState({receiver_id: data.data[0].sender_id, receiver: data.data[0].sender})
+            }
+            console.log('interval response',data.data)
+            this.setState({messages: data.data})
+            
+        }) ,10000)
+    }
+
     componentDidMount(){
         axios.get(`/api/check-session/`).then( data => {
             console.log('session res', data)
@@ -29,7 +44,8 @@ export default class Chat extends Component {
                     this.setState({receiver_id: data.data[0].sender_id, receiver: data.data[0].sender})
                 }
                 console.log(data.data)
-                this.setState({messages: data.data})
+                this.setState({messages: data.data, bodyInput: ''})
+                this.listener()
             })
         })
     }
