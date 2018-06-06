@@ -2,10 +2,23 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Button, message } from 'antd';
 import { setInterval } from 'timers';
+import './chat.css';
 
 const error = () => {
     message.warning('Please enter a Message and a Receiver');
   };
+
+
+  function divideMessages(arr, user){
+    console.log('divide', arr, user)
+    const sender = arr.filter(el => el.sender_id === user);
+    const receiver = arr.filter(el => el.receiver_id === user);
+    console.log('divide two', sender, receiver)
+    return {
+        sender,
+        receiver
+    }
+  }
 
 
 export default class Chat extends Component {
@@ -33,6 +46,8 @@ export default class Chat extends Component {
         }) ,10000)
     }
 
+
+
     componentDidMount(){
         axios.get(`/api/check-session/`).then( data => {
             console.log('session res', data)
@@ -44,7 +59,7 @@ export default class Chat extends Component {
                     this.setState({receiver_id: data.data[0].sender_id, receiver: data.data[0].sender})
                 }
                 console.log(data.data)
-                this.setState({messages: data.data, bodyInput: ''})
+                this.setState({messages: data.data})
                 this.listener()
             })
         })
@@ -63,7 +78,7 @@ export default class Chat extends Component {
                 chat_id: chat_id
             }
             axios.post('/api/chat/addmessage', message).then( data => {
-                this.setState({messages: data.data})
+                this.setState({messages: data.data, bodyInput: ''})
             })
         } else {
             error()
@@ -71,15 +86,21 @@ export default class Chat extends Component {
     }
 
     render() {
-        const messageList = this.state.messages.map(el => <li>{el.body}</li>)
+        const messageList = this.state.messages.map(el => <li style={{float: this.state.receiver === el.sender ? 'right' : 'left'}} className='message'>{el.body}<span className='senderBadge'>{el.sender}</span></li>)
         return (
-            <div style={{marginTop: '5em'}}>
-                <h3>Chat {this.props.match.params.chat_id}</h3>
-                <ul>
+            <div style={{marginTop: '5em', padding: '0 5em'}}>
+                <h1 style={{textAlign: 'center', fontSize: '40pt'}}>Chat</h1>
+                <ul className='messageList'>
                     {messageList}
                 </ul>
-                <input value={this.state.bodyInput} onChange={e => this.setState({bodyInput: e.target.value})}/>
-                <Button onClick={() => this.sendMessage()}>Start chatting</Button>
+                <div className='messageCont'>
+                    <input onKeyPress={e => {
+                        if(e.key === 'Enter'){
+                            this.sendMessage()
+                        }
+                    }} value={this.state.bodyInput} onChange={e => this.setState({bodyInput: e.target.value})}/>
+                    <Button onClick={() => this.sendMessage()}>Chat</Button>
+                </div>
             </div>
         );
     }

@@ -52,9 +52,8 @@ export default class SearchList extends Component {
         }
         axios.post('/api/experience/', experience).then(data => {
             console.log('Epxerience Posted');
-            this.setState({add: false, expInput: '', currentID: '', expRating: '', images: []})+
+            this.setState({add: false, expInput: '', currentID: '', expRating: 0, images: []})
             success()
-
         }).catch(err => console.log('Error in post Experience:', err))
     }
 
@@ -97,7 +96,7 @@ export default class SearchList extends Component {
                             {resultsList}
                         </div>
                         <Modal title={`Create Experience for ${this.state.currentPlace}`} visible={this.state.add} onOk={() => this.addExperience()} onCancel={() => this.setState({add: false})}>
-                            <TextArea onChange={e => this.setState({expInput: e.target.value})} rows={4} placeholder='what do you think?'/>
+                            <TextArea value={this.state.expInput} onChange={e => this.setState({expInput: e.target.value})} rows={4} placeholder='what do you think?'/>
                             <Rate onChange={value => this.setState({expRating: value})}/>
                         </Modal>
                     </div>

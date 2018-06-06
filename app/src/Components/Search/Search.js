@@ -54,7 +54,7 @@ export default class Search extends Component {
         const { selectedTags } = this.state;
         return (
             <div>
-                <div className='searchContainer'>
+                <div style={{height: this.state.results.length ? '': '100vh'}} className='searchContainer'>
                     <h1>Search for Doctors and see rankings by BC Users</h1>
                     <InputGroup style={{margin: '0 auto'}}compact>
                         <Select defaultValue="doctor" style={{ width: 120 }} onChange={(e) => this.setState({selectedType: e})}>
@@ -63,7 +63,7 @@ export default class Search extends Component {
                             <Option value="pharmacy">Pharmacies</Option>
                             <Option value="insurance_agency">Insurance Agencies</Option>
                         </Select>
-                        <Input style={{width: '50%'}} value={this.state.selectedLocation} onChange={e => {
+                        <Input placeholder='enter location' style={{width: '50%'}} value={this.state.selectedLocation} onChange={e => {
                             this.setState({selectedLocation: e.target.value})
                             this.isTyping()
                         }}/>
