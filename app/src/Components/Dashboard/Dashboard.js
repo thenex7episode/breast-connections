@@ -73,6 +73,18 @@ export default class Dashboard extends Component {
         })
     }
 
+    componentWillReceiveProps() {
+        const category = this.props.match.params.category;
+        axios.get(`/api/getposts/${category}`).then(data => {
+            console.log('-d-a-t-a', data.data.data)
+            this.setState({posts: data.data.data, loading: true})
+        })
+        axios.get(`/api/check-session/`).then( data => {
+            console.log('session res', data)
+            this.setState({loggedUser: data.data.username, loggedUserID: data.data.user_id})
+        })
+    }
+
     deletePost(id){
         axios.delete(`/api/deletepost/${id}`).then(data => {
             console.log(data.data)
