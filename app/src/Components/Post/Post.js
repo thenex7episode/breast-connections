@@ -98,7 +98,7 @@ export default class Post extends Component {
                     <div style={{padding: '1em'}}>
                         <Input style={{fontSize: '1.5em', display: this.state.editMode ? 'block' : 'none'}} value={this.state.titleInput === null ? title : this.state.titleInput} onChange={e => this.setState({titleInput: e.target.value})}/>
                         <div style={{fontSize: '1.5em', display: this.state.editMode ? 'none' : 'block'}}>{this.state.titleInput || title}</div>
-                        <div style={{fontSize: '0.8em'}}>posted on {date}, by {username}</div>
+                        <div style={{fontSize: '0.8em'}}>posted on {date}, by <a href={`/profile/${username}`}>{username}</a></div>
                     </div>
                     <div>
                         <Icon onClick={loggedUser === this.state.username ? () => this.setState({edit: !this.state.edit}): ''} style={{display: 'block' ,opacity: loggedUser === this.state.username ? '1':'0', paddingBottom: '1em'}}type="ellipsis" />

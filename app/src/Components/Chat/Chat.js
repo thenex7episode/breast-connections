@@ -88,7 +88,7 @@ export default class Chat extends Component {
     render() {
         const messageList = this.state.messages.map(el => <li style={{float: this.state.receiver === el.sender ? 'right' : 'left'}} className='message'>{el.body}<span className='senderBadge'>{el.sender}</span></li>)
         return (
-            <div style={{marginTop: '5em', padding: '0 5em'}}>
+            <div className='messages' style={{marginTop: '5em', padding: '0 5em'}}>
                 <h1 style={{textAlign: 'center', fontSize: '40pt'}}>Chat</h1>
                 <ul className='messageList'>
                     {messageList}

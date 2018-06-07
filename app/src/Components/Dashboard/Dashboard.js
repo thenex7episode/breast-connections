@@ -73,8 +73,8 @@ export default class Dashboard extends Component {
         })
     }
 
-    componentWillReceiveProps() {
-        const category = this.props.match.params.category;
+    componentWillReceiveProps(nextProps) {
+        const category = nextProps.match.params.category;
         axios.get(`/api/getposts/${category}`).then(data => {
             console.log('-d-a-t-a', data.data.data)
             this.setState({posts: data.data.data, loading: true})
