@@ -27,7 +27,7 @@ describe('Login Path Test', function() {
 
   describe('Test Login', function() {
       it('Should Login', function() {
-          cy.get('button').contains('Login').click({force: true})
+          cy.get('button').contains('Login').click({force:true})
       })
   })
 
