@@ -1,5 +1,6 @@
 import React from 'react'
 import './home.css'
+import Footer from '../Components/Footer/Footer'
 
 export default function Home() {
     return (
@@ -60,7 +61,7 @@ export default function Home() {
             </div>
         </div>
       
-     
+     <Footer />
 
 
     </div>

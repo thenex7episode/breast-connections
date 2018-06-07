@@ -87,7 +87,6 @@ class Forums extends Component{
                             
                             
                     </div>
-                    <input className='d-search'type='text' placeholder='search.....'></input>
                 </div>
             </div>
         )

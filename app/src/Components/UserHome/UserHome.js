@@ -124,7 +124,7 @@ class UserHome extends Component{
                     filteredPosts: this.state.posts
                 })}
                     
-                >Clear Category</Button>
+                >Reset</Button>
                 </div>
             
             {allPosts}
