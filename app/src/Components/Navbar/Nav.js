@@ -66,7 +66,7 @@ export default class Nav extends Component {
                 <ul className='deskNav'>
                     <li><Icon className='navIcon' type="laptop" /><Link to={this.state.username ? '/dashboard' : '/'}>Home</Link></li>
                     <Dropdown overlay={menu}>
-                    <li><Icon className='navIcon' type="team" /><Link to='/dashboard'>Forums</Link></li>
+                    <li><Icon className='navIcon' type="team" /><Link to='/forums'>Forums</Link></li>
                     </Dropdown>
                     <li><Icon className='navIcon' type="environment" /><Link to='/search'>Search</Link></li>
                     <li><Icon className='navIcon' type="shopping-cart" /><Link to='/shop'>Shop</Link></li>
