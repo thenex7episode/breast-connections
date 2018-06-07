@@ -14,7 +14,6 @@ export default class Post extends Component {
     constructor(props){
         super(props);
         this.state = {
-            loggedUser: '',
             username: '',
             userImage: '',
             tracker: this.props.tracker,
@@ -33,16 +32,20 @@ export default class Post extends Component {
     componentDidMount(){
         axios.get(`/api/posts/${this.props.user_id}`).then(data => {
             console.log(data)
-            this.setState({username: data.data[0].username, userImage: data.data[0].imageurl})
+            this.setState({username: data.data[0].username, userImage: data.data[0].imageurl, loggedUser: data.data[0].user_id})
         });
-        axios.get(`/api/likes/${this.props.post_id}`).then(data => {
-            console.log('---COMPARISON', data.data, this.props.loggedUserID)
-            if(data.data.includes(this.props.loggedUserID)){
-                this.setState({likes: data.data, allow: false})
-            } else {
-                this.setState({likes: data.data})
-            }
-        });
+        axios.get(`/api/check-session/`).then( data => {
+            console.log('session res', data)
+            this.setState({loggedUser: data.data.username, loggedUserID: data.data.user_id})
+            axios.get(`/api/likes/${this.props.post_id}`).then(response => {
+                console.log('---COMPARISON', response.data, data.data.user_id)
+                if(response.data.includes(data.data.user_id)){
+                    this.setState({likes: response.data, allow: false})
+                } else {
+                    this.setState({likes: response.data})
+                }
+            });
+        })
     }
 
     increaseTracker(){
@@ -64,7 +67,7 @@ export default class Post extends Component {
         axios.post('/api/likes/', like).then(data => {
             const newLikes = this.state.likes;
             newLikes.push(this.props.loggedUserID)
-            this.setState({likes: newLikes})
+            this.setState({likes: newLikes, allow: false})
         })
     }
 
@@ -95,7 +98,7 @@ export default class Post extends Component {
                     <div style={{padding: '1em'}}>
                         <Input style={{fontSize: '1.5em', display: this.state.editMode ? 'block' : 'none'}} value={this.state.titleInput === null ? title : this.state.titleInput} onChange={e => this.setState({titleInput: e.target.value})}/>
                         <div style={{fontSize: '1.5em', display: this.state.editMode ? 'none' : 'block'}}>{this.state.titleInput || title}</div>
-                        <div style={{fontSize: '0.8em'}}>posted on {date}, by {username}</div>
+                        <div style={{fontSize: '0.8em'}}>posted on {date}, by <a href={`/profile/${username}`}>{username}</a></div>
                     </div>
                     <div>
                         <Icon onClick={loggedUser === this.state.username ? () => this.setState({edit: !this.state.edit}): ''} style={{display: 'block' ,opacity: loggedUser === this.state.username ? '1':'0', paddingBottom: '1em'}}type="ellipsis" />

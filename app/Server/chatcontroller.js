@@ -16,7 +16,7 @@ module.exports = {
         })
     },
     getMessages: (req, res) => {
-        req.app.get('db').getMessages([req.params.user, req.params.chatpartner]).then(data => {
+        req.app.get('db').getMessages(req.params.chat_id).then(data => {
             res.status(200).send(data)
         })
     }

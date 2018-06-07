@@ -22,7 +22,7 @@ const routes =
     <Switch>
         <Route path='/userhome' component={ UserHome } />
         <Route path='/chatroom' component={ Chatrooms } />
-        <Route path='/chat/:username' component={ Chat } />
+        <Route path='/chat/:chat_id' component={ Chat } />
         <Route path='/register' component={ Register } />
         <Route path='/login' component={ Login } />
         <Route path='/dashboard/:category' component={ Dashboard } />
