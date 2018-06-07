@@ -75,7 +75,7 @@ export default class Chatroom extends Component {
     }
 
     render() {
-        const userList = this.state.users.map(el => <li className='userInList' onClick={() => this.setState({receiver: el.username, receiver_id: el.user_id, image: el.imageurl})}>{el.username}<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        const userList = this.state.users.map(el => <li className='userInList' onClick={() => this.setState({receiver: el.username, receiver_id: el.user_id, image: el.imageurl})}>{el.username}<Avatar src={el.imageurl} />
         </li>);
         const menuList = this.state.users.map((el,i) => <Menu.Item key={i}>{el}</Menu.Item>)
         return (
