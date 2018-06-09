@@ -156,17 +156,13 @@ export default class Profile extends Component {
                         <div className='bio'>
                             {body}
                             </div> 
-                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-                            <a href="#" className="fa fa-facebook"></a>
-                            <a href="#" className="fa fa-twitter"></a>
 
 
                 
                 
             </div>
-            <Link to='/shop'><Button>Shop</Button></Link>
                 {userPosts}
-                
+        
             </div>
         );
     }
