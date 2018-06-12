@@ -1,17 +1,23 @@
 import React from 'react';
 import {Button} from 'antd'
+import './Products.css'
 
 const Products = (props) => {
 
     const {donater, description, name, image} = props
     return (
-        <div>
+        <div class='products'>
+        <div className='list'>
+            <ul>
+               <li>Product: {name}</li>
+                <li>Donater: <a href={`/profile/${donater}`}>{donater}</a></li>
+            </ul>
+        </div>
             <img src={image} alt=""/>
-       <p> Product: {name}</p>
-         <p>  Description: {description}</p>
-         <p>  Donater: {donater}</p>
+                <h1 className='des'>{description}</h1>
         </div>
     );
 };
 
 export default Products;
+

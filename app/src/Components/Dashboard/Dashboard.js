@@ -144,7 +144,10 @@ export default class Dashboard extends Component {
             <div style={{padding: '5em'}}>
                 <div style={{display:'flex', justifyContent: 'space-between'}}>
                     <h2>{this.props.match.params.category}</h2>
-                    <Button onClick={() => this.setState({createPost: true})} icon="form">Create Post</Button>
+                    {this.state.loggedUser 
+                    ?<Button onClick={() => this.setState({createPost: true})} icon="form">Create Post</Button>
+                    :<Button type='disabled'>Create Post</Button>
+                    }
                 </div>
                 <Modal title="Create Post" visible={this.state.createPost} onOk={() => this.createPost()} onCancel={() => this.setState({createPost: false})}>
                     <Input onChange={e => this.setState({titleInput: e.target.value})}style={{margin: '1em 0'}} placeholder="set the Title of your Post" />

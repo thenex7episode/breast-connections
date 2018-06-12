@@ -97,6 +97,7 @@ app.post('/api/newproduct', c.newProduct)
 app.delete('/api/delete/:id', c.deleteProduct)
 app.put('/api/editproduct/:id', c.editProduct)
 app.get('/api/product/:id', c.getProductById)
+app.get('/api/seller/:username', c.getProductByUsername)
 
 //Messages Endpoints
 app.get('/api/chat/usernames', cc.getUsernames)

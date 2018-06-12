@@ -71,17 +71,15 @@ export default class NewProduct extends Component {
     }
     render() {
         return (
-            <div style={{marginTop: '5em'}}>
-            
-                    <label>Pic</label>
-                        <input type="file"  onChange={e => this.handleImageUpload(e.target.files)}/>
-                    <label>Enter Product</label>
-                        <input type="text"  onChange={e => this.setProduct(e.target.value)}/>
-                    <label> Description</label>
-                        <input type="text"  onChange={e => this.setDescription(e.target.value)}/>
+            <div style={{margin: '5em'}}>
+                        <Input type="file"  onChange={e => this.handleImageUpload(e.target.files)}/>
+                        <Input placeholder='name' type="text"  onChange={e => this.setProduct(e.target.value)}/>
+                        <Input placeholder='description' type="text"  onChange={e => this.setDescription(e.target.value)}/>
                     <Button onClick={() => this.createProduct()}>Sell</Button>
                     <Link to='/'><Button>Cancel</Button></Link>
             </div>
         );
     }
 }
+            
+                  

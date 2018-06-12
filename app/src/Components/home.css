@@ -184,7 +184,7 @@
     padding: 5px;
 }
 .d-wrapper-section3{
-    background: url('girl.jpeg');
+    /* background: url('girl.jpeg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -216,5 +216,11 @@ module.exports = {
           req.app.get('db').getProductById(req.params.id).then(data => {
               res.status(200).send(data)
           })
+      },
+      getProductByUsername: (req,res) => {
+          req.app.get('db').getProductByUsername(req.params.username).then(data => {
+            //   console.log('data in username',data)
+              res.status(200).send(data)
+          })
       }
 }

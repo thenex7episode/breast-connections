@@ -28,7 +28,7 @@ export default class Shop extends Component {
     
     getProducts() {
         axios.get('/api/products').then(res => {
-            console.log('------res.data in shop:', res.data)
+            console.log('------res.data in shop:', res)
             this.setState({products: res.data})
         })
     }
@@ -47,8 +47,8 @@ export default class Shop extends Component {
             <Products name={e.item_name} description={e.description} donater={e.username} image={e.imageurl}/>
             { e.username === this.state.loggedInUser 
                 ? <div>
-                    <Button onClick={() => this.delete(e.product_id)}>Delete</Button>
-                    <Link to={`/edit/${e.product_id}`}><Button>Edit</Button></Link>
+                    <Button onClick={() => this.delete(e.product_id)}>Delete {e.item_name}</Button>
+                    <Link to={`/edit/${e.product_id}`}><Button>Edit {e.item_name}</Button></Link>
                     </div>
                 : ''}
                 </div>

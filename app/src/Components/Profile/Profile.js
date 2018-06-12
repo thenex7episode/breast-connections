@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import {Avatar, Button, Icon, Input, Popconfirm, message} from 'antd'
+import {Avatar, Button, Icon, Input, Popconfirm, message, Tabs} from 'antd'
 import './Profile.css'
 import Post from '../Post/Post'
 import {Link} from 'react-router-dom'
 import { image } from 'cloudinary';
+import Products from '../Products/Products'
 const { TextArea } = Input
+const TabPane = Tabs.TabPane
 
 
 const CLOUDINARY_UPLOAD_PRESET = 'Breast Connections'
@@ -30,7 +32,8 @@ export default class Profile extends Component {
             body: '',
             size: 'large',
             edit: false,
-            uploadedFileCloudinaryUrl: ''
+            uploadedFileCloudinaryUrl: '',
+            products: [],
         }
 
         this.deletePost= this.deletePost.bind(this)
@@ -46,6 +49,10 @@ export default class Profile extends Component {
                 console.log('data:', data)
                 this.setState({posts: data.data})
                 console.log('------------------data.data.data:',data.data)
+            })
+            axios.get(`/api/seller/${username}`).then(r => {
+                console.log('----------r in profile', r.data)
+                this.setState({products: r.data})
             })
         })
 
@@ -119,11 +126,18 @@ export default class Profile extends Component {
             message.error('Click on No');
           }
 
+          function callback(key) {
+              console.log('key in tabs in profile', key)
+          }
+
           let userPosts = this.state.posts.map((e,i) => {
               console.log('posts:', this.state.posts)
               return <Post  loggedUser={this.state.user} key={i} post_id={e.post_id} title={e.title} body={e.body} user_id={e.user_id} date={e.date} tracker={e.tracker} deletePostFn={this.deletePost}/>
           })
 
+          let userProducts = this.state.products.map(e => {
+              return <Products  donater={e.username} name={e.item_name} description = {e.description} image = {e.imageurl}/>
+          })
 
 
         return (
@@ -161,8 +175,12 @@ export default class Profile extends Component {
                 
                 
             </div>
-                {userPosts}
-        
+            <Tabs onChange={callback} type="card">
+            <TabPane tab="Posts" key="1">{userPosts}</TabPane>
+            <TabPane tab="Products" key="2">{userProducts}</TabPane>
+  </Tabs>
+                {/* {userPosts}
+                {userProducts} */}
             </div>
         );
     }
